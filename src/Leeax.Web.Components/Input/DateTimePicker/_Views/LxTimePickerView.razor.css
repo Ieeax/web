@@ -1,0 +1,4 @@
+﻿/* Colon between hour and minute */
+.picker-content .colon {
+    margin: 0 0.2em;
+}

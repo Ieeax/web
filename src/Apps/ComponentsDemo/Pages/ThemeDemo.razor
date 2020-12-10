@@ -1,0 +1,30 @@
+﻿@page "/demo/theme"
+@inject IThemeHandler ThemeHandler
+
+<div class="px-3">
+    <h1 class="mt-4 mx-1 d-inline-block">Theme and Coloring</h1>
+    <Demo>
+        <Content>
+            @*<LxTableView Items="ThemeContext.Mapping.Values">
+                <ColumnDefinitions>
+                    <LxTableViewColumn Text="Color">
+                        <Template>
+                            <div class="mx-auto rounded-circle lx-elevation-l3" style="background:@(((Color)context).ToHexStr());padding:0.75rem;"></div>
+                        </Template>
+                    </LxTableViewColumn>
+                    <LxTableViewColumn Header="Foreground" Text="ClassNameForeground" />
+                    <LxTableViewColumn Header="Background" Text="ClassNameBackground" />
+                    <LxTableViewColumn Header="CSS-Variable" Text="VariableName" />
+                </ColumnDefinitions>
+            </LxTableView>*@
+            <span>No demo available.</span>
+        </Content>
+        <Customization>
+            <Entry Text="Theme">
+                <LxSelect Items="ThemeHandler.Themes.Keys"
+                          Converter="DefaultOptionConverter<string>.Instance"
+                          @bind-Value="ThemeHandler.ActiveTheme" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>

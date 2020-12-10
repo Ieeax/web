@@ -1,0 +1,25 @@
+﻿/* Not interactable when fetching */
+.lx-paging.fetching .paging-content > ul,
+.lx-paging.fetching .paging-content > .paging-empty {
+    opacity: 0.75;
+    transition: opacity 250ms;
+    user-select: none;
+}
+
+/* Toggle spinner with css for continous animation */
+.lx-paging:not(.fetching) .paging-content .paging-loader {
+    display: none;
+}
+
+.paging-content {
+    min-height: 5em;
+}
+
+    /* Position spinner and messages in center */
+    .paging-content .paging-empty,
+    .paging-content .paging-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }

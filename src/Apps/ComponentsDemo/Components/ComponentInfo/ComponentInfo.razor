@@ -1,0 +1,31 @@
+﻿@namespace ComponentsDemo.Components
+
+<div class="mt-4 mr-2">
+    <h1 class="mx-1">@ComponentReflector.GetFriendlyTypeName(Type)</h1>
+    <div>
+        @if (subComponents.Any())
+        {
+            <div>
+                <h3 class="mt-4 mb-3 mx-1">Sub-Components</h3>
+                <div class="flex-row">
+                    <LxTableView Items="subComponents">
+                        <ColumnDefinitions>
+                            <LxTableViewColumn Header="Type" Text="{.}" TextConverter="_converter" />
+                        </ColumnDefinitions>
+                    </LxTableView>
+                </div>
+            </div>
+        }
+        <div>
+            <h3 class="mt-4 mb-3 mx-1">Parameters</h3>
+            <div class="flex-row">
+                <LxTableView Items="parameters">
+                    <ColumnDefinitions>
+                        <LxTableViewColumn Header="Name" Text="{Name}" />
+                        <LxTableViewColumn Header="Type" Text="{Type}" TextConverter="_converter" />
+                    </ColumnDefinitions>
+                </LxTableView>
+            </div>
+        </div>
+    </div>
+</div>

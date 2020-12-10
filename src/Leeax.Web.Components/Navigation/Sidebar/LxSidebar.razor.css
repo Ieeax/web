@@ -1,0 +1,3 @@
+﻿.lx-sidebar {
+    background: var(--lx-sidebar-background, var(--lx-color-neutral-white));
+}

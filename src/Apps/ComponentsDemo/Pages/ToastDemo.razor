@@ -1,0 +1,92 @@
+﻿@page "/demo/toast"
+@inject IToastService ToastService
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxMessageBox)" />
+    <Demo>
+        <Content>
+            <div>
+                <LxButton Text="Open toast"
+                          Clicked="ShowToast" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Icon">
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Enum.GetValues(typeof(ToastIcon)).Cast<ToastIcon>()"
+                          Converter="DefaultOptionConverter<ToastIcon>.Instance"
+                          @bind-Value="Icon" />
+            </Entry>
+            <Entry Text="Position">
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Enum.GetValues(typeof(ToastPosition)).Cast<ToastPosition>()"
+                          Converter="DefaultOptionConverter<ToastPosition>.Instance"
+                          @bind-Value="Position" />
+            </Entry>
+            <Entry Text="Text">
+                <LxInputText Placeholder="Enter text ..."
+                             @bind-Value="Text" />
+            </Entry>
+            <Entry Text="Display time (ms)">
+                <LxInputNumber Placeholder="Enter display time ..."
+                               @bind-Value="DisplayTime" />
+            </Entry>
+            <Entry Text="Show buttons">
+                <LxCheckbox @bind-Value="ShowButtons" />
+            </Entry>
+            <Entry Text="Stacked">
+                <LxCheckbox @bind-Value="Stacked" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private void ShowToast()
+    {
+        if (ShowButtons)
+        {
+            ToastService.ShowToast(
+                Text,
+                (int)DisplayTime,
+                Icon,
+                new ToastButton[]
+                {
+                    new ToastButton("Decline", x => x.Close()),
+                    new ToastButton("Accept", x => x.Close())
+                },
+                Stacked);
+        }
+        else
+        {
+            ToastService.ShowToast(
+                Text,
+                (int)DisplayTime,
+                Icon);
+        }
+    }
+
+    private ToastPosition _position;
+
+    public ToastPosition Position
+    {
+        get => _position;
+        set
+        {
+            _position = value;
+            ToastService.ToastPosition = value;
+        }
+    }
+
+    public ToastIcon Icon { get; set; }
+
+    public string Text { get; set; } = "Some text ...";
+
+    public double DisplayTime { get; set; } = 5000;
+
+    public bool ShowButtons { get; set; }
+
+    public bool Stacked { get; set; }
+
+}

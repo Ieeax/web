@@ -1,0 +1,17 @@
+﻿/* Margin bottom of each row */
+.picker-content > div:not(:last-child) {
+    margin-bottom: 0.6em;
+}
+
+/* Button appearance */
+.picker-content ::deep .lx-button {
+    width: 3.2em;
+    height: 3.2em;
+    margin: 0 0.3em;
+    padding: 0;
+}
+
+    /* Center text of button */
+    .picker-content ::deep .lx-button > span {
+        margin: auto;
+    }

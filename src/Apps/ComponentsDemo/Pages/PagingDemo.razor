@@ -1,0 +1,62 @@
+﻿@page "/demo/paging"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxPaging<>)" />
+    <Demo>
+        <Content>
+            <LxPaging ItemsProvider="AnimalProvider" ItemsPerPage="10" Class="w-100">
+                <ItemTemplate>
+                    <LxFrame Elevation="2" Class="my-2 p-2 rounded">
+                        <span>[@context.Type] @context.Name</span>
+                    </LxFrame>
+                </ItemTemplate>
+            </LxPaging>
+            <LxSeparator />
+            <LxPaging ItemsProvider="AnimalProvider2" ItemsPerPage="10" Class="w-100">
+                <ItemTemplate>
+                    <LxFrame Elevation="2" Class="my-2 p-2 rounded">
+                        <span>[@context.Type] @context.Name</span>
+                    </LxFrame>
+                </ItemTemplate>
+            </LxPaging>
+        </Content>
+        <Customization>
+            <Entry Text="Total items">
+                <LxInputNumber Placeholder="Total items to display"
+                               @bind-Value="Total" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{ 
+
+    private double _total = 75;
+
+    protected override void OnInitialized()
+    {
+        AnimalProvider = new AnimalBatchProvider((int)_total);
+        AnimalProvider2 = new AnimalBatchProvider((int)_total, true);
+    }
+
+    private AnimalBatchProvider AnimalProvider { get; set; }
+
+    private AnimalBatchProvider AnimalProvider2 { get; set; }
+
+    private double Total
+    {
+        get => _total;
+        set
+        {
+            if (value < 0 || value > 10000)
+            {
+                return;
+            }
+
+            _total = value;
+            AnimalProvider = new AnimalBatchProvider((int)value);
+            AnimalProvider2 = new AnimalBatchProvider((int)_total, true);
+        }
+    }
+
+}

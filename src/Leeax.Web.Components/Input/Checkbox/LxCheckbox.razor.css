@@ -1,0 +1,45 @@
+﻿.lx-checkbox {
+    display: block;
+    text-indent: -9999px;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    transition: background var(--lx-transition-duration-default);
+}
+
+    /* Background */
+    .lx-checkbox.lx-normal:not(.active),
+    .lx-checkbox.lx-raised:not(.active) {
+        background-color: var(--lx-checkbox-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Background when active */
+    .lx-checkbox.active {
+        background-color: var(--lx-checkbox-active-background, var(--lx-color-theme-primary));
+    }
+
+    /* Outlined style */
+    .lx-checkbox.lx-outlined:not(.active) {
+        border-color: var(--lx-checkbox-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Hide input element */
+    .lx-checkbox input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+
+    /* Checkmark when active */
+    .lx-checkbox.active::after {
+        content: "";
+        position: absolute;
+        left: 0.5em;
+        top: 0.22em;
+        width: 0.5em;
+        height: 0.8em;
+        border: solid;
+        border-color: var(--lx-color-white);
+        border-width: 0 0.2em 0.2em 0;
+        transform: rotate(45deg);
+    }

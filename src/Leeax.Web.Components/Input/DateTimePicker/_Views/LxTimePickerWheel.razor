@@ -1,0 +1,15 @@
+﻿@namespace Leeax.Web.Components.Input
+
+<div class="@ClassName overflow-hidden position-relative" 
+     style="@GetStyle()" 
+     @ref="_rootElement">
+    <div class="items-view position-absolute flex-col w-100" 
+         style="@GetItemWrapperStyle()">
+        @foreach (var curIndex in Enumerable.Range(MinValue, MaxValue + 1))
+        {
+            <span class="@GetItemClass(curIndex)" 
+                  data-lx-interaction="3"
+                  @onclick="@(x => OnItemClicked(curIndex))">@curIndex</span>
+        }
+    </div>
+</div>

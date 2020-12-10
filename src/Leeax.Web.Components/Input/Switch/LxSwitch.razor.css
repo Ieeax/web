@@ -1,0 +1,40 @@
+﻿.lx-switch {
+    position: relative;
+    display: inline-flex;
+    line-height: 2.4em;
+    vertical-align: middle;
+    border-radius: 1.2em;
+    background-color: var(--lx-switch-background, var(--lx-color-neutral-quaternary));
+}
+
+    /* 50% rounded corners */
+    .lx-switch .switch-bar {
+        border-radius: 1.2em;
+    }
+
+    /* Single item */
+    .lx-switch .switch-item {
+        padding: 0 1.4em;
+        line-height: 2.4em;
+        cursor: pointer;
+    }
+
+    /* Selected item */
+    .lx-switch .switch-item-selected {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0.2em;
+        color: var(--lx-color-black);
+        background-color: var(--lx-switch-selected-background, var(--lx-color-white));
+        height: 2em;
+        line-height: 2em;
+        border-radius: 1em;
+        transition: left 200ms, width 150ms;
+    }
+
+        /* Center text of selected item */
+        /* The other items are always centered trough padding, only the selected one not */
+        .lx-switch .switch-item-selected span {
+            text-align: center;
+        }

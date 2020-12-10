@@ -1,0 +1,30 @@
+﻿.lx-timepickerwheel {
+    width: 3.8em;
+}
+    /* Transition for scrolling */
+    .lx-timepickerwheel .items-view {
+        transition: transform 180ms;
+    }
+
+    /* Item style */
+    .lx-timepickerwheel span {
+        background: rgba(0, 0, 0, 0.01);
+        margin: 0.1em 0;
+        padding: 0 1em;
+        height: 2.5em;
+        line-height: 2.5em;
+        text-align: center;
+        transition: var(--lx-transition-duration-default);
+    }
+        
+        /* Background previous/next item */
+        .lx-timepickerwheel span.prev-item, 
+        .timepicker-wheel span.next-item {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Style selected item */
+        .lx-timepickerwheel span.selected {
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.025);
+        }

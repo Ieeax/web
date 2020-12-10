@@ -1,0 +1,35 @@
+﻿@page "/demo/hover-active"
+
+<div class="p-3">
+    <div class="demo-outer demo-outer-2 p-4 m-2" data-lx-interaction="1">
+        <LxButton Text="Only Hover" 
+                  Appearance="Appearance.Normal" />
+    </div>
+    <div class="demo-outer demo-outer-2 p-4 m-2" data-lx-interaction="2">
+        <LxButton Text="Only Active" 
+                  Appearance="Appearance.Normal" />
+    </div>
+    <div class="demo-outer demo-outer-2 p-4 m-2" data-lx-interaction="3">
+        <LxButton Text="Hover + Active" 
+                  Appearance="Appearance.Normal" />
+    </div>
+    <div class="demo-outer p-4 m-2 lx-hover-default lx-active-default" data-lx-interaction="3">
+        <LxButton Text="Default Hover + Active" 
+                  Appearance="Appearance.Normal" />
+    </div>
+</div>
+<style>
+    .demo-outer {
+        border: 1px solid var(--lx-color-neutral-quaternary);
+    }
+
+    .demo-outer-2.lx-hover,
+    .demo-outer-2 .lx-hover {
+        background: yellow !important;
+    }
+
+    .demo-outer-2.lx-active,
+    .demo-outer-2 .lx-active {
+        background: red !important;
+    }
+</style>

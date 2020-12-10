@@ -1,0 +1,35 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    @if (Items != null)
+    {
+        @foreach (var curItem in Items)
+        {
+            switch (curItem)
+            {
+                case TagOption tag:
+                    <LxTag Label="@tag.Text"
+                           Icon="@tag.Icon"
+                           Size="Size"
+                           Appearance="Appearance"
+                           IsStatic="IsStatic"
+                           IsRemovable="IsRemovable"
+                           IsActive="@tag.IsActive"
+                           IsActiveChanged="@(value => OnItemChanged(tag, value))"
+                           Removed="@(() => OnItemRemoved(curItem))" />
+                    break;
+                case SortTagOption sortTag:
+                    <LxSortTag Label="@sortTag.Text"
+                               Direction="@sortTag.Direction"
+                               DirectionChanged="@(value => OnItemChanged(sortTag, value))"
+                               Size="Size"
+                               Appearance="Appearance"
+                               IsStatic="IsStatic"
+                               IsRemovable="IsRemovable"
+                               Removed="@(() => OnItemRemoved(curItem))" />
+                    break;
+            }
+        }
+    }
+</div>

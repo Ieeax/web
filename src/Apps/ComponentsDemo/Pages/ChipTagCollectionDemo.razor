@@ -1,0 +1,110 @@
+﻿@using System.Collections.ObjectModel
+@page "/demo/chip-tagcollection"
+
+<div class="px-3">
+    <div>
+        <div class="flex-row flex-wrap">
+            <ComponentInfo Type="typeof(LxChipCollection)" />
+            <ComponentInfo Type="typeof(LxTagCollection)" />
+        </div>
+    </div>
+    <Demo>
+        <Content>
+            <LxTagCollection Items="Tags" 
+                             Appearance="Appearance.Normal"
+                             Size="Size" 
+                             IsRemovable="IsRemovable"
+                             IsStatic="IsStatic"
+                             IsEnabled="IsEnabled" />
+            <LxSeparator Orientation="Orientation.Horizontal" />
+            <LxChipCollection Items="Chips" 
+                              Appearance="Appearance.Outlined"
+                              Size="Size" 
+                              IsRemovable="IsRemovable"
+                              IsStatic="IsStatic"
+                              IsEnabled="IsEnabled" />
+            <LxSeparator Orientation="Orientation.Horizontal" />
+            <LxChipCollection Items="AnimalNames" 
+                              Appearance="Appearance.Raised"
+                              Size="Size" 
+                              IsRemovable="IsRemovable"
+                              IsStatic="IsStatic"
+                              IsEnabled="IsEnabled" />
+            <LxSeparator Orientation="Orientation.Horizontal" />
+            <LxTagCollection Items="Tags" 
+                             Appearance="Appearance"
+                             Size="Size" 
+                             IsRemovable="IsRemovable"
+                             IsStatic="IsStatic"
+                             IsEnabled="IsEnabled" />
+        </Content>
+        <Customization>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Removable">
+                <LxToggle @bind-Value="IsRemovable" />
+            </Entry>
+            <Entry Text="Static">
+                <LxToggle @bind-Value="IsStatic" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{ 
+
+    protected override void OnInitialized()
+    {
+        Tags = new ObservableCollection<IOption>()
+        {
+            new TagOption("tag"),
+            new SortTagOption("sort-tag"),
+            new SortTagOption("sort-tag2", SortDirection.Descending)
+        };
+
+        Chips = new ObservableCollection<ChipOption>()
+        {
+            new ChipOption("chip"),
+            new ChipOption("chip2"),
+            new ChipOption("chip3")
+        };
+
+        AnimalNames = new List<ChipOption>()
+        {
+            new ChipOption(Animal.GetTypeName()),
+            new ChipOption(Animal.GetTypeName()),
+            new ChipOption(Animal.GetTypeName()),
+            new ChipOption(Animal.GetTypeName())
+        };
+    }
+
+    private ObservableCollection<IOption> Tags { get; set; }
+
+    private ObservableCollection<ChipOption> Chips { get; set; }
+
+    private ICollection<ChipOption> AnimalNames { get; set; }
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    public bool IsRemovable { get; set; }
+
+    public bool IsStatic { get; set; }
+
+    public bool IsEnabled { get; set; } = true;
+
+}

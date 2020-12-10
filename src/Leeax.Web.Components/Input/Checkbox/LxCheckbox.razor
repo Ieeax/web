@@ -1,0 +1,6 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<bool>
+
+<label @attributes="AttributeSet">
+    <input type="checkbox" value="@Value" @onchange="OnValueChanged" />
+</label>

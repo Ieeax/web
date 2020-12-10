@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <Authors>Leeax</Authors>
+    <Description>Adds support for Material Design icons from "https://material.io/resources/icons/?style=baseline".</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageTags>blazor icons material materialdesign google</PackageTags>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Leeax.Web.Components\Leeax.Web.Components.csproj" />
+  </ItemGroup>
+
+</Project>

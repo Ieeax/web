@@ -1,0 +1,27 @@
+[
+  {
+    "outputFileName": "wwwroot/global.min.css",
+    "inputFiles": [
+      "wwwroot/reset.css",
+      "wwwroot/global.css",
+      "wwwroot/theme.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bootstrap.min.css",
+    "inputFiles": [
+      "wwwroot/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/jsinterop.min.js",
+    "inputFiles": [
+      "wwwroot/Utility.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

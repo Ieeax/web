@@ -1,0 +1,52 @@
+﻿.lx-select .selected-item {
+    position: relative;
+    overflow: hidden;
+    line-height: 2.4em;
+    vertical-align: middle;
+    padding: 0 1em;
+}
+
+    /* Background */
+    .lx-select .selected-item.lx-normal,
+    .lx-select .selected-item.lx-raised {
+        background-color: var(--lx-select-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-select .selected-item.lx-outlined {
+        line-height: calc(2.4em - 2px);
+        border-color: var(--lx-select-background, var(--lx-color-neutral-quaternary));
+    }
+
+/* Scrollable item-list */
+.lx-select .select-items {
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+/* Position icon */
+.lx-select ::deep .left-icon {
+    margin-right: 0.25em;
+    margin-left: -0.2em;
+}
+
+/* Position "dropdown" icon */
+.lx-select ::deep .right-icon {
+    margin-left: 0.4em;
+    margin-right: -0.2em;
+}
+
+.lx-select .selected-item,
+.lx-select .list-item {
+    display: inline-flex;
+}
+
+/* Item in list */
+.lx-select .list-item {
+    padding: 0.4em 0.7em;
+}
+
+    /* Selected item in list */
+    .lx-select .list-item.selected {
+        background-color: var(--lx-select-selected-background, var(--lx-color-neutral-light));
+    }

@@ -1,0 +1,46 @@
+﻿@page "/demo/modal"
+@inject IModalService ModalService
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxMessageBox)" />
+    <Demo>
+        <Content>
+            <div>
+                <LxButton Text="Open modal"
+                          Clicked="ShowModal" />
+            </div>
+            <span class="mt-3">Returned result: @LastResult</span>
+        </Content>
+        <Customization>
+            <Entry Text="Buttons">
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Enum.GetValues(typeof(MessageBoxButtons)).Cast<MessageBoxButtons>()"
+                          Converter="DefaultOptionConverter<MessageBoxButtons>.Instance"
+                          @bind-Value="Buttons" />
+            </Entry>
+            <Entry Text="Title">
+                <LxInputText @bind-Value="Title" Placeholder="Enter title ..." />
+            </Entry>
+            <Entry Text="Text">
+                <LxInputText @bind-Value="Text" Placeholder="Enter text ..." />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private async Task ShowModal()
+    {
+        LastResult = await ModalService.ShowMessageAsync(Title, Text, Buttons);
+    }
+
+    public MessageBoxButtons Buttons { get; set; }
+
+    public DialogResult LastResult { get; set; }
+
+    public string Title { get; set; } = "Some title";
+
+    public string Text { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae urna ipsum.";
+
+}

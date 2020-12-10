@@ -1,0 +1,27 @@
+﻿.lx-sidebarbutton {
+    display: inline-flex;
+    overflow: hidden;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: .25px;
+    color: var(--lx-color-neutral-black);
+}
+
+    /* Background active */
+    .lx-sidebarbutton.active {
+        color: var(--lx-sidebar-active-color, var(--lx-color-neutral-black));
+        background-color: var(--lx-sidebar-active-background, var(--lx-color-neutral-lighter));
+    }
+
+    /* Margin to icon */
+    .lx-sidebarbutton span {
+        margin-left: 0.75em;
+    }
+
+        /* Margin when no icon is displayed */
+        .lx-sidebarbutton span.indented {
+            margin-left: 2.15em;
+        }

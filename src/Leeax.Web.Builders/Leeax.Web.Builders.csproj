@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <Authors>Leeax</Authors>
+    <Description>Adds different builders for creating data often used in the web.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageTags>web builder</PackageTags>
+  </PropertyGroup>
+  
+</Project>

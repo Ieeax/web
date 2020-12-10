@@ -1,0 +1,39 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<a @attributes="AttributeSet">
+    <LxFrame Elevation="3">
+        @if (ImageSource != null)
+        {
+            <div class="card-image" style="height:@Height.ToString()">
+                <img src="@ImageSource" />
+            </div>
+        }
+        <div class="card-content">
+            <div class="card-title flex-col">
+                @if (Overline != null)
+                {
+                    <span class="overline lx-nowrap">@Overline</span>
+                }
+                @if (Headline != null)
+                {
+                    <span class="headline lx-nowrap">@Headline</span>
+                }
+                @if (Subheadline != null)
+                {
+                    <span class="subheadline lx-nowrap">@Subheadline</span>
+                }
+            </div>
+            @if (Text != null)
+            {
+                <div class="card-text">@Text</div>
+            }
+            @if (Footer != null)
+            {
+                <div class="card-footer flex-row">
+                    @Footer
+                </div>
+            }
+        </div>
+    </LxFrame>
+</a>

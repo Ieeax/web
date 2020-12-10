@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Icons\Leeax.Icons.MaterialDesign\Leeax.Icons.MaterialDesign.csproj" />
+    <ProjectReference Include="..\..\JsInterop\Leeax.Web.Components.Cookies\Leeax.Web.Components.Cookies.csproj" />
+    <ProjectReference Include="..\..\JsInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
+    <ProjectReference Include="..\..\Leeax.Web.Components\Leeax.Web.Components.csproj" />
+    <ProjectReference Include="..\..\Tests\Leeax.Web.Components.Tests\Leeax.Web.Components.Tests.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
+  </PropertyGroup>
+  
+</Project>

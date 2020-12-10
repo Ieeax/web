@@ -1,0 +1,16 @@
+﻿@using Leeax.Web.Components.Modals
+@namespace Leeax.Web.Components.Scopes
+
+<LxThemeScope>
+    <div class="lx-bg-neutral-lighter lx-fg-neutral-primary position-relative" @attributes="Attributes">
+        @if (DialogService != null)
+        {
+            <LxModalRenderer />
+        }
+        @if (ToastService != null)
+        {
+            <LxToastRenderer />
+        }
+        @ChildContent
+    </div>
+</LxThemeScope>

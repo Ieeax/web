@@ -1,0 +1,135 @@
+﻿.lx-fg-theme-darker {
+    color: var(--lx-color-theme-darker);
+}
+
+.lx-bg-theme-darker {
+    background-color: var(--lx-color-theme-darker);
+}
+
+.lx-fg-theme-dark {
+    color: var(--lx-color-theme-dark);
+}
+
+.lx-bg-theme-dark {
+    background-color: var(--lx-color-theme-dark);
+}
+
+.lx-fg-theme-primary {
+    color: var(--lx-color-theme-primary);
+}
+
+.lx-bg-theme-primary {
+    background-color: var(--lx-color-theme-primary);
+}
+
+.lx-fg-theme-secondary {
+    color: var(--lx-color-theme-secondary);
+}
+
+.lx-bg-theme-secondary {
+    background-color: var(--lx-color-theme-secondary);
+}
+
+.lx-fg-theme-tertiary {
+    color: var(--lx-color-theme-tertiary);
+}
+
+.lx-bg-theme-tertiary {
+    background-color: var(--lx-color-theme-tertiary);
+}
+
+.lx-fg-theme-light {
+    color: var(--lx-color-theme-light);
+}
+
+.lx-bg-theme-light {
+    background-color: var(--lx-color-theme-light);
+}
+
+.lx-fg-theme-lighter {
+    color: var(--lx-color-theme-lighter);
+}
+
+.lx-bg-theme-lighter {
+    background-color: var(--lx-color-theme-lighter);
+}
+
+.lx-fg-neutral-black {
+    color: var(--lx-color-neutral-black);
+}
+
+.lx-bg-neutral-black {
+    background-color: var(--lx-color-neutral-black);
+}
+
+.lx-fg-neutral-dark {
+    color: var(--lx-color-neutral-dark);
+}
+
+.lx-bg-neutral-dark {
+    background-color: var(--lx-color-neutral-dark);
+}
+
+.lx-fg-neutral-primary {
+    color: var(--lx-color-neutral-primary);
+}
+
+.lx-bg-neutral-primary {
+    background-color: var(--lx-color-neutral-primary);
+}
+
+.lx-fg-neutral-secondary {
+    color: var(--lx-color-neutral-secondary);
+}
+
+.lx-bg-neutral-secondary {
+    background-color: var(--lx-color-neutral-secondary);
+}
+
+.lx-fg-neutral-tertiary {
+    color: var(--lx-color-neutral-tertiary);
+}
+
+.lx-bg-neutral-tertiary {
+    background-color: var(--lx-color-neutral-tertiary);
+}
+
+.lx-fg-neutral-white {
+    color: var(--lx-color-neutral-white);
+}
+
+.lx-bg-neutral-white {
+    background-color: var(--lx-color-neutral-white);
+}
+
+.lx-fg-neutral-quaternary-alt {
+    color: var(--lx-color-neutral-quaternary-alt);
+}
+
+.lx-bg-neutral-quaternary-alt {
+    background-color: var(--lx-color-neutral-quaternary-alt);
+}
+
+.lx-fg-neutral-quaternary {
+    color: var(--lx-color-neutral-quaternary);
+}
+
+.lx-bg-neutral-quaternary {
+    background-color: var(--lx-color-neutral-quaternary);
+}
+
+.lx-fg-neutral-light {
+    color: var(--lx-color-neutral-light);
+}
+
+.lx-bg-neutral-light {
+    background-color: var(--lx-color-neutral-light);
+}
+
+.lx-fg-neutral-lighter {
+    color: var(--lx-color-neutral-lighter);
+}
+
+.lx-bg-neutral-lighter {
+    background-color: var(--lx-color-neutral-lighter);
+}

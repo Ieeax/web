@@ -1,0 +1,19 @@
+﻿@namespace ComponentsDemo.Components
+
+<div class="pb-3">
+    <h3 class="mt-4 mb-3 mx-1">Demo</h3>
+    <div class="flex-col flex-wrap mx-1">
+        @Content
+    </div>
+    <h3 class="mt-4 mb-3 mx-1">Customization</h3>
+    <div class="flex-col flex-wrap mx-1">
+        @if (Customization == null)
+        {
+            <span>There are no customizations available.</span>
+        }
+        else
+        {
+            @Customization
+        }
+    </div>
+</div>

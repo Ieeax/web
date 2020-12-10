@@ -1,0 +1,41 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    <table class="w-100">
+        <CascadingValue Value="_context" IsFixed="true">
+            @ColumnDefinitions
+            <thead class="lx-unselectable">
+                <tr class="tv-row">
+                    <th class="tv-cell-spacer" role="presentation"></th>
+                    @foreach (var curHeader in _context.ColumnDefinitions)
+                    {
+                        <th class="tv-cell">
+                            <div data-lx-interaction="3" class=@GetHeaderClass(curHeader) @onclick="@(x => OnHeaderClicked(curHeader))">
+                                <div class="tv-header">
+                                    @curHeader.Header
+                                </div>
+                                @if (SortedColumn == curHeader
+                                    && SortDirection != SortDirection.None)
+                                {
+                                    <LxIcon Source="@("static://" + (SortDirection == SortDirection.Ascending ? "arrow_upward" : "arrow_downward"))"
+                                            Fill="_directionIconColor"
+                                            Size="(1, Unit.EM)" />
+                                }
+                            </div>
+                        </th>
+                    }
+                    <th class="tv-cell-spacer" role="presentation"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var curItem in GetSortedItems())
+                {
+                    <tr class="tv-row" @onclick="@(x => RowClicked.InvokeAsync(curItem))">
+                        @BuildRenderTreeForRow(curItem)
+                    </tr>
+                }
+            </tbody>
+        </CascadingValue>
+    </table>
+</div>

@@ -1,0 +1,25 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<DateTime, string>
+
+<div @onwheel:preventDefault @attributes="AttributeSet">
+    <div class="header flex-row">
+        <h6>Time</h6>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateToNow">
+            <LxButtonIcon Source="static://schedule" />
+        </LxButton>
+    </div>
+    <div class="picker-content flex-row flex-vcenter">
+        <LxTimePickerWheel MinValue="0"
+                           MaxValue="23"
+                           Value="Value.Hour"
+                           ValueChanged="@(x => ValueChanged.InvokeAsync(Value.AddHours(x - Value.Hour)))" />
+        <div class="colon lx-font-weight-bold lx-unselectable">:</div>
+        <LxTimePickerWheel MinValue="0"
+                           MaxValue="59"
+                           Value="Value.Minute"
+                           ValueChanged="@(x => ValueChanged.InvokeAsync(Value.AddMinutes(x - Value.Minute)))" />
+    </div>
+</div>

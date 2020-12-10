@@ -1,0 +1,13 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    <div class="dropdown-parent" @ref="_targetReference.Current">
+        @Target
+    </div>
+    <LxTransition IsActive="@IsActive" Target="_contentReference">
+        <div @attributes="GetContentAttributeSet()" @ref="_contentReference.Current">
+            @Content
+        </div>
+    </LxTransition>
+</div>

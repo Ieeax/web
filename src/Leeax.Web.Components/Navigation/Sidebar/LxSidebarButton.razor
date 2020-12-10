@@ -1,0 +1,12 @@
+﻿@namespace Leeax.Web.Components.Navigation
+@inherits LxComponentBase
+
+<div role="button" @onclick="OnClicked" @attributes="AttributeSet">
+    @if (Icon != null)
+    {
+        <LxIcon Class="my-auto"
+                Source="@Icon"
+                Size="(1.4, Unit.EM)" />
+    }
+    <span class="@GetTextClasses()">@Label</span>
+</div>

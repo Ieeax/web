@@ -1,0 +1,108 @@
+﻿@page "/demo/select"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxSelect<>)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Options"
+                          Size="Size"
+                          Appearance="Appearance.Normal"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Options"
+                          Size="Size"
+                          Appearance="Appearance.Inline"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Options"
+                          Size="Size"
+                          Appearance="Appearance.Outlined"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Animals"
+                          Converter="DefaultOptionConverter<Animal>.Instance"
+                          Size="Size"
+                          Appearance="Appearance.Raised"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedAnimal" />
+            </div>
+            <div>
+                <LxSelect Placeholder="@Placeholder"
+                          Appearance="Appearance"
+                          Size="Size"
+                          Items="Options"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Placeholder">
+                <LxInput Placeholder="Enter a placeholder ..."
+                         @bind-Value="Placeholder" />
+            </Entry>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{        
+
+    protected override void OnInitialized()
+    {
+        Animals = new List<Animal>()
+        {
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create()
+        };
+
+        Options = new List<SelectOption>()
+        {
+            new SelectOption("Option 1", "static://add"),
+            new SelectOption("Option 2", "static://close"),
+            new SelectOption("Option 3")
+        };
+    }
+
+    private IEnumerable<SelectOption> Options { get; set; }
+
+    private IEnumerable<Animal> Animals { get; set; }
+
+    private SelectOption SelectedOption { get; set; }
+
+    private Animal SelectedAnimal { get; set; }
+
+    private string Placeholder { get; set; } = "Type something ...";
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private bool IsEnabled { get; set; } = true;
+
+}

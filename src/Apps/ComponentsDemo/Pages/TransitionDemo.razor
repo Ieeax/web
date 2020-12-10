@@ -1,0 +1,73 @@
+﻿@page "/demo/transition"
+@inject IJSRuntime JSRuntime
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxTransition)" />
+    <Demo>
+        <Content>
+            <LxTransition IsActive="IsActive"
+                          Hooks="_jsHooks"
+                          Duration="new TransitionDuration((int)DurationEnter, (int)DurationLeave)">
+                <LxButton Text="Click me" 
+                          Appearance="Appearance.Raised" />
+            </LxTransition>
+            <span class="mt-3">Example CSS:</span>
+            <pre>
+&lt;style&gt;
+    .t-enter,
+    .t-leave-to {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+
+    .t-enter-active,
+    .t-leave-active {
+        transition: all 1s;
+    }
+&lt;/style&gt;
+            </pre>
+        </Content>
+        <Customization>
+            <Entry Text="Active">
+                <LxToggle @bind-Value="IsActive" />
+            </Entry>
+            <Entry Text="Custom enter duration">
+                <LxInputNumber Placeholder="Enter duration ..."
+                               @bind-Value="DurationEnter" />
+            </Entry>
+            <Entry Text="Custom leave duration">
+                <LxInputNumber Placeholder="Leave duration ..."
+                               @bind-Value="DurationLeave" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+<style>
+    .t-enter,
+    .t-leave-to {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+
+    .t-enter-active,
+    .t-leave-active {
+        transition: all 1s;
+    }
+</style>
+
+@code{ 
+
+    private IJSObjectReference _jsHooks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _jsHooks = await JSRuntime.InvokeAsync<IJSObjectReference>("getTestTransitionHooks");
+    }
+
+    public bool IsActive { get; set; }
+
+    public double DurationEnter { get; set; }
+
+    public double DurationLeave { get; set; }
+
+}

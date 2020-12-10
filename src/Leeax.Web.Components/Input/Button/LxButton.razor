@@ -1,0 +1,20 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits LxComponentBase
+
+<div @onclick="RaiseClickedEvent" @attributes="AttributeSet">
+    @if (HasIcon)
+    {
+        <LxIcon Class="@GetIconClass()"
+                Source="@_icon!.Source"
+                Size="(1.4, Unit.EM)"
+                Fill="_iconColor" />
+    }
+    @if (HasText)
+    {
+        <span class="d-block lx-label">@Text</span>
+    }
+</div>
+<CascadingValue Name="Parent" 
+                Value="this" 
+                IsFixed="true" 
+                ChildContent="ChildContent" />

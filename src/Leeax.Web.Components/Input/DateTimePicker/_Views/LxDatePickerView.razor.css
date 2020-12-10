@@ -1,0 +1,12 @@
+﻿/* Button appearance */
+.picker-content ::deep .lx-button {
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.08em;
+    padding: 0;
+}
+
+    /* Center text of button */
+    .picker-content ::deep .lx-button > span {
+        margin: auto;
+    }

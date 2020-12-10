@@ -1,0 +1,92 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <Authors>Leeax</Authors>
+    <Description>Adds basic components, controls and other helpful features.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageTags>blazor components controls</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Presentation\DropDown\DropDown.razor.css" />
+    <None Remove="Presentation\TableView\TableView.razor.css" />
+    <None Remove="Modals\Modal\ToastBase.cs.css" />
+    <None Remove="Modals\Modal\ToastRenderer.razor.css" />
+    <None Remove="Input\Select\Select.razor.css" />
+    <None Remove="TypeScript\TimePickerWheel.ts" />
+    <None Remove="TypeScript\Utility.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\JsInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
+    <ProjectReference Include="..\JsInterop\Leeax.Web.Components.Window\Leeax.Web.Components.Window.csproj" />
+    <ProjectReference Include="..\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
+    <ProjectReference Include="..\Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj" />
+    <ProjectReference Include="..\Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj" />
+    <ProjectReference Include="..\Leeax.Web.Components.Theme\Leeax.Web.Components.Theme.csproj" />
+    <ProjectReference Include="..\Leeax.Web.Components.Transition\Leeax.Web.Components.Transition.csproj" />
+    <ProjectReference Include="..\Leeax.Web\Leeax.Web.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="bundleconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="TypeScript\Switch.ts">
+      <SubType>Code</SubType>
+    </None>
+  </ItemGroup>
+
+  <!-- TypeScript configuration -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptOutDir>wwwroot</TypeScriptOutDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+      CompileTypeScript;
+      $(ResolveCurrentProjectStaticWebAssetsInputs)
+    </ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+  </PropertyGroup>
+
+</Project>

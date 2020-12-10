@@ -1,0 +1,21 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits LxComponentBase
+
+<div @onclick="OnToggle" @attributes="AttributeSet">
+    @if (Icon != null)
+    {
+        <LxIcon Class="left-icon my-auto"
+                Fill="GetIconColor()"
+                Source="@Icon" 
+                Size="(1.2, Unit.EM)" />
+    }
+    <span class="d-block my-auto">@Label</span>
+    @if (IsRemovable)
+    {
+        <div class="right-icon my-auto" @onclick="OnRemove" @onclick:stopPropagation="true">
+            <LxIcon Fill="GetIconColor()"
+                    Source="static://close"
+                    Size="(1.2, Unit.EM)" />
+        </div>
+    }
+</div>

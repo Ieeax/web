@@ -1,0 +1,51 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<TItem, IIconOption>
+@typeparam TItem
+
+<div @attributes="AttributeSet">
+    <LxDropDown MinWidth="(100, Unit.Percent)"
+                @bind-IsActive="IsExtended">
+        <Target>
+            <div class="@GetButtonClass()" data-lx-interaction="3" @onclick="ToggleExtendedState">
+                @{
+                    var displayData = HasValue ? GetConvertedValue() : null;
+                    if (displayData != null
+                        && !string.IsNullOrEmpty(displayData.Icon))
+                    {
+                        <LxIcon Class="left-icon my-auto"
+                                Fill="ComponentHelper.GetForegroundColor(Appearance, _backgroundColor, _neutralPrimary)"
+                                Source="@displayData.Icon"
+                                Size="(1.4, Unit.EM)" />
+                    }
+
+                    <span class="text d-block">@(displayData == null ? Placeholder : displayData.Text)</span>
+                    <LxIcon Class="right-icon my-auto"
+                            Fill="ComponentHelper.GetForegroundColor(Appearance, _backgroundColor, _neutralPrimary)"
+                            Source="static://expand_more"
+                            Size="(1.4, Unit.EM)" />
+                }
+            </div>
+        </Target>
+        <Content>
+            <ul class="select-items flex-col lx-scrollbar">
+                @if (_iterator != null)
+                {
+                    foreach (var (source, result, index) in _iterator)
+                    {
+                        <li class="@GetItemClass(source)" data-lx-interaction="3" @onclick="@(x => OnItemClicked(source))">
+                            @{
+                                @if (!string.IsNullOrEmpty(result?.Icon))
+                                {
+                                    <LxIcon Class="left-icon my-auto"
+                                            Source="@result.Icon"
+                                            Size="(1.4, Unit.EM)" />
+                                }
+                            }
+                            <span class="d-block my-auto">@result?.Text</span>
+                        </li>
+                    }
+                }
+            </ul>
+        </Content>
+    </LxDropDown>
+</div>

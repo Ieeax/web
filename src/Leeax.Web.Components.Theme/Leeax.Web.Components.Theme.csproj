@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <Authors>Leeax</Authors>
+    <Description>Adds functionality for theming based on css variables.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageTags>blazor theme scope style css</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JsInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
+    <ProjectReference Include="..\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
+    <ProjectReference Include="..\Leeax.Web\Leeax.Web.csproj" />
+  </ItemGroup>
+
+</Project>

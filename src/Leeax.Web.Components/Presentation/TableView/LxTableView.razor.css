@@ -1,0 +1,91 @@
+﻿.lx-tableview {
+    border: 1px solid var(--lx-tableview-border-color, var(--lx-color-neutral-quaternary));
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 0;
+    height: inherit;
+}
+
+thead .tv-row,
+tbody .tv-row:not(:last-of-type) {
+    border-bottom: 1px solid var(--lx-tableview-border-color, var(--lx-color-neutral-quaternary));
+}
+
+.tv-row {
+    height: 1px;
+}
+
+/*tbody .tv-row {
+    transition: background 150ms;
+}*/
+
+.tv-cell-spacer {
+    width: 0.4em;
+}
+
+::deep .tv-cell {
+    text-align: left;
+    font-weight: inherit;
+}
+
+tbody ::deep .tv-cell .tv-cell-inner {
+    min-height: 2.1em;
+}
+
+tbody ::deep .tv-cell-inner {
+    height: 100%;
+}
+
+::deep .tv-cell .tv-cell-inner {
+    display: flex;
+    align-items: center;
+    padding: 0.1em 0.7em;
+}
+
+::deep .tv-cell.tv-cell-icon .tv-cell-inner {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+thead ::deep .tv-cell .tv-cell-inner {
+    margin: 0.4em 0;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+thead ::deep .tv-cell .lx-icon {
+    margin-left: 0.25em;
+}
+
+.tv-cell-action {
+    overflow: hidden;
+}
+
+.tv-header {
+    font-size: 0.85em;
+}
+
+/*.tv-row.interactable:hover .tv-cell-inner::after {
+    content: "";
+    background: var(--lx-color-neutral-lighter);
+}
+
+.tv-row.interactable:active .tv-cell-inner::after {
+    content: "";
+    background: var(--lx-color-neutral-light);
+}*/
+
+
+tbody .tv-row:nth-child(even) {
+    background-color: var(--lx-tableview-row-even-background, transparent);
+}
+
+tbody .tv-row:nth-child(odd) {
+    background-color: var(--lx-tableview-row-odd-background, var(--lx-color-neutral-lighter));
+}

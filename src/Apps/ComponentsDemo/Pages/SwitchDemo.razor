@@ -1,0 +1,96 @@
+﻿@page "/demo/switch"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxSwitch<>)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxSwitch Items="Options"
+                          Appearance="Appearance.Normal"
+                          Size="Size"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxSwitch Items="Animals"
+                          Converter="AnimalOptionConverter"
+                          Appearance="Appearance.Raised"
+                          Size="Size"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedAnimal" />
+            </div>
+            <div>
+                <LxSwitch Items="Options"
+                          Appearance="Appearance"
+                          Size="Size" 
+                          TextTransform="TextTransform"
+                          IsEnabled="IsEnabled"
+                          @bind-Value="SelectedOption" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="TextTransform">
+                <LxSelect Items="Enum.GetValues(typeof(TextTransform)).Cast<TextTransform>()"
+                          Converter="DefaultOptionConverter<TextTransform>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="TextTransform" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{        
+
+    protected override void OnInitialized()
+    {
+        Animals = new List<Animal>()
+        {
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create(),
+            Animal.Create()
+        };
+
+        Options = new List<SelectOption>()
+        {
+            new SelectOption("Option 1", "static://add"),
+            new SelectOption("Option 2", "static://close"),
+            new SelectOption("Option 3")
+        };
+    }
+
+    private IConverter AnimalOptionConverter { get; } = new DefaultOptionConverter<Animal>();
+
+    private IEnumerable<SelectOption> Options { get; set; }
+
+    private IEnumerable<Animal> Animals { get; set; }
+
+    private SelectOption SelectedOption { get; set; }
+
+    private Animal SelectedAnimal { get; set; }
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private TextTransform TextTransform { get; set; } = TextTransform.None;
+
+    private bool IsEnabled { get; set; } = true;
+
+}

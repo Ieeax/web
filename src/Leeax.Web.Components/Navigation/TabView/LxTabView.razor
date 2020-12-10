@@ -1,0 +1,10 @@
+﻿@namespace Leeax.Web.Components.Navigation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    @GetActiveRenderFragment()
+</div>
+<CascadingValue Name="Parent" 
+                Value="this" 
+                IsFixed="true" 
+                ChildContent="ChildContent" />

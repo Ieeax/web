@@ -1,0 +1,74 @@
+﻿@page "/demo/sidebar"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxSidebar)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap">
+                <div class="flex-col">
+                    <LxFrame>
+                        <LxSidebar @bind-ActiveKey="@ActiveKey" Width="(300, Unit.Pixel)">
+                            <Content>
+                                <LxSidebarButton Label="Test1" />
+                                <LxSidebarGroup IsExpandable="false">
+                                    <Header>Unexpandable</Header>
+                                    <Content>
+                                        <LxSidebarButton Label="Test2" />
+                                        <LxSidebarButton Label="Test3" />
+                                    </Content>
+                                </LxSidebarGroup>
+                                <LxSidebarButton Label="Test4" />
+                            </Content>
+                        </LxSidebar>
+                    </LxFrame>
+                    <div class="m-2 mt-3">Active key: @ActiveKey</div>
+                </div>
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <div>
+                    <LxFrame>
+                        <LxSidebar Width="(300, Unit.Pixel)">
+                            <Content>
+                                <LxSidebarButton Label="Test1" />
+                                <LxSidebarGroup @bind-IsExpanded="IsExpanded">
+                                    <Header>Expandable (with binding)</Header>
+                                    <Content>
+                                        <LxSidebarButton Label="Test2" />
+                                        <LxSidebarButton Label="Test3" />
+                                    </Content>
+                                </LxSidebarGroup>
+                                <LxSidebarButton Label="Test4" />
+                            </Content>
+                        </LxSidebar>
+                    </LxFrame>
+                    <div class="m-2 mt-3">Expanded: @IsExpanded</div>
+                </div>
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <div>
+                    <LxFrame>
+                        <LxSidebar Width="(300, Unit.Pixel)">
+                            <Content>
+                                <LxSidebarButton Label="Test1" />
+                                <LxSidebarGroup IsExpanded="false">
+                                    <Header>Expandable</Header>
+                                    <Content>
+                                        <LxSidebarButton Label="Test2" />
+                                        <LxSidebarButton Label="Test3" />
+                                    </Content>
+                                </LxSidebarGroup>
+                                <LxSidebarButton Label="Test4" />
+                            </Content>
+                        </LxSidebar>
+                    </LxFrame>
+                </div>
+            </div>
+        </Content>
+    </Demo>
+</div>
+
+@code{ 
+
+    public string ActiveKey { get; set; }
+
+    public bool IsExpanded { get; set; } = true;
+
+}

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <Authors>Leeax</Authors>
+    <Description>Extensions for Leeax.Web.Builders package.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageTags>web builder extensions</PackageTags>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
+    <ProjectReference Include="..\Leeax.Web\Leeax.Web.csproj" />
+  </ItemGroup>
+
+</Project>

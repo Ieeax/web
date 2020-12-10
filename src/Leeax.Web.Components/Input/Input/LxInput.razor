@@ -1,0 +1,39 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<TValue, string>
+@typeparam TValue
+
+<div @attributes="AttributeSet">
+    @if (_icon != null 
+        && !string.IsNullOrEmpty(_icon.Source))
+    {
+        <LxIcon Source="@_icon.Source"
+                Size="(1.4, Unit.EM)"
+                Fill="ComponentHelper.GetForegroundColor(Appearance, _backgroundColor, _neutralPrimary)" />
+    }
+    <input type="@_inputType"
+           class="flex1"
+           lang="@GetLanguageCode()"
+           value="@GetConvertedValue()"
+           placeholder="@Placeholder"
+           @onfocusin="@OnFocusReceived"
+           @onfocusout="@OnFocusLost"
+           @oninput="@OnInputValueAsync"
+           @onchange="@OnChangeValueAsync" />
+    @if (_button != null)
+    {
+        <LxButton Text="@_button.Text"
+                  Size="Size"
+                  Appearance="Appearance.Inline"
+                  Clicked="@_button.Clicked">
+            @if (_button?.IconSource != null)
+            {
+                <LxButtonIcon Source="@_button.IconSource"
+                              Trailing="true" />
+            }
+        </LxButton>
+    }
+</div>
+<CascadingValue Name="Parent"
+                Value="this"
+                IsFixed="true"
+                ChildContent="ChildContent" />

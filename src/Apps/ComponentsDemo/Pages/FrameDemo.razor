@@ -1,0 +1,39 @@
+﻿@page "/demo/frame"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxFrame)" />
+    <Demo>
+        <Content>
+            <div>
+                <div>
+                    <LxFrame Class="d-inline-block py-2 px-3 mb-3">
+                        That's some text.
+                    </LxFrame>
+                    <br />
+                    <LxFrame Class="d-inline-block py-2 px-3 mb-3" 
+                             Elevation="(int)Elevation">
+                        That's even more text.
+                    </LxFrame>
+                </div>
+                <div>
+                    <p>
+                        Note: The padding inside the frame has to be added manually
+                    </p>
+                    <pre>example: <b>py-2 px-3</b></pre>
+                </div>
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Elevation">
+                <LxInputNumber Placeholder="Enter elevation level ..."
+                               @bind-Value="Elevation" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private double Elevation { get; set; } = 1;
+
+}

@@ -1,0 +1,52 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<DateTime, string>
+
+<div @attributes="AttributeSet">
+    <LxDropDown @bind-IsActive="IsExtended">
+        <Target>
+            <LxInput TValue="DateTime"
+                     Value="Value"
+                     ValueInput="ValueChanged"
+                     Appearance="Appearance"
+                     Size="Size"
+                     Converter="Converter">
+                <LxInputButton IconSource="static://today" 
+                               Clicked="ToggleExtendedState" />
+                @if (Icon != null)
+                {
+                    <LxInputIcon Source="@Icon" />
+                }
+            </LxInput>
+        </Target>
+        <Content>
+            <div class="picker-content flex-row">
+                @if (Type == DateTimePickerType.Time
+                    || Type == DateTimePickerType.DateTime)
+                {
+                    <LxTimePickerView Value="Value"
+                                      ValueChanged="ValueChanged" />
+                    if (Type == DateTimePickerType.DateTime)
+                    {
+                        <LxSeparator Orientation="Orientation.Vertical" />
+                    }
+                }
+                @if (Type == DateTimePickerType.Date
+                    || Type == DateTimePickerType.DateTime)
+                {
+                    <LxDatePickerView Value="Value"
+                                      ValueChanged="ValueChanged"
+                                      @bind-ShownValue="ShownValue"
+                                      FormatProvider="FormatProvider" />
+                    @if (ShowMonthPicker)
+                    {
+                        <LxSeparator Orientation="Orientation.Vertical" />
+                        <LxMonthPickerView Value="Value"
+                                           ValueChanged="ValueChanged"
+                                           @bind-ShownValue="ShownValue"
+                                           FormatProvider="FormatProvider" />
+                    }
+                }
+            </div>
+        </Content>
+    </LxDropDown>
+</div>

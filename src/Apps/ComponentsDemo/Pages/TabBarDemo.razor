@@ -1,0 +1,76 @@
+﻿@page "/demo/tabbar"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxTabBar<>)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxTabBar Items="Values"
+                          Converter="DefaultOptionConverter<string>.Instance"
+                          Appearance="Appearance.Normal"
+                          Size="Size"
+                          @bind-Value="Value" />
+            </div>
+            <div>
+                <LxTabBar Items="Values"
+                          Converter="DefaultOptionConverter<string>.Instance"
+                          Appearance="Appearance"
+                          TextTransform="TextTransform"
+                          Size="Size"
+                          @bind-Value="Value" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="TextTransform">
+                <LxSelect Items="Enum.GetValues(typeof(TextTransform)).Cast<TextTransform>()"
+                          Converter="DefaultOptionConverter<TextTransform>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="TextTransform" />
+            </Entry>
+            <Entry Text="Selected tab">
+                <LxSelect Items="Values"
+                          Converter="DefaultOptionConverter<string>.Instance"
+                          Placeholder="No tab selected"
+                          @bind-Value="Value" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{ 
+
+    protected override void OnInitialized()
+    {
+        Values = new string[]
+        {
+            "Details",
+            "Logging",
+            "Tests"
+        };
+
+        Value = Values.First();
+    }
+
+    public string[] Values { get; set; }
+
+    public string Value { get; set; }
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private Appearance Appearance { get; set; } = Appearance.Raised;
+
+    private TextTransform TextTransform { get; set; } = TextTransform.None;
+
+}

@@ -1,0 +1,16 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+@typeparam TItem
+
+<ul @attributes="AttributeSet">
+    @if (Items != null)
+    {
+        foreach (var curItem in Items)
+        {
+            <li @onclick="@(async x => await ItemClicked.InvokeAsync(curItem))" 
+                @attributes="GetItemAttributeSet(curItem)">
+                @(ItemTemplate?.Invoke(curItem))
+            </li>
+        }
+    }
+</ul>

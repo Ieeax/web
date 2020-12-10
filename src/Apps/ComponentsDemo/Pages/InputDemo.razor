@@ -1,0 +1,115 @@
+﻿@page "/demo/input"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxInput<>)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <div class="flex-col">
+                    <span class="d-block mb-2">@ComponentReflector.GetFriendlyTypeName(typeof(LxInput<>))</span>
+                    <LxInput Appearance="Appearance.Normal"
+                             Placeholder="Enter a text ..."
+                             Size="Size"
+                             IsEnabled="IsEnabled"
+                             @bind-Value="TextInputValue" />
+                </div>
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <div class="flex-col">
+                    <span class="d-block mb-2">@ComponentReflector.GetFriendlyTypeName(typeof(LxInputText))</span>
+                    <LxInputText Appearance="Appearance.Inline"
+                                 Placeholder="Enter a text ..."
+                                 Size="Size"
+                                 IsEnabled="IsEnabled"
+                                 @bind-Value="TextInputValue" />
+                </div>
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <div class="flex-col">
+                    <span class="d-block mb-2">@ComponentReflector.GetFriendlyTypeName(typeof(LxInputNumber))</span>
+                    <LxInputNumber Appearance="Appearance.Outlined"
+                                   Placeholder="Enter a number ..."
+                                   Size="Size"
+                                   IsEnabled="IsEnabled"
+                                   @bind-Value="NumberInputValue" />
+                </div>
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <div class="flex-col">
+                    <span class="d-block mb-2">@ComponentReflector.GetFriendlyTypeName(typeof(LxInputPassword))</span>
+                    <LxInputPassword Appearance="Appearance.Raised"
+                                     Placeholder="Enter your password ..."
+                                     Size="Size"
+                                     IsEnabled="IsEnabled"
+                                     @bind-Value="PasswordInputValue" />
+                </div>
+            </div>
+            <div>
+                <LxInputText Appearance="Appearance"
+                             Placeholder="@Placeholder"
+                             Size="Size"
+                             IsEnabled="IsEnabled"
+                             @bind-Value="TextInputValue">
+                    @if (ShowIcon)
+                    {
+                        <LxInputIcon Source="static://arrow_upward" />
+                    }
+                    @if (ShowButton)
+                    {
+                        <LxInputButton Text="OK" />
+                    }
+                </LxInputText>
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Value">
+                <LxInput Placeholder="Enter a text ..."
+                         @bind-Value="TextInputValue" />
+            </Entry>
+            <Entry Text="Placeholder">
+                <LxInput Placeholder="Enter a placeholder ..."
+                         @bind-Value="Placeholder" />
+            </Entry>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+            <Entry Text="Show icon">
+                <LxToggle @bind-Value="ShowIcon" />
+            </Entry>
+            <Entry Text="Show button">
+                <LxToggle @bind-Value="ShowButton" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private string Placeholder { get; set; } = "Type something ...";
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private bool IsEnabled { get; set; } = true;
+
+    private bool ShowIcon { get; set; } = false;
+
+    private bool ShowButton { get; set; } = false;
+
+    private double NumberInputValue { get; set; }
+
+    private string PasswordInputValue { get; set; }
+
+    private string TextInputValue { get; set; }
+
+}

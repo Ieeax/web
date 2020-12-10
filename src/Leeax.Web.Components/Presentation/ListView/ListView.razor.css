@@ -1,0 +1,5 @@
+﻿.lx-listview li {
+    padding: 0.4em 0.7em;
+    overflow: hidden;
+    box-sizing: border-box;
+}

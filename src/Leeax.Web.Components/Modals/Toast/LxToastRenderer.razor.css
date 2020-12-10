@@ -1,0 +1,55 @@
+﻿.lx-toastrenderer {
+    position: fixed;
+    z-index: 10;
+}
+
+    .lx-toastrenderer.pos-upper {
+        top: 10px;
+    }
+
+    .lx-toastrenderer.pos-lower {
+        bottom: 10px;
+    }
+
+    .lx-toastrenderer.pos-left {
+        left: 10px;
+    }
+
+    .lx-toastrenderer.pos-right {
+        right: 10px;
+    }
+
+    .lx-toastrenderer.pos-center {
+        left: 50%;
+    }
+
+        .lx-toastrenderer.pos-center ::deep .lx-toast {
+            position: relative;
+            margin-left: -50%;
+            margin-right: 50%;
+        }
+
+    .lx-toastrenderer ::deep > .lx-toast:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+
+::deep .lx-toast {
+    border-radius: .25rem;
+    background-color: var(--lx-toast-background, var(--lx-color-neutral-white));
+}
+
+    ::deep .lx-toast.t-enter {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+
+    ::deep .lx-toast.t-leave-to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    ::deep .lx-toast.t-enter-active,
+    ::deep .lx-toast.t-leave-active {
+        transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    }

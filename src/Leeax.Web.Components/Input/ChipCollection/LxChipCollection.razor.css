@@ -1,0 +1,13 @@
+﻿.lx-chipcollection {
+    margin-top: -0.25rem; /* Correct margin of top row */
+}
+
+    /* Margin to upper elements */
+    .lx-chipcollection ::deep .lx-chip {
+        margin-top: 0.25rem;
+    }
+
+        /* Margin towards right element */
+        .lx-chipcollection ::deep .lx-chip:not(:last-child) {
+            margin-right: 0.25rem;
+        }

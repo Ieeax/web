@@ -1,0 +1,35 @@
+﻿.lx-dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.lx-dropdown .dropdown-content {
+	position: absolute;
+	padding: 0.5em 0;
+	border-radius: 5px;
+	z-index: 2;
+	left: 0;
+	transition: left 150ms ease-out, transform 150ms ease-out, opacity 150ms ease-in-out;
+	background-color: var(--lx-dropdown-background, var(--lx-color-neutral-white));
+}
+
+/* Align dropdown from right to left if cut off */
+.lx-dropdown .right-to-left {
+	transform: translateX(-100%);
+	left: 100%;
+}
+
+.lx-dropdown ::deep > .t-enter {
+	transition: none; /* Reset transition during "enter" to prevent transformY from 0 to 30px and back to 0 (we want just 30px to 0) */
+}
+
+.lx-dropdown ::deep > .t-enter,
+.lx-dropdown ::deep > .t-leave-to {
+	transform: translateY(-30px);
+	opacity: 0;
+}
+
+.lx-dropdown ::deep > .right-to-left.t-enter,
+.lx-dropdown ::deep > .right-to-left.t-leave-to {
+	transform: translate(-100%, -30px);
+}

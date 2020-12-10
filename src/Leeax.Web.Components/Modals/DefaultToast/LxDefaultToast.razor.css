@@ -1,0 +1,40 @@
+﻿.lx-toast-default {
+    min-height: 44px;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.lx-toast-default.stacked {
+    display: flex;
+    flex-direction: column;
+}
+
+.lx-toast-default > .toast-content {
+    display: flex;
+}
+
+/* \n will begin a new line */
+.toast-content > .toast-text {
+    white-space: pre-line;
+}
+
+.lx-toast-default.stacked > .toast-content {
+    margin-bottom: 0.5em;
+}
+
+.toast-content ::deep svg {
+    min-height: 1.8em;
+    min-width: 1.8em;
+    height: 1.8em;
+    width: 1.8em;
+    padding: 0.1em;
+    margin-bottom: auto;
+}
+
+.lx-toast-default > .toast-buttons ::deep > :not(:first-child) {
+    margin-left: 5px;
+}
+
+.lx-toast-default.stacked > .toast-buttons {
+    justify-content: flex-end;
+}

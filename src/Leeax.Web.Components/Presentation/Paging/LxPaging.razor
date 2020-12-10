@@ -1,0 +1,47 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+@typeparam TItem
+
+<div @attributes="AttributeSet">
+    <div class="paging-content position-relative flex1">
+        <ul>
+            @if (_items != null)
+            {
+                foreach (var curItem in _items)
+                {
+                    <li @attributes="GetItemAttributeSet(curItem)">
+                        @(ItemTemplate?.Invoke(curItem))
+                    </li>
+                }
+            }
+        </ul>
+        @if (!_isFetching && (_items == null || !_items.Any()))
+        {
+            <div class="paging-empty flex-col">
+                <span>@(_errorMessage == null ? "No items found" : _errorMessage)</span>
+                @if (_showRetryButton)
+                {
+                    <div class="flex-row mt-2">
+                        <LxButton Class="mx-auto"
+                                  Text="Retry"
+                                  IsRounded="true"
+                                  Size="ComponentSize.Tiny"
+                                  Clicked="OnRetryClicked">
+                            <LxButtonIcon Source="static://refresh" />
+                        </LxButton>
+                    </div>
+                }
+            </div>
+        }
+        <div class="paging-loader">
+            <LxLoadingSpinner IsActive="true" />
+        </div>
+    </div>
+    <div class="paging-footer flex-row flex-vcenter mt-3">
+        <LxPager @bind-Page="Page"
+                 Total="_totalPages" />
+        <div class="ml-auto px-2">
+            <span>@GetPagerText()</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@namespace Leeax.Web.Components.Navigation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    @if (Header != null)
+    {
+        <div class="sidebar-header">
+            @Header
+        </div>
+    }
+    <div class="sidebar-content">
+        <CascadingValue Name="Parent"
+                        Value="this"
+                        IsFixed="false"
+                        ChildContent="Content" />
+    </div>
+    @if (Footer != null)
+    {
+        <div class="sidebar-footer mt-auto">
+            @Footer
+        </div>
+    }
+</div>

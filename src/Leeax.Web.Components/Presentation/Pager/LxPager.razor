@@ -1,0 +1,11 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    <LxSwitch TItem="int"
+              Items="GetNavigation()"
+              Converter="_converter"
+              Size="ComponentSize.Small"
+              Value="Page"
+              ValueChanged="PageChanged" />
+</div>

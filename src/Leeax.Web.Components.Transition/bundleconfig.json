@@ -1,0 +1,13 @@
+[
+  {
+    "outputFileName": "wwwroot/Transition.min.js",
+    "inputFiles": [
+      "wwwroot/Transition.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

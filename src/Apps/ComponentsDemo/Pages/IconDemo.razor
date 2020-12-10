@@ -1,0 +1,77 @@
+﻿@using System.Drawing
+@page "/demo/icon"
+@inject IIconProvider IconProvider
+@inject IToastService ToastService
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxIcon)" />
+    <Demo>
+        <Content>
+            <div class="flex-col mb-3">
+                <LxIcon Source="static://close" 
+                        Size="new Length(Size, SizeUnit)" 
+                        Fill="Color" />
+                <div class="flex-row">
+                    <LxIcon Source="static://arrow_upward" />
+                    <LxIcon Source="static://arrow_downward" 
+                            Fill="Color.Gray" />
+                    <LxIcon Source="static://arrow_back" 
+                            Fill="Color.DarkGray" />
+                    <LxIcon Source="static://arrow_forward" 
+                            Fill="Color.LightGray" />
+                </div>
+            </div>
+            <div class="flex-row flex-vcenter mb-3">
+                <LxToggle Class="ml-2"
+                          @bind-Value="ShowAllIcons" />
+                <b class="d-block ml-2">Show all icons (@IconProvider.IconCollection.Count())</b>
+            </div>
+            @if (ShowAllIcons)
+            {
+                <div class="flex-row flex-wrap mb-3">
+                    @foreach (var curItem in IconProvider.IconCollection)
+                    {
+                        <div @onclick="@(() => ToastService.ShowToast(curItem, 8000))">
+                            <LxIcon Source="@("static://" + curItem)" />
+                        </div>
+                    }
+                </div>
+            }
+            <p>
+                You can define icons during startup with the built in "@(nameof(IIconProvider))".
+                To use these, simply add <b>static://</b> before the icon key.
+            </p>
+            <pre>example: <b>static://arrow_upward</b></pre>
+        </Content>
+        <Customization>
+            <Entry Text="Color">
+                <LxInput Placeholder="Enter hex code ..."
+                         Converter="_colorConverter"
+                         @bind-Value="Color" />
+            </Entry>
+            <Entry Text="Size">
+                <LxInputNumber Placeholder="Enter icon size ..."
+                               @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Size unit">
+                <LxSelect Items="Enum.GetValues(typeof(Unit)).Cast<Unit>()"
+                          Converter="DefaultOptionConverter<Unit>.Instance"
+                          @bind-Value="SizeUnit" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private ColorStringConverter _colorConverter = new ColorStringConverter();
+
+    public bool ShowAllIcons { get; set; }
+
+    private Color Color { get; set; } = Color.Black;
+
+    private double Size { get; set; } = 1.5;
+
+    private Unit SizeUnit { get; set; } = Unit.REM;
+
+}

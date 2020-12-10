@@ -1,0 +1,45 @@
+﻿.lx-tagbase {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    padding: 0 1em;
+    transition: background 200ms, border 200ms;
+}
+
+    /* Background */
+    .lx-tagbase.lx-normal,
+    .lx-tagbase.lx-raised {
+        background-color: var(--lx-tag-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Background when active */
+    .lx-tagbase.active {
+        background-color: var(--lx-tag-active-background, var(--lx-color-theme-primary));
+    }
+
+    /* Outlined style */
+    .lx-tagbase.lx-outlined:not(.active) {
+        line-height: calc(2em - 2px);
+        border-color: var(--lx-tag-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Style for icon */
+    .lx-tagbase ::deep .left-icon {
+        margin-left: -0.25em;
+        margin-right: 0.25em;
+    }
+
+    /* Style button/icon for removing tag */
+    .lx-tagbase ::deep .right-icon {
+        margin-left: 0.6em;
+        margin-right: -0.25em;
+        cursor: pointer;
+    }
+
+    /* Padding when only rounded slightly */
+    .lx-tagbase.lx-rounded {
+        padding: 0 .75em;
+    }

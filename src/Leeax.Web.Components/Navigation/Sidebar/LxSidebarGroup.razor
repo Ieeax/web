@@ -1,0 +1,25 @@
+﻿@namespace Leeax.Web.Components.Navigation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    <div class="sb-header flex-row lx-unselectable lx-font-weight-bold">
+        @if (IsExpandable)
+        {
+            <LxButton Class="button-toggle my-auto"
+                      Size="ComponentSize.Tiny"
+                      Appearance="Appearance.Inline"
+                      Clicked="ToggleStateAsync">
+                <LxButtonIcon Source="@("static://" + (_expanded ? "expand_more" : "keyboard_arrow_right"))" />
+            </LxButton>
+        }
+        <div class="sb-header-content">
+            @Header
+        </div>
+    </div>
+    <div class="sb-content">
+        @if (_expanded)
+        {
+            @Content
+        }
+    </div>
+</div>

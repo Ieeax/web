@@ -1,0 +1,44 @@
+﻿.lx-button {
+    display: inline-flex;
+    overflow: hidden;
+    padding: 0 1em;
+    line-height: 2.4em;
+    vertical-align: middle;
+    cursor: pointer;
+}
+    
+    /* Only icon with no text */
+    .lx-button.lx-button-icon {
+        padding: 0.4em;
+        width: 2.4em;
+    }
+
+    /* Background */
+    .lx-button.lx-normal,
+    .lx-button.lx-raised {
+        background-color: var(--lx-button-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-button.lx-outlined {
+        line-height: calc(2.4em - 2px);
+        border-color: var(--lx-button-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* 50% rounded corners */
+    .lx-button.lx-button-round {
+        border-radius: 1.2em;
+        padding: 0 1.5em;
+    }
+
+    /* Position icon */
+    .lx-button:not(.lx-button-icon) ::deep .lx-icon {
+        margin-left: 0.5em;
+        margin-right: -0.2em;
+    }
+
+        /* Position icon when trailing */
+        .lx-button:not(.lx-button-icon) ::deep .lx-icon:not(.lx-trailing) {
+            margin-left: -0.2em;
+            margin-right: 0.5em;
+        }

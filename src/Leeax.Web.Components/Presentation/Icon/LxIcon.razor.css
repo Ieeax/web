@@ -1,0 +1,14 @@
+﻿.lx-icon {
+    position: relative;
+    box-sizing: content-box;
+}
+
+    /* Style default image */
+    .lx-icon img {
+        height: inherit;
+        width: inherit;
+    }
+
+    .lx-icon ::deep svg {
+        position: absolute;
+    }

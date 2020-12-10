@@ -1,0 +1,63 @@
+﻿.lx-input {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+    /* Background */
+    .lx-input.lx-normal,
+    .lx-input.lx-raised {
+        background-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-input.lx-outlined {
+        border-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Invalid style */
+    .lx-input.invalid {
+        border-width: 1px;
+        border-style: solid;
+        border-color: red !important;
+    }
+
+        /* Outlined button height */
+        .lx-input.invalid ::deep > .lx-button,
+        .lx-input.lx-outlined ::deep > .lx-button {
+            height: calc(2.4em - 2px);
+        }
+
+        /*.lx-input ::deep > .lx-button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }*/
+
+    /* Center icon */
+    .lx-input ::deep > .lx-icon {
+        margin: auto 0;
+        margin-left: .5em;
+    }
+
+    /* Input style */
+    .lx-input input {
+        outline: none;
+        border: none;
+        font-size: inherit;
+        font-family: inherit;
+        color: inherit;
+        background: transparent;
+        padding: .5em .7em;
+        box-sizing: border-box;
+    }
+
+/* Hide up and down buttons */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

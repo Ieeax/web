@@ -1,0 +1,100 @@
+﻿@page "/demo/button"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxButton)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxButton Text="Rounded" 
+                          Appearance="Appearance.Normal" 
+                          Size="Size"
+                          IsRounded="IsRounded"
+                          IsEnabled="IsEnabled" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxButton Text="Inline" 
+                          Appearance="Appearance.Inline" 
+                          Size="Size"
+                          IsRounded="IsRounded"
+                          IsEnabled="IsEnabled" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxButton Text="Outlined" 
+                          Appearance="Appearance.Outlined" 
+                          Size="Size"
+                          IsRounded="IsRounded"
+                          IsEnabled="IsEnabled" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxButton Text="Raised" 
+                          Appearance="Appearance.Raised" 
+                          Size="Size"
+                          IsRounded="IsRounded"
+                          IsEnabled="IsEnabled">
+                    <LxButtonIcon Source="static://close" />
+                </LxButton>
+            </div>
+            <div>
+                <LxButton Text="@Text"
+                          Appearance="Appearance"
+                          TextTransform="TextTransform"
+                          Size="Size"
+                          IsRounded="IsRounded"
+                          IsEnabled="IsEnabled">
+                    @if (ShowIcon)
+                    {
+                        <LxButtonIcon Source="static://close" />
+                    }
+                </LxButton>
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Text">
+                <LxInput Placeholder="Enter text for button ..."
+                         @bind-Value="Text" />
+            </Entry>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="TextTransform">
+                <LxSelect Items="Enum.GetValues(typeof(TextTransform)).Cast<TextTransform>()"
+                          Converter="DefaultOptionConverter<TextTransform>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="TextTransform" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+            <Entry Text="Rounded">
+                <LxToggle @bind-Value="IsRounded" />
+            </Entry>
+            <Entry Text="Show icon">
+                <LxToggle @bind-Value="ShowIcon" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private TextTransform TextTransform { get; set; } = TextTransform.None;
+
+    private string Text { get; set; } = "Text";
+
+    private bool IsEnabled { get; set; } = true;
+
+    private bool IsRounded { get; set; } = false;
+
+    private bool ShowIcon { get; set; } = false;
+
+}

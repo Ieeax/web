@@ -1,0 +1,46 @@
+﻿@page "/demo/tabview"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxTabView)" />
+    <Demo>
+        <Content>
+            <LxTabBar Items="Values"
+                        Converter="DefaultOptionConverter<string>.Instance"
+                        @bind-Value="Value" />
+            <LxTabView Class="m-3"
+                        ActiveKey="@Value">
+                <LxTab Key="Details">Some details</LxTab>
+                <LxTab Key="Logging">Some logging</LxTab>
+                <LxTab Key="Stuff">Some stuff</LxTab>
+            </LxTabView>
+        </Content>
+        <Customization>
+            <Entry Text="Selected tab">
+                <LxSelect Items="Values"
+                          Converter="DefaultOptionConverter<string>.Instance"
+                          Placeholder="No tab selected"
+                          @bind-Value="Value" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{ 
+
+    protected override void OnInitialized()
+    {
+        Values = new string[]
+        {
+            "Details",
+            "Logging",
+            "Stuff"
+        };
+
+        Value = Values.First();
+    }
+
+    public string[] Values { get; set; }
+
+    public string Value { get; set; }
+
+}

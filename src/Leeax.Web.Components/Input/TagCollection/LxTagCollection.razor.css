@@ -1,0 +1,13 @@
+﻿.lx-tagcollection {
+    margin-top: -0.25rem; /* Correct margin of top row */
+}
+
+    /* Margin to upper elements */
+    .lx-tagcollection ::deep .lx-tagbase {
+        margin-top: 0.25rem;
+    }
+
+        /* Margin towards right element */
+        .lx-tagcollection ::deep .lx-tagbase:not(:last-child) {
+            margin-right: 0.25rem;
+        }

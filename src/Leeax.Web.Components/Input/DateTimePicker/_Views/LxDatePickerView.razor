@@ -1,0 +1,37 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<DateTime>
+
+<div @attributes="AttributeSet">
+    <div class="header flex-row">
+        <h6>@Heading</h6>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateToToday">
+            <LxButtonIcon Source="static://today" />
+        </LxButton>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateBackward" 
+                  IsEnabled="CanSubtractMonth()">
+            <LxButtonIcon Source="static://arrow_upward" />
+        </LxButton>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateForward">
+            <LxButtonIcon Source="static://arrow_downward" />
+        </LxButton>
+    </div>
+    <div class="picker-content flex-col">
+        <TemplateCalendarMonth Month="ShownValue.Month" Year="ShownValue.Year">
+            <EntryTemplate Context="Day">
+                <LxButton Class="@GetCalendarItemStyle(Day)"
+                          Text="@Day.Day.ToString()"
+                          Appearance="Appearance.Inline"
+                          Clicked="@(x => OnDateClicked(Day))" />
+            </EntryTemplate>
+        </TemplateCalendarMonth>
+    </div>
+</div>

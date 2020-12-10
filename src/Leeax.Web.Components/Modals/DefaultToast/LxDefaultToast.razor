@@ -1,0 +1,26 @@
+﻿@namespace Leeax.Web.Components.Modals
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    <div class="toast-content">
+        @if (Model != null && Model.Icon != ToastIcon.None)
+        {
+            @GetIconMarkup(GetIconColor())
+        }
+        <div class="toast-text mx-2 my-auto">@Model?.Text</div>
+    </div>
+    @if (Model != null && Model.Buttons.Length > 0)
+    {
+        <LxStyleScope Value="ToastButtonStyle.Instance">
+            <div class="toast-buttons flex-row ml-auto" data-lx-scope="@ToastButtonStyle.Instance.Identifier">
+                @foreach (var curButton in Model.Buttons)
+                {
+                    <LxButton Text="@curButton.Text"
+                              Size="ComponentSize.Tiny"
+                              Appearance="Appearance.Raised"
+                              Clicked="@(x => ExecuteActionForButton(curButton))" />
+                }
+            </div>
+        </LxStyleScope>
+    }
+</div>

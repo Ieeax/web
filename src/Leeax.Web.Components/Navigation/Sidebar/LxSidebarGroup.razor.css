@@ -1,0 +1,26 @@
+﻿.lx-sidebargroup .sb-header {
+    position: relative;
+    overflow: hidden;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    width: 100%;
+    letter-spacing: .25px;
+    padding: 0 1em;
+    margin: .25em 0;
+}
+
+/* Margin when next element is no group */
+.lx-sidebargroup.expanded ::deep + *:not(.lx-sidebar-group) {
+    margin-top: 1em;
+}
+
+/* Margin to expandable button */
+.lx-sidebargroup.expandable .sb-header-content {
+    margin-left: 0.75em;
+}
+
+/* Margin when no button is displayed */
+.lx-sidebargroup:not(.expandable) .sb-header {
+    margin-left: 2.65em;
+}

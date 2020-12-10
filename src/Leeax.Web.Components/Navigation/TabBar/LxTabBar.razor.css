@@ -1,0 +1,40 @@
+﻿.tab-header {
+    position: relative;
+    height: 2.4em;
+    line-height: 2.4em;
+    box-sizing: border-box;
+    color: var(--lx-tabbar-color, var(--lx-color-neutral-secondary));
+    cursor: pointer;
+}
+
+    /* Active tab */
+    .tab-header.active {
+        color: var(--lx-tabbar-active-color, var(--lx-color-theme-primary));
+        cursor: default;
+    }
+
+        /* Line under active tab */
+        .tab-header.active .tab-line {
+            position: absolute;
+            left: .5em;
+            right: .5em;
+            bottom: 0;
+            height: .2em;
+            background-color: var(--lx-tabbar-active-color, var(--lx-color-theme-primary));
+        }
+
+    /* Center text */
+    .tab-header .tab-text {
+        text-align: center;
+        letter-spacing: .5px;
+    }
+
+/* Some padding to sides */
+.tab-content {
+    padding: 0 1em;
+}
+    
+    /* Position icon */
+    .tab-content ::deep .lx-icon {
+        margin: auto .5em auto 0;
+    }

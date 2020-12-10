@@ -1,0 +1,24 @@
+[
+  {
+    "outputFileName": "wwwroot/HeadManager.min.js",
+    "inputFiles": [
+      "wwwroot/HeadManager.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/ElementService.min.js",
+    "inputFiles": [
+      "wwwroot/ElementService.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

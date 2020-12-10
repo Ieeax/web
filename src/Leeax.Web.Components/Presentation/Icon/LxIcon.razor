@@ -1,0 +1,20 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    @if (_staticSource != null)
+    {
+        @* Try to resolve icon, if no such icon exists display the alternative text *@
+        if (IconProvider.TryResolve(_staticSource, Fill.IsEmpty ? _fillColor : Fill, out var source))
+            @((MarkupString)source)
+        else
+            @(Alt ?? AltDefaultValue)
+    }
+    else
+    {
+        <img src="@Source" 
+             alt="@(Alt ?? AltDefaultValue)" 
+             class="position-absolute" 
+             role="img" /> @* TODO: Add "aria-label" attribute to describe icon *@
+    }
+</div>

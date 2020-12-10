@@ -1,0 +1,20 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<TItem, IOption>
+@typeparam TItem
+
+<div @attributes="AttributeSet">
+    <div class="flex-row switch-bar" @ref="_switchBarReference">
+        @if (_iterator != null)
+        {
+            foreach (var (source, result, index) in _iterator)
+            {
+                <div class="switch-item lx-nowrap" @onclick="@(x => OnItemClicked(source))">
+                    <span class="d-block">@result?.Text</span>
+                </div>
+            }
+        }
+    </div>
+    <div class="switch-item-selected lx-nowrap lx-elevation-l2" @ref="_switchIndicatorReference">
+        <span class="d-block">@(GetConvertedValue()?.Text)</span>
+    </div>
+</div>

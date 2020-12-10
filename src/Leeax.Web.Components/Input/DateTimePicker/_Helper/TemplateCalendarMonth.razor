@@ -1,0 +1,21 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<DateTime, string>
+
+<div @attributes="AttributeSet">
+    @{ 
+        var collection = CalendarHelper.GetCalendarMonth(Month, Year);
+        var countWeeks = (collection.Count() / 7);
+    }
+
+    <div class="flex-col">
+        @foreach (var curWeekIndex in Enumerable.Range(0, countWeeks))
+        {
+            <div class="flex-row">
+                @foreach (var curDayIndex in Enumerable.Range(0, 7))
+                {
+                    @(EntryTemplate?.Invoke(collection.ElementAt((curWeekIndex * 7) + curDayIndex)))
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@page "/demo/expandable"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxExpandable)" />
+    <Demo>
+        <Content>
+            <LxFrame Class="d-inline-block" 
+                     Style="max-width:600px">
+                <div class="flex-row p-2">
+                    <div class="my-auto ml-1 mr-auto">Do you want to see more?</div>
+                    <LxButton Text="Toggle" Clicked="@(() => IsExpanded = !IsExpanded)" />
+                </div>
+                <LxExpandable @bind-IsExpanded="IsExpanded">
+                    <div class="p-2 ml-1 mb-1 mr-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies metus et arcu fringilla, tristique fringilla diam suscipit. Proin ornare sollicitudin nibh at scelerisque. Phasellus nulla magna, molestie quis sapien vitae, tincidunt efficitur arcu.</div>
+                </LxExpandable>
+            </LxFrame>
+            <div class="mt-3">IsExpanded: @IsExpanded</div>
+        </Content>
+        <Customization>
+            <Entry Text="Expanded">
+                <LxToggle @bind-Value="IsExpanded" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{        
+
+    private bool IsExpanded { get; set; }
+
+}

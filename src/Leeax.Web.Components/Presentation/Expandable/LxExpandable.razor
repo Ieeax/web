@@ -1,0 +1,9 @@
+﻿@namespace Leeax.Web.Components.Presentation
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet" @ref="_contentReference.Current">
+    @if (IsExpanded)
+    {
+        @ChildContent
+    }
+</div>

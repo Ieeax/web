@@ -1,0 +1,24 @@
+﻿@namespace Leeax.Web.Components.Navigation
+@inherits ValueComponentBase<TItem, IIconOption>
+@typeparam TItem
+
+<div @attributes="AttributeSet">
+    @if (_iterator != null)
+    {
+        foreach (var (source, result, index) in _iterator)
+        {
+            <div class=@GetTabItemClass(source) @onclick="@(x => OnTabItemClicked(source))">
+                <div class="tab-content flex-row">
+                    @if (result?.Icon != null)
+                    {
+                        <LxIcon Source="@result.Icon"
+                                Size="(1.4, Unit.EM)"
+                                Fill="GetIconColor(source)" />
+                    }
+                    <span class="tab-text lx-nowrap d-block">@result?.Text</span>
+                </div>
+                <span class="@GetTabItemLineClass(source)"></span>
+            </div>
+        }
+    }
+</div>

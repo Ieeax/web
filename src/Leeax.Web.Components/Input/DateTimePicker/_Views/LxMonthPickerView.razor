@@ -1,0 +1,36 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<DateTime>
+
+<div @attributes="AttributeSet">
+    <div class="header flex-row">
+        <h6>@Heading</h6>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateBackward" 
+                  IsEnabled="CanSubtractYear()">
+            <LxButtonIcon Source="static://arrow_upward" />
+        </LxButton>
+        <LxButton Class="ml-1"
+                  Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="NavigateForward">
+            <LxButtonIcon Source="static://arrow_downward" />
+        </LxButton>
+    </div>
+    <div class="picker-content flex-col">
+        @for (int i = 1; i <= 3; i++)
+        {
+            <div class="flex-row">
+                @for (int i2 = 1; i2 <= 4; i2++)
+                {
+                    var monthIndex = i * i2;
+
+                    <LxButton Text="@GetMonthName(new DateTime(2000, monthIndex, 1), true)"
+                              Appearance="Appearance.Inline"
+                              Clicked="@(x => OnMonthClicked(monthIndex))" />
+                }
+            </div>
+        }
+    </div>
+</div>

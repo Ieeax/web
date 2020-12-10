@@ -1,0 +1,42 @@
+﻿/* Background */
+.lx-card > .lx-frame {
+    background-color: var(--lx-card-background, var(--lx-color-neutral-white));
+}
+
+    /* Padding to side(s) */
+    .lx-card .card-content {
+        padding: .7em;
+    }
+
+    .lx-card .card-text,
+    .lx-card .card-footer {
+        margin-top: .5em;
+    }
+
+    /* Style image */
+    .lx-card .card-image img {
+        height: inherit;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .lx-card .overline {
+        font-size: .75em;
+        letter-spacing: 1px;
+        margin-bottom: .1em;
+    }
+
+    .lx-card .headline {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    .lx-card .subheadline {
+        margin-top: .1em;
+        font-size: .9em;
+    }
+
+    .lx-card .card-text {
+        margin: .5em 0 0 0;
+        font-size: .9em;
+    }

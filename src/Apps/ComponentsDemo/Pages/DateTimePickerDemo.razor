@@ -1,0 +1,90 @@
+﻿@page "/demo/datetimepicker"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxDateTimePicker)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxDateTimePicker Type="DateTimePickerType.Time"
+                                  Appearance="Appearance.Normal"
+                                  Size="Size"
+                                  IsEnabled="IsEnabled"
+                                  @bind-Value="Value" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxDateTimePicker Type="DateTimePickerType.Date"
+                                  Appearance="Appearance.Inline"
+                                  Size="Size"
+                                  ShowMonthPicker="true"
+                                  IsEnabled="IsEnabled"
+                                  @bind-Value="Value" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxDateTimePicker Type="DateTimePickerType.Date"
+                                  Appearance="Appearance.Outlined"
+                                  Size="Size"
+                                  IsEnabled="IsEnabled"
+                                  @bind-Value="Value" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxDateTimePicker Appearance="Appearance.Raised"
+                                  Size="Size"
+                                  IsEnabled="IsEnabled"
+                                  @bind-Value="Value" />
+            </div>
+            <div>
+                <LxDateTimePicker Appearance="Appearance"
+                                  Size="Size"
+                                  IsEnabled="IsEnabled"
+                                  Type="Type"
+                                  ShowMonthPicker="ShowMonthPicker"
+                                  Icon="@(ShowIcon ? "static://arrow_upward" : null)"
+                                  @bind-Value="Value" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Type">
+                <LxSelect Items="Enum.GetValues(typeof(DateTimePickerType)).Cast<DateTimePickerType>()"
+                          Converter="DefaultOptionConverter<DateTimePickerType>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Type" />
+            </Entry>
+            <Entry Text="Show month picker">
+                <LxToggle @bind-Value="ShowMonthPicker" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+            <Entry Text="Show icon">
+                <LxToggle @bind-Value="ShowIcon" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private DateTimePickerType Type { get; set; } = DateTimePickerType.DateTime;
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private bool IsEnabled { get; set; } = true;
+
+    private bool ShowMonthPicker { get; set; } = false;
+
+    private bool ShowIcon { get; set; } = false;
+
+    private DateTime Value { get; set; }
+
+}

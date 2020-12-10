@@ -1,0 +1,11 @@
+﻿.lx-separator {
+    background-color: var(--lx-separator-color, var(--lx-color-neutral-quaternary));
+}
+
+    .lx-separator.horizontal {
+        height: 1px;
+    }
+
+    .lx-separator.vertical {
+        width: 1px;
+    }

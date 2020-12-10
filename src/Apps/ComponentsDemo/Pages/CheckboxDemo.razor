@@ -1,0 +1,62 @@
+﻿@page "/demo/checkbox"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxCheckbox)" />
+    <Demo>
+        <Content>
+            <div class="flex-row mb-3">
+                <LxCheckbox Size="Size"
+                            IsEnabled="IsEnabled"
+                            @bind-Value="IsChecked" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxCheckbox Appearance="Appearance.Outlined"
+                            Size="Size"
+                            IsEnabled="IsEnabled"
+                            @bind-Value="IsChecked" />
+                <LxSeparator Orientation="Orientation.Vertical" />
+                <LxCheckbox Appearance="Appearance.Raised"
+                            Size="Size"
+                            IsEnabled="IsEnabled"
+                            @bind-Value="IsChecked" />
+            </div>
+            <div>
+                <LxCheckbox Appearance="Appearance"
+                            Size="Size"
+                            IsEnabled="IsEnabled"
+                            @bind-Value="IsChecked" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Size">
+                <LxSelect Items="Enum.GetValues(typeof(ComponentSize)).Cast<ComponentSize>()"
+                          Converter="DefaultOptionConverter<ComponentSize>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Size" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+            <Entry Text="Checked">
+                <LxToggle @bind-Value="IsChecked" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private ComponentSize Size { get; set; } = ComponentSize.Medium;
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private bool IsEnabled { get; set; } = true;
+
+    private bool IsChecked { get; set; }
+
+}

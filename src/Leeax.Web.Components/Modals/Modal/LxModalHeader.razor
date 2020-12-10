@@ -1,0 +1,18 @@
+﻿@namespace Leeax.Web.Components.Modals
+@inherits LxComponentBase
+
+<div @attributes="AttributeSet">
+    @if (Icon != null)
+    {
+        <LxIcon Source="@Icon"
+                Size="(1.4, Unit.EM)" />
+    }
+    <div class="flex1 lx-font-weight-semibold lx-font-size-1">@Title</div>
+    <div>
+        <LxButton Size="ComponentSize.Tiny"
+                  Appearance="Appearance.Inline"
+                  Clicked="@(x => Closed.InvokeAsync(null))">
+            <LxButtonIcon Source="static://close" />
+        </LxButton>
+    </div>
+</div>
