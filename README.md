@@ -11,12 +11,12 @@ All projects are based on .NET 5.0 and can be splited in the following three cat
 #### Web
 Libraries which contains basic functionality and helpers for the web.
 - Leeax.Web
-- [Leeax.Web.Builders](docs\web-builders\GettingStarted.md)
+- [Leeax.Web.Builders](docs/web-builders/GettingStarted.md)
 
 #### Blazor
 Boilerplate with basic components, controls and functionality for blazor.
 > **Attention**: These projects are currently optimized for _Blazor WebAssembly_, so _Server-Side_ may not work correctly.
-- [Leeax.Web.Components](docs\web-components\GettingStarted.md)
+- [Leeax.Web.Components](docs/web-components/GettingStarted.md)
 - Leeax.Web.Components.Transition
 - Leeax.Web.Components.Theme
 
