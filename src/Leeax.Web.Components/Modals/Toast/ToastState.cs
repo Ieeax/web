@@ -1,4 +1,5 @@
-﻿using Leeax.Web.Internal;
+﻿using Leeax.Web.Components.Presentation;
+using Leeax.Web.Internal;
 using System;
 using System.Threading;
 
@@ -32,7 +33,7 @@ namespace Leeax.Web.Components.Modals
             _timer?.Dispose();
         }
 
-        internal void TransitionStateChanged(bool active)
+        internal void TransitionStateChanged(TransitionState state)
         {
             if (!_timerStarted)
             {
@@ -49,7 +50,7 @@ namespace Leeax.Web.Components.Modals
                 _timerStarted = true;
             }
             
-            if (!active)
+            if (state == TransitionState.Left)
             {
                 Closed?.Invoke(this);
             }

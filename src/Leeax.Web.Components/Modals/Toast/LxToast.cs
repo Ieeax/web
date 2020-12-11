@@ -23,7 +23,7 @@ namespace Leeax.Web.Components.Modals
                 builder.OpenComponent<LxTransition>(0);
                 builder.AddAttribute(1, nameof(LxTransition.IsActive), State.IsActive);
                 builder.AddAttribute(2, nameof(LxTransition.Target), _toastReference);
-                builder.AddAttribute(3, nameof(LxTransition.StateChanged), EventCallback.Factory.Create<bool>(this, State.TransitionStateChanged));
+                builder.AddAttribute(3, nameof(LxTransition.StateChanged), EventCallback.Factory.Create<TransitionState>(this, State.TransitionStateChanged));
                 builder.AddAttribute(4, nameof(LxTransition.ChildContent), (RenderFragment)(builder2 =>
                 {
                     builder2.OpenElement(5, "div");

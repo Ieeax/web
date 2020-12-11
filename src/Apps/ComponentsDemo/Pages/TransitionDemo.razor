@@ -7,10 +7,12 @@
         <Content>
             <LxTransition IsActive="IsActive"
                           Hooks="_jsHooks"
-                          Duration="new TransitionDuration((int)DurationEnter, (int)DurationLeave)">
+                          Duration="new TransitionDuration((int)DurationEnter, (int)DurationLeave)"
+                          StateChanged="OnTransitionStateChanged">
                 <LxButton Text="Click me" 
                           Appearance="Appearance.Raised" />
             </LxTransition>
+            <span class="mt-3">Last state: @(nameof(TransitionState) + "." + LastTransitionState)</span>
             <span class="mt-3">Example CSS:</span>
             <pre>
 &lt;style&gt;
@@ -63,6 +65,13 @@
     {
         _jsHooks = await JSRuntime.InvokeAsync<IJSObjectReference>("getTestTransitionHooks");
     }
+
+    private void OnTransitionStateChanged(TransitionState state)
+    {
+        LastTransitionState = state;
+    }
+
+    public TransitionState LastTransitionState { get; set; }
 
     public bool IsActive { get; set; }
 

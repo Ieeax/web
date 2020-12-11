@@ -2,12 +2,8 @@
 {
     public enum TransitionState
     {
-        Hidden,
-        EnterStart,
         Entering,
         Entered,
-        Visible,
-        LeaveStart,
         Leaving,
         Left
     }

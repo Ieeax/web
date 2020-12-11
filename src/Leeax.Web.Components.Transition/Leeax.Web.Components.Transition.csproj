@@ -4,22 +4,19 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="TypeScript\TransitionHooks.ts" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Adds functionality to create custom transitions for blazor components.</Description>
+    <PackageId>Leeax.Web.Components.Transition</PackageId>
+    <Version>1.0.0-alpha</Version>
+    <Authors>leeax</Authors>
+    <Description>Provides a transition component which allows to add entering/leaving transitions for any element or component.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>blazor transition animation</PackageTags>
+    <PackageTags>blazor;transition;animation</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -49,6 +46,10 @@
     <None Update="TypeScript\Transition.ts">
       <SubType>Code</SubType>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="TypeScript\TransitionHooks.ts" />
   </ItemGroup>
 
   <!-- TypeScript configuration -->

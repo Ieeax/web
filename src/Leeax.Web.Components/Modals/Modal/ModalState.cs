@@ -1,4 +1,5 @@
-﻿using Leeax.Web.Internal;
+﻿using Leeax.Web.Components.Presentation;
+using Leeax.Web.Internal;
 using System;
 
 namespace Leeax.Web.Components.Modals
@@ -20,9 +21,9 @@ namespace Leeax.Web.Components.Modals
             Model.Closed += Close;
         }
 
-        internal void TransitionStateChanged(bool active)
+        internal void TransitionStateChanged(TransitionState state)
         {
-            if (!active)
+            if (state == TransitionState.Left)
             {
                 Closed?.Invoke(this);
             }

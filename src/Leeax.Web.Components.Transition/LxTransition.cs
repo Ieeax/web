@@ -11,20 +11,19 @@ namespace Leeax.Web.Components.Presentation
     {
         public const string ModulePath = "./_content/Leeax.Web.Components.Transition/Transition.min.js";
         public const string DefaultClassPrefix = "t";
+        public const string ClassNameWrapper = "lx-transition";
 
-        private IJSInProcessObjectReference? _jsReference;
+        private IJSObjectReference? _jsReference;
+        private IJSInProcessObjectReference? _jsInProcessReference;
         private ElementReference _target;
-
-        private TransitionState _transitionState;
-        private bool _shouldRender;
+        private TransitionState _state = TransitionState.Left;
+        private bool _renderContent;
         private bool _isActive;
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            base.BuildRenderTree(builder);
-
-            if (!_shouldRender 
-                || _jsReference == null) // Prevent rendering until javascript is loaded
+            if (!_renderContent 
+                || _jsReference == null) // Prevent rendering content until js module is loaded
             {
                 return;
             }
@@ -36,7 +35,7 @@ namespace Leeax.Web.Components.Presentation
             else
             {
                 builder.OpenElement(1, "div");
-                builder.AddAttribute(2, "class", "lx-transition");
+                builder.AddAttribute(2, "class", ClassNameWrapper);
                 builder.AddElementReferenceCapture(3, @ref => _target = @ref);
                 builder.AddContent(4, ChildContent);
                 builder.CloseElement();
@@ -47,9 +46,19 @@ namespace Leeax.Web.Components.Presentation
         {
             if (firstRender)
             {
-                _jsReference = await JSRuntime
-                    .InvokeAsync<IJSInProcessObjectReference>("import", ModulePath);
+                // Resolve (import) required javascript
+                // Note: We want to use synchronous js calls whenever possible (for performance)
+                if (JSRuntime is IJSInProcessRuntime)
+                {
+                    _jsInProcessReference = await JSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", ModulePath);
+                    _jsReference = _jsInProcessReference;
+                }
+                else
+                {
+                    _jsReference = await JSRuntime.InvokeAsync<IJSObjectReference>("import", ModulePath);
+                }
 
+                // Trigger re-render after javascript was resolved
                 StateHasChanged();
                 return;
             }
@@ -63,11 +72,14 @@ namespace Leeax.Web.Components.Presentation
                 return;
             }
 
-            if (Target != null)
+            // When a target element was supplied we want to use it
+            if (Target != null
+                && Target.HasValue)
             {
                 _target = Target.Current;
             }
             
+            // Check whether the target element exists in DOM
             if (_target.Id == null)
             {
                 return;
@@ -75,36 +87,58 @@ namespace Leeax.Web.Components.Presentation
 
             if (_isActive)
             {
-                if (_transitionState == TransitionState.Hidden)
+                // Check if we need to show the content
+                if (_state == TransitionState.Leaving
+                    || _state == TransitionState.Left)
                 {
-                    _transitionState = TransitionState.Visible;
+                    _state = TransitionState.Entering; // Set correct state before registering js callback
 
-                    RegisterCallback("enter");
-                    await StateChanged.InvokeAsync(true);
+                    // When possible use the synchronous js call
+                    if (_jsInProcessReference != null) RegisterCallback();
+                    else await RegisterCallbackAsync();
+
+                    await StateChanged.InvokeAsync(_state);
                 }
 
                 return;
             }
 
-            if (_transitionState == TransitionState.Visible)
+            // Check if we need to hide the content
+            if (_state == TransitionState.Entering
+                || _state == TransitionState.Entered)
             {
-                _transitionState = TransitionState.Hidden;
+                _state = TransitionState.Leaving; // Set correct state before registering js callback
 
-                RegisterCallback("leave");
+                // When possible use the synchronous js call
+                if (_jsInProcessReference != null) RegisterCallback();
+                else await RegisterCallbackAsync();
+
+                await StateChanged.InvokeAsync(_state);
             }
         }
 
         // This method can only be called when the js-references are resolved
-        private void RegisterCallback(string action)
+        private ValueTask RegisterCallbackAsync()
+            => _jsReference!.InvokeVoidAsync("registerCallback", GetCallbackArguments());
+
+        // This method can only be called when the js-references are resolved
+        private void RegisterCallback()
+            => _jsInProcessReference!.InvokeVoid("registerCallback", GetCallbackArguments());
+
+        // Important: To ensure the correct arguments are generated, 
+        // the field "_state" and "_target" have to be set correctly
+        private object?[] GetCallbackArguments()
         {
-            _jsReference!.InvokeVoid(
-                "registerCallback",
+            return new object?[]
+            {
                 DotNetObjectReference.Create(this),
                 _target,
                 Hooks,
-                action,
+                _state == TransitionState.Entering ? "enter" : "leave", // State should be either "Entering" or "Leaving"
                 ClassPrefix ?? DefaultClassPrefix,
-                action == "leave" ? Duration.DurationLeave : Duration.DurationEnter);
+                Type == TransitionType.Animation ? "animation" : "transition",
+                _state == TransitionState.Entering ? Duration.DurationEnter : Duration.DurationLeave
+            };
         }
 
         public ValueTask DisposeAsync()
@@ -119,10 +153,19 @@ namespace Leeax.Web.Components.Presentation
         /// </summary>
         /// <param name="property">If the type is set to <see cref="TransitionType.Transition"/> this is set to the property which finished transitioning, else this is set to the animation name.</param>
         [JSInvokable]
-        public void HandleCallback(string? property)
+        public async Task HandleCallbackAsync(string? property)
         {
-            _shouldRender = _transitionState != TransitionState.Hidden;
-            StateChanged.InvokeAsync(_shouldRender);
+            _state = _state switch
+            {
+                TransitionState.Entering => TransitionState.Entered,
+                TransitionState.Leaving => TransitionState.Left,
+                _ => throw new ApplicationException($"Invalid internal {nameof(TransitionState)} \"{_state}\". Exception may occur when calling method \"{nameof(HandleCallbackAsync)}\" manually.")
+            };
+
+            // Decide whether the content should be still rendered
+            _renderContent = _state == TransitionState.Entered;
+
+            await StateChanged.InvokeAsync(_state);
 
             // Trigger re-render to remove content
             StateHasChanged();
@@ -134,7 +177,7 @@ namespace Leeax.Web.Components.Presentation
         #region Parameters
         /// <summary>
         /// Gets or sets the transition type. The default value is <see cref="TransitionType.Transition"/>. 
-        /// If you're using a CSS-animation this have to be set to <see cref="TransitionType.Animation"/>.
+        /// If you're using a CSS-animation this value has to be set to <see cref="TransitionType.Animation"/>.
         /// </summary>
         [Parameter]
         public TransitionType Type { get; set; }
@@ -164,13 +207,13 @@ namespace Leeax.Web.Components.Presentation
                 if (value)
                 {
                     // If false, the component will stop rendering after receiving the "transitionend/animationend" callback
-                    _shouldRender = true;
+                    _renderContent = true;
                 }
             }
         }
 
         /// <summary>
-        /// Gets or sets the class prefix. The default value is "t".
+        /// Gets or sets the class prefix. The default value is <see cref="DefaultClassPrefix"/>.
         /// </summary>
         [Parameter]
         public string? ClassPrefix { get; set; }
@@ -183,22 +226,22 @@ namespace Leeax.Web.Components.Presentation
         public BackwardElementReference? Target { get; set; }
 
         /// <summary>
-        /// Gets or sets a custom transition duration. By default this is determined trough the CSS property.
+        /// Gets or sets a custom transition duration. By default the value gets determined trough the duration of the CSS transition/animation.
         /// </summary>
         [Parameter]
         public TransitionDuration Duration { get; set; }
 
         /// <summary>
-        /// Gets or sets the content for the transition.
+        /// Gets or sets the callback which gets invoked whenever the transition state changed.
+        /// </summary>
+        [Parameter]
+        public EventCallback<TransitionState> StateChanged { get; set; }
+
+        /// <summary>
+        /// Gets or sets the content of the transition.
         /// </summary>
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
-
-        /// <summary>
-        /// Gets or sets the callback which gets invoked whenever the transition state changed. (<see langword="true"/> equals active)
-        /// </summary>
-        [Parameter]
-        public EventCallback<bool> StateChanged { get; set; }
         #endregion
     }
 }

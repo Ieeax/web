@@ -1,4 +1,7 @@
 const _transitions = {};
+/**
+   * Finds the trough blazor assigned id of the element.
+   */
 function findId(element) {
     for (let i = 0; i < element.attributes.length; i++) {
         if (element.attributes[i].name.startsWith("_bl_")) {
@@ -7,25 +10,51 @@ function findId(element) {
     }
     return null;
 }
+/**
+   * Helper function which tries to invoke the specified hook/function for the given element.
+   *
+   * @param hooks The object in which the functions are defined.
+   * @param name The function name to invoke.
+   * @param element The element for which the function should be invoked.
+   *
+   */
 function invokeHook(hooks, name, element) {
     if (hooks != null && name in hooks) {
         hooks[name](element);
     }
 }
-export function registerCallback(instance, element, hooks, action, prefix, duration) {
-    if (!element || (action !== "enter" && action !== "leave"))
+/**
+   * Applies transition classes and invokes a callback (back to .NET) when finished.
+   *
+   * @param instance The .NET instance on which the callback should be invoked.
+   * @param element The element on which the transition should be applied.
+   * @param hooks A javascript object which can contain hooks/functions for js-callbacks.
+   * @param action The action to apply. Either "enter" or "leave".
+   * @param prefix The prefix for the transition classes.
+   * @param type The type of the transition, determines for which event has to be listened. Either "animation" or "transition".
+   * @param duration The duration for this transition action.
+   *
+   */
+export function registerCallback(instance, element, hooks, action, prefix, type, duration) {
+    // Validate some values which could be wrong
+    if (!element
+        || (action !== "enter" && action !== "leave")
+        || (type !== "animation" && type !== "transition")) {
+        console.warn("[Leeax.Web.Components.Presentation.LxTransition] Received invalid values from .NET: Transition couldn't be registered.");
         return;
+    }
     const id = findId(element);
     if (!id)
         return;
     if (id in _transitions) {
-        _transitions[id].cancel();
+        _transitions[id].cancel(); // Cancel previous transition if not finished yet
     }
+    // Register correct transition type based on duration value
     if (duration > 0) {
         registerCallbackAfterDuration(id, instance, element, hooks, action, prefix, duration);
     }
     else {
-        registerCallbackAfterEvent(id, instance, element, hooks, action, prefix);
+        registerCallbackAfterEvent(id, instance, element, hooks, action, prefix, type);
     }
     prefix = prefix + "-" + action;
     // Request animation-frame(s) to add and remove transition classes
@@ -42,15 +71,25 @@ export function registerCallback(instance, element, hooks, action, prefix, durat
         });
     });
 }
-function registerCallbackAfterEvent(id, instance, element, hooks, action, prefix) {
-    const isTransitionEvent = true;
-    const eventName = isTransitionEvent ? "transitionend" : "animationend";
+/**
+   * Applies transition classes and invokes a callback (back to .NET) when finished. The duration will be based on the configured CSS properties.
+   *
+   * @param instance The .NET instance on which the callback should be invoked.
+   * @param element The element on which the transition should be applied.
+   * @param hooks A javascript object which can contain hooks/functions for js-callbacks.
+   * @param action The action to apply. Either "enter" or "leave".
+   * @param prefix The prefix for the transition classes.
+   * @param type The type of the transition, determines for which event has to be listened. Either "animation" or "transition".
+   *
+   */
+function registerCallbackAfterEvent(id, instance, element, hooks, action, prefix, type) {
+    const eventName = type === "animation" ? "animationend" : "transitionend";
     prefix = prefix + "-" + action;
     // Callback function which gets called when transition finished
     const callback = (args) => {
         if (args.target !== element)
             return;
-        instance.invokeMethodAsync('HandleCallback', isTransitionEvent ? args.propertyName : args.animationName);
+        instance.invokeMethodAsync('HandleCallbackAsync', type === "animation" ? args.animationName : args.propertyName);
         if (action === "leave") {
             element.classList.remove(prefix + "-active", prefix + "-to");
             invokeHook(hooks, "afterLeave", element);
@@ -79,11 +118,22 @@ function registerCallbackAfterEvent(id, instance, element, hooks, action, prefix
         }
     };
 }
+/**
+   * Applies transition classes and invokes a callback (back to .NET) when finished.
+   *
+   * @param instance The .NET instance on which the callback should be invoked.
+   * @param element The element on which the transition should be applied.
+   * @param hooks A javascript object which can contain hooks/functions for js-callbacks.
+   * @param action The action to apply. Either "enter" or "leave".
+   * @param prefix The prefix for the transition classes.
+   * @param duration The duration for this transition action.
+   *
+   */
 function registerCallbackAfterDuration(id, instance, element, hooks, action, prefix, duration) {
     prefix = prefix + "-" + action;
     // Callback function which gets called when transition finished
     const callback = () => {
-        instance.invokeMethodAsync('HandleCallback', null);
+        instance.invokeMethodAsync('HandleCallbackAsync', null);
         if (action === "leave") {
             element.classList.remove(prefix + "-active", prefix + "-to");
             invokeHook(hooks, "afterLeave", element);

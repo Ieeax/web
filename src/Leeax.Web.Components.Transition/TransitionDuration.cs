@@ -18,5 +18,6 @@
         public int DurationLeave { get; }
 
         public static implicit operator TransitionDuration(int value) => new TransitionDuration(value);
+        public static implicit operator TransitionDuration((int, int) value) => new TransitionDuration(value.Item1, value.Item2);
     }
 }
