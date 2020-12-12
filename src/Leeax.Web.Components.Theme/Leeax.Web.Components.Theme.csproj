@@ -11,11 +11,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Adds functionality for theming based on css variables.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>blazor theme scope style css</PackageTags>
+    <PackageId>Leeax.Web.Components.Theme</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Provides functionality for theming components. (based on css variables)</Description>
+    <PackageTags>blazor;theme;scope;style;css</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>

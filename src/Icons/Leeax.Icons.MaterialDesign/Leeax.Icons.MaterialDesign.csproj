@@ -10,11 +10,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Adds support for Material Design icons from "https://material.io/resources/icons/?style=baseline".</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>blazor icons material materialdesign google</PackageTags>
+    <PackageId>Leeax.Icons.MaterialDesign</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Adds support for the Material Design icons from "https://material.io/resources/icons/?style=baseline".</Description>
+    <PackageTags>blazor;icons;material;materialdesign;google</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   
   <ItemGroup>

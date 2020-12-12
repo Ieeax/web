@@ -11,11 +11,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
+    <PackageId>Leeax.Web.Components.Abstractions</PackageId>
+    <Authors>leeax</Authors>
     <Description>Abstractions for Leeax.Web.Components package(s).</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>blazor abstractions</PackageTags>
+    <PackageTags>blazor;abstractions</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   
   <ItemGroup>

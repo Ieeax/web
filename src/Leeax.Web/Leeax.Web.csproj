@@ -11,11 +11,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Adds functionality which is often required for the web.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
+    <PackageId>Leeax.Web</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Provides functionality which is often required for the web.</Description>
     <PackageTags>web</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   
   <ItemGroup>
