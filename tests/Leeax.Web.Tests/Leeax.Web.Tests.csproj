@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Leeax.Web\Leeax.Web.csproj" />
+    <ProjectReference Include="..\..\src\Leeax.Web\Leeax.Web.csproj" />
   </ItemGroup>
 
 </Project>

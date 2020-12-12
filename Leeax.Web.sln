@@ -3,47 +3,47 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{001E424D-9C35-4E91-B64B-6CB085891A4B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{001E424D-9C35-4E91-B64B-6CB085891A4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4E7E37B5-C586-4609-9165-69B8B152F504}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Tests", "Tests\Leeax.Web.Components.Tests\Leeax.Web.Components.Tests.csproj", "{FD09CF01-00F6-4E22-9022-D05E15002593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Tests", "tests\Leeax.Web.Components.Tests\Leeax.Web.Components.Tests.csproj", "{FD09CF01-00F6-4E22-9022-D05E15002593}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components", "Leeax.Web.Components\Leeax.Web.Components.csproj", "{2EDA10F6-CE78-4B9C-A95E-CF967EFFEE9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components", "src\Leeax.Web.Components\Leeax.Web.Components.csproj", "{2EDA10F6-CE78-4B9C-A95E-CF967EFFEE9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{6E313D46-F722-45FB-B57F-FA6A4142F64D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Icons.MaterialDesign", "Icons\Leeax.Icons.MaterialDesign\Leeax.Icons.MaterialDesign.csproj", "{268C77E6-329A-4C63-88CE-DB2894F6C045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Icons.MaterialDesign", "src\Icons\Leeax.Icons.MaterialDesign\Leeax.Icons.MaterialDesign.csproj", "{268C77E6-329A-4C63-88CE-DB2894F6C045}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComponentsDemo", "Apps\ComponentsDemo\ComponentsDemo.csproj", "{657C2125-B936-47F4-9EA7-F658A42322A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComponentsDemo", "demos\ComponentsDemo\ComponentsDemo.csproj", "{657C2125-B936-47F4-9EA7-F658A42322A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Extensions.Web.Builders", "Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj", "{72C63AE9-7866-4E37-B0CA-F0EFFC0C6974}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Extensions.Web.Builders", "src\Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj", "{72C63AE9-7866-4E37-B0CA-F0EFFC0C6974}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Builders", "Leeax.Web.Builders\Leeax.Web.Builders.csproj", "{70604C70-9B47-46A9-AF38-E6CE9E92AD67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Builders", "src\Leeax.Web.Builders\Leeax.Web.Builders.csproj", "{70604C70-9B47-46A9-AF38-E6CE9E92AD67}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web", "Leeax.Web\Leeax.Web.csproj", "{1D67C9D9-96D5-4AF4-A1F4-8EED578F0BDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web", "src\Leeax.Web\Leeax.Web.csproj", "{1D67C9D9-96D5-4AF4-A1F4-8EED578F0BDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Extensions.Web.Components", "Leeax.Extensions.Web.Components\Leeax.Extensions.Web.Components.csproj", "{653C1E10-96F6-4758-81C3-0DECA9204C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Extensions.Web.Components", "src\Leeax.Extensions.Web.Components\Leeax.Extensions.Web.Components.csproj", "{653C1E10-96F6-4758-81C3-0DECA9204C4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSInterop", "JSInterop", "{5BC9C9EB-FED8-4D72-8B39-FBEA3637EAAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Cookies", "JSInterop\Leeax.Web.Components.Cookies\Leeax.Web.Components.Cookies.csproj", "{B4D591E7-5AF6-449F-964A-F6594AF53CC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Cookies", "src\JSInterop\Leeax.Web.Components.Cookies\Leeax.Web.Components.Cookies.csproj", "{B4D591E7-5AF6-449F-964A-F6594AF53CC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.History", "JSInterop\Leeax.Web.Components.History\Leeax.Web.Components.History.csproj", "{EBF21DBF-52DE-4595-9935-04DF52A55687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.History", "src\JSInterop\Leeax.Web.Components.History\Leeax.Web.Components.History.csproj", "{EBF21DBF-52DE-4595-9935-04DF52A55687}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.DOM", "JSInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj", "{31CC8B40-BDED-4BCE-AD76-C6A6ECBB8D83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.DOM", "src\JSInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj", "{31CC8B40-BDED-4BCE-AD76-C6A6ECBB8D83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Window", "JSInterop\Leeax.Web.Components.Window\Leeax.Web.Components.Window.csproj", "{502147C5-1D6C-42B7-8655-7FDCCE3A756A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Window", "src\JSInterop\Leeax.Web.Components.Window\Leeax.Web.Components.Window.csproj", "{502147C5-1D6C-42B7-8655-7FDCCE3A756A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Abstractions", "Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj", "{67A92B03-2A9A-41BC-8739-4160D056C9AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Abstractions", "src\Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj", "{67A92B03-2A9A-41BC-8739-4160D056C9AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Transition", "Leeax.Web.Components.Transition\Leeax.Web.Components.Transition.csproj", "{DFA92342-AB04-48F3-8C0C-B1E3CE576D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Transition", "src\Leeax.Web.Components.Transition\Leeax.Web.Components.Transition.csproj", "{DFA92342-AB04-48F3-8C0C-B1E3CE576D31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Theme", "Leeax.Web.Components.Theme\Leeax.Web.Components.Theme.csproj", "{D13C64E4-30DC-4E3C-864F-23490858E976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Components.Theme", "src\Leeax.Web.Components.Theme\Leeax.Web.Components.Theme.csproj", "{D13C64E4-30DC-4E3C-864F-23490858E976}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Builders.Tests", "Tests\Leeax.Web.Builders.Tests\Leeax.Web.Builders.Tests.csproj", "{A735FFDC-A3E2-4A34-B31B-CA0703E0CDD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Builders.Tests", "tests\Leeax.Web.Builders.Tests\Leeax.Web.Builders.Tests.csproj", "{A735FFDC-A3E2-4A34-B31B-CA0703E0CDD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Tests", "Tests\Leeax.Web.Tests\Leeax.Web.Tests.csproj", "{71E5C2E1-2CD1-429E-B87B-63C1E136F281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Tests", "tests\Leeax.Web.Tests\Leeax.Web.Tests.csproj", "{71E5C2E1-2CD1-429E-B87B-63C1E136F281}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

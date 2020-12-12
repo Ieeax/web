@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Leeax.Web.Components\Leeax.Web.Components.csproj" />
+    <ProjectReference Include="..\..\src\Leeax.Web.Components\Leeax.Web.Components.csproj" />
   </ItemGroup>
 
 </Project>
