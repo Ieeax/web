@@ -11,11 +11,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Adds different builders for creating data often used in the web.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>web builder</PackageTags>
+    <PackageId>Leeax.Web.Builders</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Provides different builders for creating data/values mostly used in the web.</Description>
+    <PackageTags>web;builder</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   
 </Project>

@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj" />
-    <ProjectReference Include="..\..\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
+    <ProjectReference Include="..\..\src\Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj" />
+    <ProjectReference Include="..\..\src\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,81 @@
+name: CI/CD for PRs and Releases
+on:
+  pull_request:
+  release:
+    branches: [ main ]
+    types:
+      - published
+env:
+  # Stop wasting time caching packages
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  # Disable sending usage data to Microsoft
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+  # GitHub Packages Feed settings
+  GITHUB_FEED: https://nuget.pkg.github.com/ieeax/
+  GITHUB_USER: Ieeax
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Official NuGet Feed settings
+  NUGET_FEED: https://api.nuget.org/v3/index.json
+  NUGET_KEY: ${{ secrets.NUGET_KEY }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c Release --no-restore --verbosity normal
+      - name: Test
+        run: dotnet test -c Release
+      - name: Pack
+        run: |
+          for proj in $(find ./src -name "*.csproj")
+          do
+            dotnet pack -v normal -c Release --no-restore -p:PackageVersion=$GITHUB_RUN_ID $proj
+          done
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: nuget-packages
+          path: ./src/**/*.nupkg
+  deploy:
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+      - name: Create Release NuGet packages
+        run: |
+          arrTag=(${GITHUB_REF//\// })
+          VERSION="${arrTag[2]}"
+          echo Version: $VERSION
+          VERSION="${VERSION//v}"
+          echo Clean Version: $VERSION
+          for proj in $(find ./src -name "*.csproj")
+          do
+            dotnet pack -v normal -c Release -p:PackageVersion=$VERSION -o nuget-packages $proj
+          done
+      - name: Push to GitHub Feed
+        run: |
+          for pkg in ./nuget-packages/*.nupkg
+          do
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$pkg $GITHUB_FEED
+          done
+      #- name: Push to NuGet Feed
+      #  run: |
+      #    for pkg in ./nuget-packages/*.nupkg
+      #    do
+      #      dotnet nuget push $pkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
+      #    done

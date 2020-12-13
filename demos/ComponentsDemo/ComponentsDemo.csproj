@@ -11,11 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Icons\Leeax.Icons.MaterialDesign\Leeax.Icons.MaterialDesign.csproj" />
-    <ProjectReference Include="..\..\JsInterop\Leeax.Web.Components.Cookies\Leeax.Web.Components.Cookies.csproj" />
-    <ProjectReference Include="..\..\JsInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
-    <ProjectReference Include="..\..\Leeax.Web.Components\Leeax.Web.Components.csproj" />
-    <ProjectReference Include="..\..\Tests\Leeax.Web.Components.Tests\Leeax.Web.Components.Tests.csproj" />
+    <ProjectReference Include="..\..\src\Icons\Leeax.Icons.MaterialDesign\Leeax.Icons.MaterialDesign.csproj" />
+    <ProjectReference Include="..\..\src\JSInterop\Leeax.Web.Components.Cookies\Leeax.Web.Components.Cookies.csproj" />
+    <ProjectReference Include="..\..\src\JSInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
+    <ProjectReference Include="..\..\src\Leeax.Web.Components\Leeax.Web.Components.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

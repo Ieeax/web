@@ -11,11 +11,14 @@
 
   <!-- Nuget configuration -->
   <PropertyGroup>
-    <Authors>Leeax</Authors>
-    <Description>Extensions for Leeax.Web.Components package.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 (c) Leeax. All rights reserved.</Copyright>
-    <PackageTags>blazor components controls extensions</PackageTags>
+    <PackageId>Leeax.Extensions.Web.Components</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Extensions for the Leeax.Web.Components package.</Description>
+    <PackageTags>blazor;components;controls;extensions</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   
   <ItemGroup>

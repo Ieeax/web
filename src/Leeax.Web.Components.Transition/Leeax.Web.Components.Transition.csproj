@@ -12,15 +12,17 @@
   <!-- Nuget configuration -->
   <PropertyGroup>
     <PackageId>Leeax.Web.Components.Transition</PackageId>
-    <Version>1.0.0-alpha</Version>
     <Authors>leeax</Authors>
     <Description>Provides a transition component which allows to add entering/leaving transitions for any element or component.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageTags>blazor;transition;animation</PackageTags>
+    <PackageTags>blazor;transition;animation;css</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
       <PrivateAssets>all</PrivateAssets>
