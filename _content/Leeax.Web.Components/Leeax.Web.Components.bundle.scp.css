@@ -529,7 +529,7 @@ input[type=number][b-r1f4krlj70] {
         background: none;
     }
 
-    [b-59u2xpul8h] .lx-modal-background.t-enter-active,
+    [b-59u2xpul8h] .lx-modal-background.t-enter-to,
     [b-59u2xpul8h] .lx-modal-background.t-leave-active {
         transition: background 200ms ease-in-out;
     }
@@ -552,7 +552,7 @@ input[type=number][b-r1f4krlj70] {
         opacity: 0;
     }
 
-    [b-59u2xpul8h] .lx-modal-background.t-enter-active .lx-modal,
+    [b-59u2xpul8h] .lx-modal-background.t-enter-to .lx-modal,
     [b-59u2xpul8h] .lx-modal-background.t-leave-active .lx-modal {
         transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
@@ -608,7 +608,7 @@ input[type=number][b-r1f4krlj70] {
         opacity: 0;
     }
 
-    [b-1tbers34aa] .lx-toast.t-enter-active,
+    [b-1tbers34aa] .lx-toast.t-enter-to,
     [b-1tbers34aa] .lx-toast.t-leave-active {
         transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
     }
