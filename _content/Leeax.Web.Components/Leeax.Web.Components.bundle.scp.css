@@ -1,0 +1,944 @@
+@import '';
+
+/* _content/Leeax.Web.Components/Input/Button/LxButton.razor.rz.scp.css */
+.lx-button[b-l07zkbvsma] {
+    display: inline-flex;
+    overflow: hidden;
+    padding: 0 1em;
+    line-height: 2.4em;
+    vertical-align: middle;
+    cursor: pointer;
+}
+    
+    /* Only icon with no text */
+    .lx-button.lx-button-icon[b-l07zkbvsma] {
+        padding: 0.4em;
+        width: 2.4em;
+    }
+
+    /* Background */
+    .lx-button.lx-normal[b-l07zkbvsma],
+    .lx-button.lx-raised[b-l07zkbvsma] {
+        background-color: var(--lx-button-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-button.lx-outlined[b-l07zkbvsma] {
+        line-height: calc(2.4em - 2px);
+        border-color: var(--lx-button-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* 50% rounded corners */
+    .lx-button.lx-button-round[b-l07zkbvsma] {
+        border-radius: 1.2em;
+        padding: 0 1.5em;
+    }
+
+    /* Position icon */
+    .lx-button:not(.lx-button-icon)[b-l07zkbvsma]  .lx-icon {
+        margin-left: 0.5em;
+        margin-right: -0.2em;
+    }
+
+        /* Position icon when trailing */
+        .lx-button:not(.lx-button-icon)[b-l07zkbvsma]  .lx-icon:not(.lx-trailing) {
+            margin-left: -0.2em;
+            margin-right: 0.5em;
+        }
+/* _content/Leeax.Web.Components/Input/Checkbox/LxCheckbox.razor.rz.scp.css */
+.lx-checkbox[b-j4na8l834x] {
+    display: block;
+    text-indent: -9999px;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    transition: background var(--lx-transition-duration-default);
+}
+
+    /* Background */
+    .lx-checkbox.lx-normal:not(.active)[b-j4na8l834x],
+    .lx-checkbox.lx-raised:not(.active)[b-j4na8l834x] {
+        background-color: var(--lx-checkbox-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Background when active */
+    .lx-checkbox.active[b-j4na8l834x] {
+        background-color: var(--lx-checkbox-active-background, var(--lx-color-theme-primary));
+    }
+
+    /* Outlined style */
+    .lx-checkbox.lx-outlined:not(.active)[b-j4na8l834x] {
+        border-color: var(--lx-checkbox-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Hide input element */
+    .lx-checkbox input[b-j4na8l834x] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+
+    /* Checkmark when active */
+    .lx-checkbox.active[b-j4na8l834x]::after {
+        content: "";
+        position: absolute;
+        left: 0.5em;
+        top: 0.22em;
+        width: 0.5em;
+        height: 0.8em;
+        border: solid;
+        border-color: var(--lx-color-white);
+        border-width: 0 0.2em 0.2em 0;
+        transform: rotate(45deg);
+    }
+/* _content/Leeax.Web.Components/Input/ChipCollection/LxChipCollection.razor.rz.scp.css */
+.lx-chipcollection[b-7nyf1zm4fk] {
+    margin-top: -0.25rem; /* Correct margin of top row */
+}
+
+    /* Margin to upper elements */
+    .lx-chipcollection[b-7nyf1zm4fk]  .lx-chip {
+        margin-top: 0.25rem;
+    }
+
+        /* Margin towards right element */
+        .lx-chipcollection[b-7nyf1zm4fk]  .lx-chip:not(:last-child) {
+            margin-right: 0.25rem;
+        }
+/* _content/Leeax.Web.Components/Input/DateTimePicker/LxDateTimePicker.razor.rz.scp.css */
+.lx-datetimepicker[b-dkvipor0cm]  .lx-separator {
+    margin: 0 0.25em !important;
+}
+
+.lx-datetimepicker .picker-content[b-dkvipor0cm] {
+    padding: 0 0.25em;
+}
+/* _content/Leeax.Web.Components/Input/DateTimePicker/_Views/LxDatePickerView.razor.rz.scp.css */
+/* Button appearance */
+.picker-content[b-d2k17vxr6v]  .lx-button {
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.08em;
+    padding: 0;
+}
+
+    /* Center text of button */
+    .picker-content[b-d2k17vxr6v]  .lx-button > span {
+        margin: auto;
+    }
+/* _content/Leeax.Web.Components/Input/DateTimePicker/_Views/LxMonthPickerView.razor.rz.scp.css */
+/* Margin bottom of each row */
+.picker-content > div:not(:last-child)[b-ewxjd3nnb8] {
+    margin-bottom: 0.6em;
+}
+
+/* Button appearance */
+.picker-content[b-ewxjd3nnb8]  .lx-button {
+    width: 3.2em;
+    height: 3.2em;
+    margin: 0 0.3em;
+    padding: 0;
+}
+
+    /* Center text of button */
+    .picker-content[b-ewxjd3nnb8]  .lx-button > span {
+        margin: auto;
+    }
+/* _content/Leeax.Web.Components/Input/DateTimePicker/_Views/LxTimePickerView.razor.rz.scp.css */
+/* Colon between hour and minute */
+.picker-content .colon[b-sudrjnczpq] {
+    margin: 0 0.2em;
+}
+/* _content/Leeax.Web.Components/Input/DateTimePicker/_Views/LxTimePickerWheel.razor.rz.scp.css */
+.lx-timepickerwheel[b-kdpz74uiz6] {
+    width: 3.8em;
+}
+    /* Transition for scrolling */
+    .lx-timepickerwheel .items-view[b-kdpz74uiz6] {
+        transition: transform 180ms;
+    }
+
+    /* Item style */
+    .lx-timepickerwheel span[b-kdpz74uiz6] {
+        background: rgba(0, 0, 0, 0.01);
+        margin: 0.1em 0;
+        padding: 0 1em;
+        height: 2.5em;
+        line-height: 2.5em;
+        text-align: center;
+        transition: var(--lx-transition-duration-default);
+    }
+        
+        /* Background previous/next item */
+        .lx-timepickerwheel span.prev-item[b-kdpz74uiz6], 
+        .timepicker-wheel span.next-item[b-kdpz74uiz6] {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Style selected item */
+        .lx-timepickerwheel span.selected[b-kdpz74uiz6] {
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.025);
+        }
+/* _content/Leeax.Web.Components/Input/Input/LxInput.razor.rz.scp.css */
+.lx-input[b-r1f4krlj70] {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+    /* Background */
+    .lx-input.lx-normal[b-r1f4krlj70],
+    .lx-input.lx-raised[b-r1f4krlj70] {
+        background-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-input.lx-outlined[b-r1f4krlj70] {
+        border-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Invalid style */
+    .lx-input.invalid[b-r1f4krlj70] {
+        border-width: 1px;
+        border-style: solid;
+        border-color: red !important;
+    }
+
+        /* Outlined button height */
+        .lx-input.invalid[b-r1f4krlj70]  > .lx-button,
+        .lx-input.lx-outlined[b-r1f4krlj70]  > .lx-button {
+            height: calc(2.4em - 2px);
+        }
+
+        /*.lx-input ::deep > .lx-button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }*/
+
+    /* Center icon */
+    .lx-input[b-r1f4krlj70]  > .lx-icon {
+        margin: auto 0;
+        margin-left: .5em;
+    }
+
+    /* Input style */
+    .lx-input input[b-r1f4krlj70] {
+        outline: none;
+        border: none;
+        font-size: inherit;
+        font-family: inherit;
+        color: inherit;
+        background: transparent;
+        padding: .5em .7em;
+        box-sizing: border-box;
+    }
+
+/* Hide up and down buttons */
+input[type=number][b-r1f4krlj70]::-webkit-outer-spin-button,
+input[type=number][b-r1f4krlj70]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number][b-r1f4krlj70] {
+    -moz-appearance: textfield;
+}
+/* _content/Leeax.Web.Components/Input/Select/LxSelect.razor.rz.scp.css */
+.lx-select .selected-item[b-7er7spkths] {
+    position: relative;
+    overflow: hidden;
+    line-height: 2.4em;
+    vertical-align: middle;
+    padding: 0 1em;
+}
+
+    /* Background */
+    .lx-select .selected-item.lx-normal[b-7er7spkths],
+    .lx-select .selected-item.lx-raised[b-7er7spkths] {
+        background-color: var(--lx-select-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-select .selected-item.lx-outlined[b-7er7spkths] {
+        line-height: calc(2.4em - 2px);
+        border-color: var(--lx-select-background, var(--lx-color-neutral-quaternary));
+    }
+
+/* Scrollable item-list */
+.lx-select .select-items[b-7er7spkths] {
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+/* Position icon */
+.lx-select[b-7er7spkths]  .left-icon {
+    margin-right: 0.25em;
+    margin-left: -0.2em;
+}
+
+/* Position "dropdown" icon */
+.lx-select[b-7er7spkths]  .right-icon {
+    margin-left: 0.4em;
+    margin-right: -0.2em;
+}
+
+.lx-select .selected-item[b-7er7spkths],
+.lx-select .list-item[b-7er7spkths] {
+    display: inline-flex;
+}
+
+/* Item in list */
+.lx-select .list-item[b-7er7spkths] {
+    padding: 0.4em 0.7em;
+}
+
+    /* Selected item in list */
+    .lx-select .list-item.selected[b-7er7spkths] {
+        background-color: var(--lx-select-selected-background, var(--lx-color-neutral-light));
+    }
+/* _content/Leeax.Web.Components/Input/Switch/LxSwitch.razor.rz.scp.css */
+.lx-switch[b-n422cigb2t] {
+    position: relative;
+    display: inline-flex;
+    line-height: 2.4em;
+    vertical-align: middle;
+    border-radius: 1.2em;
+    background-color: var(--lx-switch-background, var(--lx-color-neutral-quaternary));
+}
+
+    /* 50% rounded corners */
+    .lx-switch .switch-bar[b-n422cigb2t] {
+        border-radius: 1.2em;
+    }
+
+    /* Single item */
+    .lx-switch .switch-item[b-n422cigb2t] {
+        padding: 0 1.4em;
+        line-height: 2.4em;
+        cursor: pointer;
+    }
+
+    /* Selected item */
+    .lx-switch .switch-item-selected[b-n422cigb2t] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0.2em;
+        color: var(--lx-color-black);
+        background-color: var(--lx-switch-selected-background, var(--lx-color-white));
+        height: 2em;
+        line-height: 2em;
+        border-radius: 1em;
+        transition: left 200ms, width 150ms;
+    }
+
+        /* Center text of selected item */
+        /* The other items are always centered trough padding, only the selected one not */
+        .lx-switch .switch-item-selected span[b-n422cigb2t] {
+            text-align: center;
+        }
+/* _content/Leeax.Web.Components/Input/Tag/LxTagBase.razor.rz.scp.css */
+.lx-tagbase[b-laakxnuvbm] {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    padding: 0 1em;
+    transition: background 200ms, border 200ms;
+}
+
+    /* Background */
+    .lx-tagbase.lx-normal[b-laakxnuvbm],
+    .lx-tagbase.lx-raised[b-laakxnuvbm] {
+        background-color: var(--lx-tag-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Background when active */
+    .lx-tagbase.active[b-laakxnuvbm] {
+        background-color: var(--lx-tag-active-background, var(--lx-color-theme-primary));
+    }
+
+    /* Outlined style */
+    .lx-tagbase.lx-outlined:not(.active)[b-laakxnuvbm] {
+        line-height: calc(2em - 2px);
+        border-color: var(--lx-tag-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Style for icon */
+    .lx-tagbase[b-laakxnuvbm]  .left-icon {
+        margin-left: -0.25em;
+        margin-right: 0.25em;
+    }
+
+    /* Style button/icon for removing tag */
+    .lx-tagbase[b-laakxnuvbm]  .right-icon {
+        margin-left: 0.6em;
+        margin-right: -0.25em;
+        cursor: pointer;
+    }
+
+    /* Padding when only rounded slightly */
+    .lx-tagbase.lx-rounded[b-laakxnuvbm] {
+        padding: 0 .75em;
+    }
+/* _content/Leeax.Web.Components/Input/TagCollection/LxTagCollection.razor.rz.scp.css */
+.lx-tagcollection[b-hsvmne6lxr] {
+    margin-top: -0.25rem; /* Correct margin of top row */
+}
+
+    /* Margin to upper elements */
+    .lx-tagcollection[b-hsvmne6lxr]  .lx-tagbase {
+        margin-top: 0.25rem;
+    }
+
+        /* Margin towards right element */
+        .lx-tagcollection[b-hsvmne6lxr]  .lx-tagbase:not(:last-child) {
+            margin-right: 0.25rem;
+        }
+/* _content/Leeax.Web.Components/Input/Toggle/LxToggle.razor.rz.scp.css */
+/* Basic styling */
+.lx-toggle[b-fqvddyvar0] {
+	position: relative;
+	display: block;
+	text-indent: -9999px;
+	width: 3.2em;
+	height: 1.8em;
+	border-radius: 1em;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+	/* Background */
+	.lx-toggle.lx-normal:not(.active)[b-fqvddyvar0],
+	.lx-toggle.lx-raised:not(.active)[b-fqvddyvar0] {
+		background-color: var(--lx-toggle-background, var(--lx-color-neutral-quaternary));
+	}
+
+	/* Background when active */
+	.lx-toggle.active[b-fqvddyvar0] {
+		background-color: var(--lx-toggle-active-background, var(--lx-color-theme-primary));
+	}
+
+	/* Outlined style */
+	.lx-toggle.lx-outlined:not(.active)[b-fqvddyvar0] {
+		border-color: var(--lx-toggle-background, var(--lx-color-neutral-quaternary));
+	}
+
+	/* Hide input element */
+	.lx-toggle input[b-fqvddyvar0] {
+		height: 0;
+		width: 0;
+		visibility: hidden;
+	}
+
+	/* Style inner circle */
+	.lx-toggle[b-fqvddyvar0]::after {
+		content: "";
+		position: absolute;
+		top: .25em;
+		bottom: .25em;
+		left: .25em;
+		width: 1.3em;
+		background: var(--lx-color-white);
+		border-radius: .75em;
+		transition: 200ms;
+	}
+
+	/* Style inner circle when outlined */
+	.lx-toggle.lx-outlined:not(.active)[b-fqvddyvar0]::after {
+		top: 0.2em;
+		left: 0.2em;
+		bottom: 0.2em;
+		background: var(--lx-toggle-background, var(--lx-color-neutral-quaternary));
+	}
+
+	/* Active style - slide the circle to the right side */
+	.lx-toggle.active[b-fqvddyvar0]::after {
+		left: calc(100% - 0.25em);
+		transform: translateX(-100%);
+	}
+
+	/* Make circle wider when pressing it */
+	.lx-toggle:active[b-fqvddyvar0]::after {
+		width: 1.7em;
+	}
+
+	.lx-toggle.lx-outlined:active[b-fqvddyvar0]::after {
+		width: 1.65em;
+	}
+/* _content/Leeax.Web.Components/Modals/DefaultToast/LxDefaultToast.razor.rz.scp.css */
+.lx-toast-default[b-z1acwv7so3] {
+    min-height: 44px;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.lx-toast-default.stacked[b-z1acwv7so3] {
+    display: flex;
+    flex-direction: column;
+}
+
+.lx-toast-default > .toast-content[b-z1acwv7so3] {
+    display: flex;
+}
+
+/* \n will begin a new line */
+.toast-content > .toast-text[b-z1acwv7so3] {
+    white-space: pre-line;
+}
+
+.lx-toast-default.stacked > .toast-content[b-z1acwv7so3] {
+    margin-bottom: 0.5em;
+}
+
+.toast-content[b-z1acwv7so3]  svg {
+    min-height: 1.8em;
+    min-width: 1.8em;
+    height: 1.8em;
+    width: 1.8em;
+    padding: 0.1em;
+    margin-bottom: auto;
+}
+
+.lx-toast-default > .toast-buttons[b-z1acwv7so3]  > :not(:first-child) {
+    margin-left: 5px;
+}
+
+.lx-toast-default.stacked > .toast-buttons[b-z1acwv7so3] {
+    justify-content: flex-end;
+}
+/* _content/Leeax.Web.Components/Modals/Modal/LxModalRenderer.razor.rz.scp.css */
+[b-59u2xpul8h] .lx-modal-background {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+}
+
+    [b-59u2xpul8h] .lx-modal-background.t-enter,
+    [b-59u2xpul8h] .lx-modal-background.t-leave-to {
+        background: none;
+    }
+
+    [b-59u2xpul8h] .lx-modal-background.t-enter-active,
+    [b-59u2xpul8h] .lx-modal-background.t-leave-active {
+        transition: background 200ms ease-in-out;
+    }
+
+    /* lx-modal */
+    [b-59u2xpul8h] .lx-modal-background .lx-modal {
+        min-height: 100px;
+        min-width: 300px;
+        border-radius: .5rem;
+        background-color: var(--lx-modal-background, var(--lx-color-neutral-white));
+    }
+
+    [b-59u2xpul8h] .lx-modal-background.t-enter .lx-modal {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    [b-59u2xpul8h] .lx-modal-background.t-leave-to .lx-modal {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+
+    [b-59u2xpul8h] .lx-modal-background.t-enter-active .lx-modal,
+    [b-59u2xpul8h] .lx-modal-background.t-leave-active .lx-modal {
+        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    }
+/* _content/Leeax.Web.Components/Modals/Toast/LxToastRenderer.razor.rz.scp.css */
+.lx-toastrenderer[b-1tbers34aa] {
+    position: fixed;
+    z-index: 10;
+}
+
+    .lx-toastrenderer.pos-upper[b-1tbers34aa] {
+        top: 10px;
+    }
+
+    .lx-toastrenderer.pos-lower[b-1tbers34aa] {
+        bottom: 10px;
+    }
+
+    .lx-toastrenderer.pos-left[b-1tbers34aa] {
+        left: 10px;
+    }
+
+    .lx-toastrenderer.pos-right[b-1tbers34aa] {
+        right: 10px;
+    }
+
+    .lx-toastrenderer.pos-center[b-1tbers34aa] {
+        left: 50%;
+    }
+
+        .lx-toastrenderer.pos-center[b-1tbers34aa]  .lx-toast {
+            position: relative;
+            margin-left: -50%;
+            margin-right: 50%;
+        }
+
+    .lx-toastrenderer[b-1tbers34aa]  > .lx-toast:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+
+[b-1tbers34aa] .lx-toast {
+    border-radius: .25rem;
+    background-color: var(--lx-toast-background, var(--lx-color-neutral-white));
+}
+
+    [b-1tbers34aa] .lx-toast.t-enter {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+
+    [b-1tbers34aa] .lx-toast.t-leave-to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    [b-1tbers34aa] .lx-toast.t-enter-active,
+    [b-1tbers34aa] .lx-toast.t-leave-active {
+        transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    }
+/* _content/Leeax.Web.Components/Navigation/Sidebar/LxSidebar.razor.rz.scp.css */
+.lx-sidebar[b-ngetzzvatn] {
+    background: var(--lx-sidebar-background, var(--lx-color-neutral-white));
+}
+/* _content/Leeax.Web.Components/Navigation/Sidebar/LxSidebarButton.razor.rz.scp.css */
+.lx-sidebarbutton[b-mx31yp9bag] {
+    display: inline-flex;
+    overflow: hidden;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 100%;
+    letter-spacing: .25px;
+    color: var(--lx-color-neutral-black);
+}
+
+    /* Background active */
+    .lx-sidebarbutton.active[b-mx31yp9bag] {
+        color: var(--lx-sidebar-active-color, var(--lx-color-neutral-black));
+        background-color: var(--lx-sidebar-active-background, var(--lx-color-neutral-lighter));
+    }
+
+    /* Margin to icon */
+    .lx-sidebarbutton span[b-mx31yp9bag] {
+        margin-left: 0.75em;
+    }
+
+        /* Margin when no icon is displayed */
+        .lx-sidebarbutton span.indented[b-mx31yp9bag] {
+            margin-left: 2.15em;
+        }
+/* _content/Leeax.Web.Components/Navigation/Sidebar/LxSidebarGroup.razor.rz.scp.css */
+.lx-sidebargroup .sb-header[b-n18gzm3mko] {
+    position: relative;
+    overflow: hidden;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    width: 100%;
+    letter-spacing: .25px;
+    padding: 0 1em;
+    margin: .25em 0;
+}
+
+/* Margin when next element is no group */
+.lx-sidebargroup.expanded[b-n18gzm3mko]  + *:not(.lx-sidebar-group) {
+    margin-top: 1em;
+}
+
+/* Margin to expandable button */
+.lx-sidebargroup.expandable .sb-header-content[b-n18gzm3mko] {
+    margin-left: 0.75em;
+}
+
+/* Margin when no button is displayed */
+.lx-sidebargroup:not(.expandable) .sb-header[b-n18gzm3mko] {
+    margin-left: 2.65em;
+}
+/* _content/Leeax.Web.Components/Navigation/TabBar/LxTabBar.razor.rz.scp.css */
+.tab-header[b-dd2xm1ml7f] {
+    position: relative;
+    height: 2.4em;
+    line-height: 2.4em;
+    box-sizing: border-box;
+    color: var(--lx-tabbar-color, var(--lx-color-neutral-secondary));
+    cursor: pointer;
+}
+
+    /* Active tab */
+    .tab-header.active[b-dd2xm1ml7f] {
+        color: var(--lx-tabbar-active-color, var(--lx-color-theme-primary));
+        cursor: default;
+    }
+
+        /* Line under active tab */
+        .tab-header.active .tab-line[b-dd2xm1ml7f] {
+            position: absolute;
+            left: .5em;
+            right: .5em;
+            bottom: 0;
+            height: .2em;
+            background-color: var(--lx-tabbar-active-color, var(--lx-color-theme-primary));
+        }
+
+    /* Center text */
+    .tab-header .tab-text[b-dd2xm1ml7f] {
+        text-align: center;
+        letter-spacing: .5px;
+    }
+
+/* Some padding to sides */
+.tab-content[b-dd2xm1ml7f] {
+    padding: 0 1em;
+}
+    
+    /* Position icon */
+    .tab-content[b-dd2xm1ml7f]  .lx-icon {
+        margin: auto .5em auto 0;
+    }
+/* _content/Leeax.Web.Components/Presentation/Card/Card.razor.rz.scp.css */
+/* Background */
+.lx-card > .lx-frame[b-yqpmvirl1s] {
+    background-color: var(--lx-card-background, var(--lx-color-neutral-white));
+}
+
+    /* Padding to side(s) */
+    .lx-card .card-content[b-yqpmvirl1s] {
+        padding: .7em;
+    }
+
+    .lx-card .card-text[b-yqpmvirl1s],
+    .lx-card .card-footer[b-yqpmvirl1s] {
+        margin-top: .5em;
+    }
+
+    /* Style image */
+    .lx-card .card-image img[b-yqpmvirl1s] {
+        height: inherit;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .lx-card .overline[b-yqpmvirl1s] {
+        font-size: .75em;
+        letter-spacing: 1px;
+        margin-bottom: .1em;
+    }
+
+    .lx-card .headline[b-yqpmvirl1s] {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    .lx-card .subheadline[b-yqpmvirl1s] {
+        margin-top: .1em;
+        font-size: .9em;
+    }
+
+    .lx-card .card-text[b-yqpmvirl1s] {
+        margin: .5em 0 0 0;
+        font-size: .9em;
+    }
+/* _content/Leeax.Web.Components/Presentation/DropDown/LxDropDown.razor.rz.scp.css */
+.lx-dropdown[b-5d4kuw8ajk] {
+	position: relative;
+	display: inline-block;
+}
+
+.lx-dropdown .dropdown-content[b-5d4kuw8ajk] {
+	position: absolute;
+	padding: 0.5em 0;
+	border-radius: 5px;
+	z-index: 2;
+	left: 0;
+	transition: left 150ms ease-out, transform 150ms ease-out, opacity 150ms ease-in-out;
+	background-color: var(--lx-dropdown-background, var(--lx-color-neutral-white));
+}
+
+/* Align dropdown from right to left if cut off */
+.lx-dropdown .right-to-left[b-5d4kuw8ajk] {
+	transform: translateX(-100%);
+	left: 100%;
+}
+
+.lx-dropdown[b-5d4kuw8ajk]  > .t-enter {
+	transition: none; /* Reset transition during "enter" to prevent transformY from 0 to 30px and back to 0 (we want just 30px to 0) */
+}
+
+.lx-dropdown[b-5d4kuw8ajk]  > .t-enter,
+.lx-dropdown[b-5d4kuw8ajk]  > .t-leave-to {
+	transform: translateY(-30px);
+	opacity: 0;
+}
+
+.lx-dropdown[b-5d4kuw8ajk]  > .right-to-left.t-enter,
+.lx-dropdown[b-5d4kuw8ajk]  > .right-to-left.t-leave-to {
+	transform: translate(-100%, -30px);
+}
+/* _content/Leeax.Web.Components/Presentation/Icon/LxIcon.razor.rz.scp.css */
+.lx-icon[b-ocbn5uqmar] {
+    position: relative;
+    box-sizing: content-box;
+}
+
+    /* Style default image */
+    .lx-icon img[b-ocbn5uqmar] {
+        height: inherit;
+        width: inherit;
+    }
+
+    .lx-icon[b-ocbn5uqmar]  svg {
+        position: absolute;
+    }
+/* _content/Leeax.Web.Components/Presentation/ListView/ListView.razor.rz.scp.css */
+.lx-listview li[b-0bawb6sc14] {
+    padding: 0.4em 0.7em;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+/* _content/Leeax.Web.Components/Presentation/Paging/LxPaging.razor.rz.scp.css */
+/* Not interactable when fetching */
+.lx-paging.fetching .paging-content > ul[b-0c36q8ia5j],
+.lx-paging.fetching .paging-content > .paging-empty[b-0c36q8ia5j] {
+    opacity: 0.75;
+    transition: opacity 250ms;
+    user-select: none;
+}
+
+/* Toggle spinner with css for continous animation */
+.lx-paging:not(.fetching) .paging-content .paging-loader[b-0c36q8ia5j] {
+    display: none;
+}
+
+.paging-content[b-0c36q8ia5j] {
+    min-height: 5em;
+}
+
+    /* Position spinner and messages in center */
+    .paging-content .paging-empty[b-0c36q8ia5j],
+    .paging-content .paging-loader[b-0c36q8ia5j] {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* _content/Leeax.Web.Components/Presentation/Separator/LxSeparator.razor.rz.scp.css */
+.lx-separator[b-hy925qma7x] {
+    background-color: var(--lx-separator-color, var(--lx-color-neutral-quaternary));
+}
+
+    .lx-separator.horizontal[b-hy925qma7x] {
+        height: 1px;
+    }
+
+    .lx-separator.vertical[b-hy925qma7x] {
+        width: 1px;
+    }
+/* _content/Leeax.Web.Components/Presentation/TableView/LxTableView.razor.rz.scp.css */
+.lx-tableview[b-bf9dsiljz5] {
+    border: 1px solid var(--lx-tableview-border-color, var(--lx-color-neutral-quaternary));
+}
+
+table[b-bf9dsiljz5] {
+    border-collapse: collapse;
+}
+
+td[b-bf9dsiljz5],
+th[b-bf9dsiljz5] {
+    padding: 0;
+    height: inherit;
+}
+
+thead .tv-row[b-bf9dsiljz5],
+tbody .tv-row:not(:last-of-type)[b-bf9dsiljz5] {
+    border-bottom: 1px solid var(--lx-tableview-border-color, var(--lx-color-neutral-quaternary));
+}
+
+.tv-row[b-bf9dsiljz5] {
+    height: 1px;
+}
+
+/*tbody .tv-row {
+    transition: background 150ms;
+}*/
+
+.tv-cell-spacer[b-bf9dsiljz5] {
+    width: 0.4em;
+}
+
+[b-bf9dsiljz5] .tv-cell {
+    text-align: left;
+    font-weight: inherit;
+}
+
+tbody[b-bf9dsiljz5]  .tv-cell .tv-cell-inner {
+    min-height: 2.1em;
+}
+
+tbody[b-bf9dsiljz5]  .tv-cell-inner {
+    height: 100%;
+}
+
+[b-bf9dsiljz5] .tv-cell .tv-cell-inner {
+    display: flex;
+    align-items: center;
+    padding: 0.1em 0.7em;
+}
+
+[b-bf9dsiljz5] .tv-cell.tv-cell-icon .tv-cell-inner {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+thead[b-bf9dsiljz5]  .tv-cell .tv-cell-inner {
+    margin: 0.4em 0;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
+thead[b-bf9dsiljz5]  .tv-cell .lx-icon {
+    margin-left: 0.25em;
+}
+
+.tv-cell-action[b-bf9dsiljz5] {
+    overflow: hidden;
+}
+
+.tv-header[b-bf9dsiljz5] {
+    font-size: 0.85em;
+}
+
+/*.tv-row.interactable:hover .tv-cell-inner::after {
+    content: "";
+    background: var(--lx-color-neutral-lighter);
+}
+
+.tv-row.interactable:active .tv-cell-inner::after {
+    content: "";
+    background: var(--lx-color-neutral-light);
+}*/
+
+
+tbody .tv-row:nth-child(even)[b-bf9dsiljz5] {
+    background-color: var(--lx-tableview-row-even-background, transparent);
+}
+
+tbody .tv-row:nth-child(odd)[b-bf9dsiljz5] {
+    background-color: var(--lx-tableview-row-odd-background, var(--lx-color-neutral-lighter));
+}
