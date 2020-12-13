@@ -17,7 +17,7 @@ Libraries which contains basic functionality and helpers for the web.
 Boilerplate with basic components, controls and functionality for blazor.
 > **Attention**: These projects are currently optimized for _Blazor WebAssembly_, so _Server-Side_ may not work correctly.
 - [Leeax.Web.Components](docs/web-components/GettingStarted.md)
-- Leeax.Web.Components.Transition
+- [Leeax.Web.Components.Transition](docs/web-components-transition/GettingStarted.md)
 - Leeax.Web.Components.Theme
 
 #### Blazor JSInterop
