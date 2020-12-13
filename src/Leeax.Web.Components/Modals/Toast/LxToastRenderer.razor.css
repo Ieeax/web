@@ -49,7 +49,7 @@
         opacity: 0;
     }
 
-    ::deep .lx-toast.t-enter-active,
+    ::deep .lx-toast.t-enter-to,
     ::deep .lx-toast.t-leave-active {
         transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
     }

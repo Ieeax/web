@@ -16,7 +16,7 @@
         background: none;
     }
 
-    ::deep .lx-modal-background.t-enter-active,
+    ::deep .lx-modal-background.t-enter-to,
     ::deep .lx-modal-background.t-leave-active {
         transition: background 200ms ease-in-out;
     }
@@ -39,7 +39,7 @@
         opacity: 0;
     }
 
-    ::deep .lx-modal-background.t-enter-active .lx-modal,
+    ::deep .lx-modal-background.t-enter-to .lx-modal,
     ::deep .lx-modal-background.t-leave-active .lx-modal {
         transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
