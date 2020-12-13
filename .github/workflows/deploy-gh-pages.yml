@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+env:
+  # Stop wasting time caching packages
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  # Disable sending usage data to Microsoft
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  
+  # Path to the project to publish
+  PROJECT_NAME: demos/ComponentsDemo/ComponentsDemo.csproj
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+      - name: Publish
+        run: dotnet publish $PROJECT_NAME -c Release -o release --nologo
+      # Changes the base-tag in index.html from '/' to 'web' to match GitHub Pages repository subdirectory
+      - name: Change base-tag in index.html from / to web
+        run: sed -i 's/<base href="\/" \/>/<base href="\/web\/" \/>/g' release/wwwroot/index.html
+      # Add .nojekyll file to tell GitHub Pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+      - name: Commit to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot
