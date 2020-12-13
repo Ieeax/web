@@ -44,8 +44,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\JsInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
-    <ProjectReference Include="..\JsInterop\Leeax.Web.Components.Window\Leeax.Web.Components.Window.csproj" />
+    <ProjectReference Include="..\JSInterop\Leeax.Web.Components.DOM\Leeax.Web.Components.DOM.csproj" />
+    <ProjectReference Include="..\JSInterop\Leeax.Web.Components.Window\Leeax.Web.Components.Window.csproj" />
     <ProjectReference Include="..\Leeax.Web.Builders\Leeax.Web.Builders.csproj" />
     <ProjectReference Include="..\Leeax.Extensions.Web.Builders\Leeax.Extensions.Web.Builders.csproj" />
     <ProjectReference Include="..\Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj" />
