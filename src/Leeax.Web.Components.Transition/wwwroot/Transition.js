@@ -60,14 +60,10 @@ export function registerCallback(instance, element, hooks, action, prefix, type,
     // Request animation-frame(s) to add and remove transition classes
     requestAnimationFrame(() => {
         invokeHook(hooks, "before" + action[0].toUpperCase() + action.substr(1), element);
-        element.classList.add(prefix); // 1 frame before "-active"
+        element.classList.add(prefix, prefix + "-active");
         requestAnimationFrame(() => {
-            element.classList.add(prefix + "-active");
-            requestAnimationFrame(() => {
-                element.classList.remove(prefix);
-                if (action === "leave")
-                    element.classList.add(prefix + "-to");
-            });
+            element.classList.remove(prefix);
+            element.classList.add(prefix + "-to");
         });
     });
 }
@@ -89,21 +85,12 @@ function registerCallbackAfterEvent(id, instance, element, hooks, action, prefix
     const callback = (args) => {
         if (args.target !== element)
             return;
-        instance.invokeMethodAsync('HandleCallbackAsync', type === "animation" ? args.animationName : args.propertyName);
-        if (action === "leave") {
+        requestAnimationFrame(() => {
             element.classList.remove(prefix + "-active", prefix + "-to");
-            invokeHook(hooks, "afterLeave", element);
-        }
-        else {
-            requestAnimationFrame(() => {
-                element.classList.add(prefix + "-to");
-                requestAnimationFrame(() => {
-                    element.classList.remove(prefix + "-to");
-                    element.classList.remove(prefix + "-active");
-                    invokeHook(hooks, "afterEnter", element);
-                });
-            });
-        }
+            invokeHook(hooks, "after" + action[0].toUpperCase() + action.substr(1), element);
+            // Notify .NET that transition finished
+            instance.invokeMethodAsync('HandleCallbackAsync', type === "animation" ? args.animationName : args.propertyName);
+        });
         // Remove listener and cancel function
         element.removeEventListener(eventName, callback);
         delete _transitions[id];
@@ -133,21 +120,12 @@ function registerCallbackAfterDuration(id, instance, element, hooks, action, pre
     prefix = prefix + "-" + action;
     // Callback function which gets called when transition finished
     const callback = () => {
-        instance.invokeMethodAsync('HandleCallbackAsync', null);
-        if (action === "leave") {
+        requestAnimationFrame(() => {
             element.classList.remove(prefix + "-active", prefix + "-to");
-            invokeHook(hooks, "afterLeave", element);
-        }
-        else {
-            requestAnimationFrame(() => {
-                element.classList.add(prefix + "-to");
-                requestAnimationFrame(() => {
-                    element.classList.remove(prefix + "-to");
-                    element.classList.remove(prefix + "-active");
-                    invokeHook(hooks, "afterEnter", element);
-                });
-            });
-        }
+            invokeHook(hooks, "after" + action[0].toUpperCase() + action.substr(1), element);
+            // Notify .NET that transition finished
+            instance.invokeMethodAsync('HandleCallbackAsync', null);
+        });
         // Remove cancel function
         delete _transitions[id];
     };

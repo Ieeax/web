@@ -10,7 +10,7 @@ namespace Leeax.Web.Components.Presentation
     public class LxTransition : ComponentBase, IAsyncDisposable
     {
         public const string ModulePath = "./_content/Leeax.Web.Components.Transition/Transition.min.js";
-        public const string DefaultClassPrefix = "t";
+        public const string DefaultName = "t";
         public const string ClassNameWrapper = "lx-transition";
 
         private IJSObjectReference? _jsReference;
@@ -22,7 +22,7 @@ namespace Leeax.Web.Components.Presentation
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            if (!_renderContent 
+            if (!_renderContent
                 || _jsReference == null) // Prevent rendering content until js module is loaded
             {
                 return;
@@ -78,7 +78,7 @@ namespace Leeax.Web.Components.Presentation
             {
                 _target = Target.Current;
             }
-            
+
             // Check whether the target element exists in DOM
             if (_target.Id == null)
             {
@@ -135,7 +135,7 @@ namespace Leeax.Web.Components.Presentation
                 _target,
                 Hooks,
                 _state == TransitionState.Entering ? "enter" : "leave", // State should be either "Entering" or "Leaving"
-                ClassPrefix ?? DefaultClassPrefix,
+                Name ?? DefaultName,
                 Type == TransitionType.Animation ? "animation" : "transition",
                 _state == TransitionState.Entering ? Duration.DurationEnter : Duration.DurationLeave
             };
@@ -213,10 +213,11 @@ namespace Leeax.Web.Components.Presentation
         }
 
         /// <summary>
-        /// Gets or sets the class prefix. The default value is <see cref="DefaultClassPrefix"/>.
+        /// Gets or sets the transition name. Will be used as prefix for all transition classes. 
+        /// The default value is <see cref="DefaultName"/>.
         /// </summary>
         [Parameter]
-        public string? ClassPrefix { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or sets a <see cref="BackwardElementReference"/> which specifies the (child-) element to apply the transition to. If no target is specified, an additional &lt;div&gt; tag gets wrapped around the supplied <see cref="ChildContent"/>. 

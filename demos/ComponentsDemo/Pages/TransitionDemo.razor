@@ -9,7 +9,7 @@
                           Hooks="_jsHooks"
                           Duration="new TransitionDuration((int)DurationEnter, (int)DurationLeave)"
                           StateChanged="OnTransitionStateChanged">
-                <LxButton Text="Click me" 
+                <LxButton Text="Click me"
                           Appearance="Appearance.Raised" />
             </LxTransition>
             <span class="mt-3">Last state: @(nameof(TransitionState) + "." + LastTransitionState)</span>
@@ -22,8 +22,8 @@
         opacity: 0;
     }
 
-    .t-enter-active,
-    .t-leave-active {
+    .t-enter-to,
+    .t-leave-to {
         transition: all 1s;
     }
 &lt;/style&gt;
@@ -51,13 +51,13 @@
         opacity: 0;
     }
 
-    .t-enter-active,
-    .t-leave-active {
+    .t-enter-to,
+    .t-leave-to {
         transition: all 1s;
     }
 </style>
 
-@code{ 
+@code{
 
     private IJSObjectReference _jsHooks;
 
