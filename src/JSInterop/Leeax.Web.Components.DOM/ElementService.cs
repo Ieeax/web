@@ -16,11 +16,14 @@ namespace Leeax.Web.Components.DOM
         private readonly Dictionary<long, Action> _actionOutOfElementCallbacks = new Dictionary<long, Action>();
 
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
+        private readonly IJSRuntime _jsRuntime;
         private readonly IJSObjectReferenceStore _jsRefStore;
 
-        public ElementService(IJSObjectReferenceStore jsRefStore)
+        public ElementService(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
+            _jsRuntime = jsRuntime;
             _jsRefStore = jsRefStore;
+
             jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef);
         }
 
@@ -50,8 +53,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = parentSelector ?? throw new ArgumentNullException(nameof(parentSelector));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "insertMarkup",
@@ -63,8 +66,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<bool> InsertMarkupAsync(ElementReference parentElement, string? value, InsertionPosition position, MarkupType type)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "insertMarkup",
@@ -92,8 +95,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<bool> RemoveElementAsync(string selector)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "removeElement",
@@ -102,8 +105,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<bool> RemoveElementAsync(ElementReference element)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "removeElement",
@@ -131,8 +134,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask ScrollIntoViewAsync(ElementReference element, ScrollIntoViewAlignment block, ScrollIntoViewAlignment inline, bool smooth = false)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "scrollIntoView",
@@ -160,8 +163,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<ElementBoundingClientRect?> GetBoundingClientRectAsync(ElementReference element)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<ElementBoundingClientRect>(
                 "getBoundingClientRect",
@@ -177,8 +180,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<ElementPositionInfo?> GetPositionAsync(ElementReference element)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<ElementPositionInfo>(
                 "getPosition",
@@ -251,8 +254,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = handler ?? throw new ArgumentNullException(nameof(handler));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             var id = _actionOutOfElementCallbackId++;
 
@@ -269,8 +272,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask<bool> RemoveClickOutsideOfElementHandlerAsync(long handlerId)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             if (!_actionOutOfElementCallbacks.ContainsKey(handlerId))
             {

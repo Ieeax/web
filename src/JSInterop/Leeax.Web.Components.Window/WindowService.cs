@@ -11,11 +11,13 @@ namespace Leeax.Web.Components.Window
         internal const string ModulePath = "./_content/Leeax.Web.Components.Window/WindowService.min.js";
 
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
+        private readonly IJSRuntime _jsRuntime;
         private readonly IJSObjectReferenceStore _jsRefStore;
         private IEventManager? _eventManager;
 
-        public WindowService(IJSObjectReferenceStore jsRefStore)
+        public WindowService(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
+            _jsRuntime = jsRuntime;
             _jsRefStore = jsRefStore;
 
             if (jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef))
@@ -40,8 +42,8 @@ namespace Leeax.Web.Components.Window
 
         public async ValueTask OpenAsync(string? url, string? windowName)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "open",
@@ -69,8 +71,8 @@ namespace Leeax.Web.Components.Window
 
         public async ValueTask ScrollToAsync(int? top, int? left = null, bool smooth = false)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "scrollTo",
@@ -105,8 +107,8 @@ namespace Leeax.Web.Components.Window
 
         public async ValueTask ShowAlertAsync(string? message)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "window.alert",
@@ -115,8 +117,8 @@ namespace Leeax.Web.Components.Window
 
         public async ValueTask<bool> ShowConfirmAsync(string? message)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "window.confirm",
@@ -125,8 +127,8 @@ namespace Leeax.Web.Components.Window
 
         public async ValueTask<string?> ShowPromptAsync(string? message)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<string>(
                 "window.prompt",
@@ -146,8 +148,8 @@ namespace Leeax.Web.Components.Window
         {
             _ = propertyName ?? throw new ArgumentNullException(nameof(propertyName));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<T>(
                 "getProperty",

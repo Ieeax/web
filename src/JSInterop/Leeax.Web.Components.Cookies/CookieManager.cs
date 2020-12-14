@@ -11,11 +11,14 @@ namespace Leeax.Web.Components.Cookies
         public const string ModulePath = "./_content/Leeax.Web.Components.Cookies/CookieManager.min.js";
 
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
+        private readonly IJSRuntime _jsRuntime;
         private readonly IJSObjectReferenceStore _jsRefStore;
 
-        public CookieManager(IJSObjectReferenceStore jsRefStore)
+        public CookieManager(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
+            _jsRuntime = jsRuntime;
             _jsRefStore = jsRefStore;
+
             jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef);
         }
 
@@ -32,8 +35,8 @@ namespace Leeax.Web.Components.Cookies
         {
             _ = name ?? throw new ArgumentNullException(nameof(name));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<string>(
                 "getCookie",
@@ -63,8 +66,8 @@ namespace Leeax.Web.Components.Cookies
                 throw new ApplicationException($"The passed {nameof(CookieOptions)} were invalid. The cookie cannot be set.");
             }
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "setCookieRaw",
@@ -84,8 +87,8 @@ namespace Leeax.Web.Components.Cookies
         {
             _ = name ?? throw new ArgumentNullException(nameof(name));
             
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "removeCookie",

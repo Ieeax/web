@@ -10,11 +10,10 @@ namespace Leeax.Web.Components.Cookies
     {
         public static async Task ImportCookieModulesAsync(this WebAssemblyHost host)
         {
-            var store = host.Services.GetService<IJSObjectReferenceStore>();
-            if (store != null)
-            {
-                await store.ImportModuleAsync<IJSInProcessObjectReference>(CookieManager.ModuleKey, CookieManager.ModulePath);
-            }
+            var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();
+            var store = host.Services.GetRequiredService<IJSObjectReferenceStore>();
+
+            await jsRuntime.ImportModuleAsync<IJSInProcessObjectReference>(CookieManager.ModulePath, CookieManager.ModuleKey, store);
         }
     }
 }
