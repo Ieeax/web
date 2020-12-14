@@ -7,7 +7,7 @@ namespace Leeax.Web.Components.Abstractions
     {
         public static void AddJSObjectStore(this IServiceCollection services)
         {
-            services.TryAddSingleton<IJSObjectReferenceStore, JsObjectReferenceStore>();
+            services.TryAddSingleton<IJSObjectReferenceStore, JSObjectReferenceStore>();
         }
     }
 }

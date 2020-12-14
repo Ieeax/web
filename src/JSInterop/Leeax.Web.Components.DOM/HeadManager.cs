@@ -11,11 +11,14 @@ namespace Leeax.Web.Components.DOM
         public const string ModulePath = "./_content/Leeax.Web.Components.DOM/HeadManager.min.js";
 
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
+        private readonly IJSRuntime _jsRuntime;
         private readonly IJSObjectReferenceStore _jsRefStore;
 
-        public HeadManager(IJSObjectReferenceStore jsRefStore)
+        public HeadManager(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
+            _jsRuntime = jsRuntime;
             _jsRefStore = jsRefStore;
+
             jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef);
         }
 
@@ -28,8 +31,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask SetTitleAsync(string? value)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "setTitle",
@@ -59,8 +62,8 @@ namespace Leeax.Web.Components.DOM
 
         public async ValueTask ApplyStyleAsync(string? content, string? type, string? key)
         {
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "addOrUpdateStyle",
@@ -82,8 +85,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = key ?? throw new ArgumentNullException(nameof(key));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "removeStyle",
@@ -115,8 +118,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = options ?? throw new ArgumentNullException(nameof(options));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "addOrUpdateLink",
@@ -136,8 +139,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = key ?? throw new ArgumentNullException(nameof(key));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "removeLink",
@@ -153,9 +156,9 @@ namespace Leeax.Web.Components.DOM
         public async ValueTask ApplyScriptAsync(ScriptTagOptions options)
         {
             _ = options ?? throw new ArgumentNullException(nameof(options));
-            
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             await module.InvokeVoidAsync(
                 "addOrUpdateScript",
@@ -175,8 +178,8 @@ namespace Leeax.Web.Components.DOM
         {
             _ = key ?? throw new ArgumentNullException(nameof(key));
 
-            var module = await _jsRefStore
-                .ImportOrGetModuleAsync(ModuleKey, ModulePath);
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(ModulePath, ModuleKey, _jsRefStore);
 
             return await module.InvokeAsync<bool>(
                 "removeScript",

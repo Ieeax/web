@@ -10,11 +10,10 @@ namespace Leeax.Web.Components.Window
     {
         public static async Task ImportWindowModulesAsync(this WebAssemblyHost host)
         {
-            var store = host.Services.GetService<IJSObjectReferenceStore>();
-            if (store != null)
-            {
-                await store.ImportModuleAsync<IJSInProcessObjectReference>(WindowService.ModuleKey, WindowService.ModulePath);
-            }
+            var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();
+            var store = host.Services.GetRequiredService<IJSObjectReferenceStore>();
+
+            await jsRuntime.ImportModuleAsync<IJSInProcessObjectReference>(WindowService.ModulePath, WindowService.ModuleKey, store);
         }
     }
 }
