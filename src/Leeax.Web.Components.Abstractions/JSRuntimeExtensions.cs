@@ -6,10 +6,10 @@ namespace Leeax.Web.Components.Abstractions
 {
     public static class JSRuntimeExtensions
     {
-        public static Task<IJSObjectReference> ImportModuleAsync(this IJSRuntime jsRuntime, string path, string? name, IJSObjectReferenceStore? store = null)
+        public static Task<IJSObjectReference> ImportModuleAsync(this IJSRuntime jsRuntime, string path, string? name = null, IJSObjectReferenceStore? store = null)
             => ImportModuleAsync<IJSObjectReference>(jsRuntime, path, name, store);
 
-        public static async Task<T> ImportModuleAsync<T>(this IJSRuntime jsRuntime, string path, string? name, IJSObjectReferenceStore? store = null) 
+        public static async Task<T> ImportModuleAsync<T>(this IJSRuntime jsRuntime, string path, string? name = null, IJSObjectReferenceStore? store = null) 
             where T : IJSObjectReference
         {
             _ = path ?? throw new ArgumentNullException(nameof(path));
