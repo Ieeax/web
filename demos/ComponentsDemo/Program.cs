@@ -7,9 +7,8 @@ using Leeax.Icons.MaterialDesign;
 using Leeax.Web.Components.Modals;
 using Leeax.Web.Components.Configuration;
 using Leeax.Web.Components.Cookies;
-using Leeax.Web.Components;
 using Leeax.Web.Components.Theme;
-using Leeax.Web.Components.Abstractions;
+using Leeax.Web.Components;
 
 namespace ComponentsDemo
 {

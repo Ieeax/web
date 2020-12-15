@@ -1,4 +1,5 @@
 ﻿using Leeax.Web.Components.Abstractions;
+using Leeax.Web.Components.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using System.Linq;

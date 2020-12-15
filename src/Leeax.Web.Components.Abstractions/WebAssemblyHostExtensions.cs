@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+﻿using Leeax.Web.Components.Abstractions;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Threading.Tasks;
 
-namespace Leeax.Web.Components.Abstractions
+namespace Leeax.Web.Components.Configuration
 {
     public static class WebAssemblyHostExtensions
     {

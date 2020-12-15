@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Leeax.Web.Components.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace Leeax.Web.Components.Abstractions
+namespace Leeax.Web.Components.Configuration
 {
     public static class SetupExtensions
     {
