@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Leeax.Web.Components.Abstractions
@@ -11,14 +10,9 @@ namespace Leeax.Web.Components.Abstractions
     /// </summary>
     public class ModuleBootstrapper : IBootstrapper
     {
-        private readonly IEnumerable<ModuleInfo> _modules;
+        private readonly ModuleInfo[] _modules;
 
-        public ModuleBootstrapper(ModuleInfo module)
-        {
-            _modules = new ModuleInfo[] { module };
-        }
-
-        public ModuleBootstrapper(IEnumerable<ModuleInfo> modules)
+        public ModuleBootstrapper(params ModuleInfo[] modules)
         {
             _modules = modules ?? throw new ArgumentNullException(nameof(modules));
         }
