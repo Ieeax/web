@@ -1,16 +1,23 @@
 ﻿using Leeax.Web.Components.Modals;
 using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 
 namespace Leeax.Web.Components.Scopes
 {
     public partial class LxAppScope
     {
-        [Inject]
-        public IModalService DialogService { get; set; }
+        private IModalService? _modalService;
+        private IToastService? _toastService;
+
+        protected override void OnInitialized()
+        {
+            _modalService = ServiceProvider.GetService(typeof(IModalService)) as IModalService;
+            _toastService = ServiceProvider.GetService(typeof(IToastService)) as IToastService;
+        }
 
         [Inject]
-        public IToastService ToastService { get; set; }
+        public IServiceProvider ServiceProvider { get; set; }
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
