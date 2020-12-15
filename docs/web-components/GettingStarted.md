@@ -34,6 +34,8 @@ The stylesheet _"bootstrap.min.css"_ contains all required classes of bootstrap 
 ```csharp
 using Leeax.Web.Components.Configuration;
 using Leeax.Web.Components.Modals;
+using Leeax.Web.Components.Theme;
+using Leeax.Web.Components;
 
 ...
 
