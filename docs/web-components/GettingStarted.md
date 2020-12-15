@@ -60,14 +60,10 @@ public static async Task Main(string[] args)
         opt.InitialTheme = ThemeTypes.Light;
     });
     
-    var host = builder.Build();
-    
-    // Import all ES6 modules
-    await Task.WhenAll(
-        host.ImportDomModulesAsync(),
-        host.ImportWindowModulesAsync());
-    
-    await host.RunAsync();
+    // Run bootstrappers and then the app
+    // -> Bootstrappers are required for some jsinterop libraries
+    await builder.Build()
+        .RunWithBootstrappersAsync();
 }
 ```
 
