@@ -9,6 +9,7 @@ namespace Leeax.Web.Components.DOM
 {
     public class ElementService : IElementService
     {
+        public static ModuleInfo Module = new ModuleInfo(ModulePath, ModuleKey);
         public const string ModuleKey = "__" + nameof(ElementService);
         public const string ModulePath = "./_content/Leeax.Web.Components.DOM/ElementService.min.js";
 

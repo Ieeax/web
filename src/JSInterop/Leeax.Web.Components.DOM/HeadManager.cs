@@ -7,6 +7,7 @@ namespace Leeax.Web.Components.DOM
 {
     public class HeadManager : IHeadManager
     {
+        public static ModuleInfo Module = new ModuleInfo(ModulePath, ModuleKey);
         public const string ModuleKey = "__" + nameof(HeadManager);
         public const string ModulePath = "./_content/Leeax.Web.Components.DOM/HeadManager.min.js";
 
