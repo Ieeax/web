@@ -3,11 +3,11 @@
 
 <LxThemeScope>
     <div class="lx-bg-neutral-lighter lx-fg-neutral-primary position-relative" @attributes="Attributes">
-        @if (DialogService != null)
+        @if (_modalService != null)
         {
             <LxModalRenderer />
         }
-        @if (ToastService != null)
+        @if (_toastService != null)
         {
             <LxToastRenderer />
         }
