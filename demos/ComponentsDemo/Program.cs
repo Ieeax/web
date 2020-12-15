@@ -6,11 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Leeax.Icons.MaterialDesign;
 using Leeax.Web.Components.Modals;
 using Leeax.Web.Components.Configuration;
-using Leeax.Web.Components.DOM;
-using Leeax.Web.Components.Window;
 using Leeax.Web.Components.Cookies;
-using Leeax.Web.Components;
 using Leeax.Web.Components.Theme;
+using Leeax.Web.Components;
 
 namespace ComponentsDemo
 {
@@ -47,19 +45,10 @@ namespace ComponentsDemo
             // Add additional js-interop libraries
             builder.Services.AddCookies();
 
-            var host = builder.Build();
-
-            // Import all ES6 modules
-            await Task.WhenAll(
-                host.ImportDomModulesAsync(),
-                host.ImportWindowModulesAsync(),
-                host.ImportCookieModulesAsync());
-
-            // Add statis assets like CSS
-            // -> It's recommended to add the assets manually for production (in "index.html")
-            host.AddStaticAssets();
-
-            await host.RunAsync();
+            // Run bootstrappers and then the app
+            // -> Bootstrappers are required for some jsinterop libraries
+            await builder.Build()
+                .RunWithBootstrappersAsync();
         }
     }
 }

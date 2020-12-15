@@ -7,8 +7,9 @@ namespace Leeax.Web.Components.Window
 {
     public class WindowService : IWindowService
     {
-        internal const string ModuleKey = "__" + nameof(WindowService);
-        internal const string ModulePath = "./_content/Leeax.Web.Components.Window/WindowService.min.js";
+        public static ModuleInfo Module = new ModuleInfo(ModulePath, ModuleKey);
+        public const string ModuleKey = "__" + nameof(WindowService);
+        public const string ModulePath = "./_content/Leeax.Web.Components.Window/WindowService.min.js";
 
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
         private readonly IJSRuntime _jsRuntime;

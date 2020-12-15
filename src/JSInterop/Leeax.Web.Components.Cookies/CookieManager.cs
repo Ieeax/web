@@ -7,6 +7,7 @@ namespace Leeax.Web.Components.Cookies
 {
     public class CookieManager : ICookieManager
     {
+        public static ModuleInfo Module = new ModuleInfo(ModulePath, ModuleKey);
         public const string ModuleKey = "__" + nameof(CookieManager);
         public const string ModulePath = "./_content/Leeax.Web.Components.Cookies/CookieManager.min.js";
 

@@ -34,6 +34,8 @@ The stylesheet _"bootstrap.min.css"_ contains all required classes of bootstrap 
 ```csharp
 using Leeax.Web.Components.Configuration;
 using Leeax.Web.Components.Modals;
+using Leeax.Web.Components.Theme;
+using Leeax.Web.Components;
 
 ...
 
@@ -60,14 +62,10 @@ public static async Task Main(string[] args)
         opt.InitialTheme = ThemeTypes.Light;
     });
     
-    var host = builder.Build();
-    
-    // Import all ES6 modules
-    await Task.WhenAll(
-        host.ImportDomModulesAsync(),
-        host.ImportWindowModulesAsync());
-    
-    await host.RunAsync();
+    // Run bootstrappers and then the app
+    // -> Bootstrappers are required for some jsinterop libraries
+    await builder.Build()
+        .RunWithBootstrappersAsync();
 }
 ```
 
