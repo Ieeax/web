@@ -31,7 +31,7 @@ namespace Leeax.Web.Components.Modals
                     builder2.AddAttribute(6, "class", ClassNameBackground);
                     builder2.AddElementReferenceCapture(7, @ref => _modalReference.Current = @ref);
                     builder2.OpenElement(8, "div");
-                    builder2.AddAttribute(9, "class", ClassName + " lx-elevation-l6 p-3 m-5");
+                    builder2.AddAttribute(9, "class", ClassName + " lx-elevation-l5 p-3 m-5");
                     builder2.OpenComponent(10, State.ComponentType);
                     builder2.AddAttribute(11, "Model", State.Model);
                     builder2.CloseComponent();
