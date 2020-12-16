@@ -78,6 +78,7 @@ public static async Task Main(string[] args)
 @using Leeax.Web.Components.Navigation
 @using Leeax.Web.Components.Presentation
 @using Leeax.Web.Components.Modals
+@using Leeax.Web.Components.Theme
 ```
 Adding these usings is optional. If not added required usings need to be manually added in each Razor-component.
 
