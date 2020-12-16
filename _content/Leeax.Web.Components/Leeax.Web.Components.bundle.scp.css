@@ -531,7 +531,7 @@ input[type=number][b-r1f4krlj70] {
 
     [b-59u2xpul8h] .lx-modal-background.t-enter-to,
     [b-59u2xpul8h] .lx-modal-background.t-leave-active {
-        transition: background 200ms ease-in-out;
+        transition: background 150ms ease-in-out;
     }
 
     /* lx-modal */
@@ -543,18 +543,21 @@ input[type=number][b-r1f4krlj70] {
     }
 
     [b-59u2xpul8h] .lx-modal-background.t-enter .lx-modal {
-        transform: translateY(50%);
+        transform: scale(1.25);
         opacity: 0;
     }
 
     [b-59u2xpul8h] .lx-modal-background.t-leave-to .lx-modal {
-        transform: translateY(-50%);
+        transform: scale(0.75);
         opacity: 0;
     }
 
-    [b-59u2xpul8h] .lx-modal-background.t-enter-to .lx-modal,
+    [b-59u2xpul8h] .lx-modal-background.t-enter-to .lx-modal {
+        transition: opacity 150ms ease-out, transform 150ms ease-out;
+    }
+
     [b-59u2xpul8h] .lx-modal-background.t-leave-active .lx-modal {
-        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+        transition: opacity 150ms ease-in, transform 150ms ease-in;
     }
 /* _content/Leeax.Web.Components/Modals/Toast/LxToastRenderer.razor.rz.scp.css */
 .lx-toastrenderer[b-1tbers34aa] {
