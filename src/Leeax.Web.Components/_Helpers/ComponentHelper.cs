@@ -6,8 +6,8 @@ namespace Leeax.Web.Components
     {
         public static Color GetForegroundColor(Appearance appearance, Color backgroundColor, Color colorWhenTransparent)
         {
-            return appearance == Appearance.Outlined 
-                || appearance == Appearance.Normal 
+            return appearance == Appearance.Inline
+                || appearance == Appearance.Outlined 
                 || backgroundColor == Color.Transparent
 
                 ? colorWhenTransparent
