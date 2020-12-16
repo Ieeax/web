@@ -61,7 +61,7 @@ jobs:
           arrTag=(${GITHUB_REF//\// })
           VERSION="${arrTag[2]}"
           echo Version: $VERSION
-          VERSION="${VERSION//v}"
+          VERSION="${VERSION:1}"
           echo Clean Version: $VERSION
           for proj in $(find ./src -name "*.csproj")
           do
