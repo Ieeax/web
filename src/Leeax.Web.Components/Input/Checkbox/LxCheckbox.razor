@@ -2,5 +2,7 @@
 @inherits ValueComponentBase<bool>
 
 <label @attributes="AttributeSet">
-    <input type="checkbox" value="@Value" @onchange="OnValueChanged" />
+    <input type="checkbox"
+           checked="@Value"
+           @onchange="OnValueChanged" />
 </label>
