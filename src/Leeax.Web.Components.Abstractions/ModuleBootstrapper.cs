@@ -24,20 +24,10 @@ namespace Leeax.Web.Components.Abstractions
 
             foreach (var curModule in _modules)
             {
-                if (jsRuntime is IJSInProcessRuntime)
-                {
-                    await jsRuntime.ImportModuleAsync<IJSInProcessObjectReference>(
-                        curModule.Path,
-                        curModule.Name,
-                        store);
-                }
-                else
-                {
-                    await jsRuntime.ImportModuleAsync(
-                        curModule.Path,
-                        curModule.Name,
-                        store);
-                }
+                await jsRuntime.ImportModuleAsync(
+                    curModule.Path,
+                    curModule.Name,
+                    store);
             }
 
             return 0;
