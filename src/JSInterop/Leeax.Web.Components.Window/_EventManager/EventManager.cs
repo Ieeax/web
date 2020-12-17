@@ -11,136 +11,195 @@ namespace Leeax.Web.Components.Window
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
         private readonly IJSObjectReference _jsObjectRef;
 
-        private readonly Dictionary<Guid, EventData> _subscriptionIdHandlerMapping;
-        private readonly Dictionary<EventInfo, Guid> _handlerSubscriptionIdMapping;
+        private readonly Dictionary<string, Dictionary<Type, HashSet<EventHandler>>> _eventHandlerMapping;
 
         public EventManager(IJSObjectReference jsObjectRef)
         {
             _jsObjectRef = jsObjectRef;
             _jsInProcessObjectRef = jsObjectRef as IJSInProcessObjectReference;
-
-            _subscriptionIdHandlerMapping = new Dictionary<Guid, EventData>();
-            _handlerSubscriptionIdMapping = new Dictionary<EventInfo, Guid>();
+            _eventHandlerMapping = new();
         }
 
         public void AddEventHandler<TArgument>(string eventName, Action<TArgument?> handler) 
             where TArgument : EventArgs
         {
-            var subscriptionId = AddEventHandlerInternal(eventName, handler);
-
-            // Trigger js function to add a eventhandler
-            _jsInProcessObjectRef!.InvokeVoid(
-                "addEventHandler",
-                eventName,
-                subscriptionId,
-                nameof(HandleEventCallback),
-                DotNetObjectReference.Create(this));
+            if (AddEventHandlerInternal(eventName, handler))
+            {
+                // Add inital event-handler for the given event
+                _jsInProcessObjectRef!.InvokeVoid(
+                    "addEventHandler",
+                    eventName,
+                    nameof(HandleEventCallback),
+                    DotNetObjectReference.Create(this));
+            }
         }
 
         public async Task AddEventHandlerAsync<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
-            var subscriptionId = AddEventHandlerInternal(eventName, handler);
-
-            // Trigger js function to add a eventhandler
-            await _jsObjectRef.InvokeVoidAsync(
-                "addEventHandler",
-                eventName,
-                subscriptionId,
-                nameof(HandleEventCallback),
-                DotNetObjectReference.Create(this));
+            if (AddEventHandlerInternal(eventName, handler))
+            {
+                // Add inital event-handler for the given event
+                await _jsObjectRef.InvokeVoidAsync(
+                    "addEventHandler",
+                    eventName,
+                    nameof(HandleEventCallback),
+                    DotNetObjectReference.Create(this));
+            }
         }
 
-        private Guid AddEventHandlerInternal<TArgument>(string eventName, Action<TArgument?> handler)
+        private bool AddEventHandlerInternal<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
             _ = eventName ?? throw new ArgumentNullException(nameof(eventName));
             _ = handler ?? throw new ArgumentNullException(nameof(handler));
 
-            var subscriptionId = Guid.NewGuid();
+            // Create the event-handler, encapsulated for easy invocation
+            var eventHandler = new EventHandler(handler, e => handler(e as TArgument));
 
-            _subscriptionIdHandlerMapping.Add(
-                subscriptionId,
-                new EventData(typeof(TArgument), (e) => handler(e as TArgument)));
+            if (!_eventHandlerMapping.TryGetValue(eventName, out var eventArgsCallbackMapping))
+            {
+                eventArgsCallbackMapping = new();
+                _eventHandlerMapping.Add(eventName, eventArgsCallbackMapping);
+            }
+            else
+            {
+                if (eventArgsCallbackMapping.TryGetValue(typeof(TArgument), out var handlers))
+                {
+                    if (!handlers.Add(eventHandler))
+                    {
+                        throw new ArgumentException("Passed event-handler was already registered. An event-handler can only be registered once per event.", nameof(handler));
+                    }
 
-            _handlerSubscriptionIdMapping.Add(
-                new EventInfo(eventName, handler),
-                subscriptionId);
+                    return false;
+                }
+            }
 
-            return subscriptionId;
+            eventArgsCallbackMapping.Add(
+                typeof(TArgument),
+                new HashSet<EventHandler>()
+                {
+                    eventHandler
+                });
+
+            return true;
         }
 
         public void RemoveEventHandler<TArgument>(string eventName, Action<TArgument?> handler) 
             where TArgument : EventArgs
         {
-            var subscriptionId = RemoveEventHandlerInternal(eventName, handler);
-
-            // Trigger js function to remove the eventhandler
-            _jsInProcessObjectRef!.InvokeVoid(
-                "removeEventHandler",
-                subscriptionId);
+            if (RemoveEventHandlerInternal(eventName, handler))
+            {
+                // Remove event-handler when the last event-handler was removed
+                _jsInProcessObjectRef!.InvokeVoid("removeEventHandler");
+            }
         }
 
         public async Task RemoveEventHandlerAsync<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
-            var subscriptionId = RemoveEventHandlerInternal(eventName, handler);
-
-            // Trigger js function to remove the eventhandler
-            await _jsObjectRef.InvokeVoidAsync(
-                "removeEventHandler",
-                subscriptionId);
+            if (RemoveEventHandlerInternal(eventName, handler))
+            {
+                // Remove event-handler when the last event-handler was removed
+                await _jsObjectRef.InvokeVoidAsync("removeEventHandler");
+            }
         }
 
-        public Guid RemoveEventHandlerInternal<TArgument>(string eventName, Action<TArgument?> handler)
+        public bool RemoveEventHandlerInternal<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
             _ = eventName ?? throw new ArgumentNullException(nameof(eventName));
             _ = handler ?? throw new ArgumentNullException(nameof(handler));
 
-            var eventInfo = new EventInfo(eventName, handler);
-
-            if (!_handlerSubscriptionIdMapping.TryGetValue(eventInfo, out var subscriptionId))
+            if (!_eventHandlerMapping.TryGetValue(eventName, out var eventArgsCallbackMapping))
             {
-                throw new ApplicationException($"No matching handler to remove was found. Ensure the handler for '{eventName}' is registered.");
+                return false;
             }
 
-            _subscriptionIdHandlerMapping.Remove(subscriptionId);
-            _handlerSubscriptionIdMapping.Remove(eventInfo);
+            if (!eventArgsCallbackMapping.TryGetValue(typeof(TArgument), out var handlers))
+            {
+                return false;
+            }
 
-            return subscriptionId;
+            if (!handlers.Remove(new EventHandler(handler, null)))
+            {
+                return false;
+            }
+
+            // Check whether we can remove the current listener from javascript too
+            if (handlers.Count == 0)
+            {
+                eventArgsCallbackMapping.Remove(typeof(TArgument));
+            }
+
+            if (eventArgsCallbackMapping.Count == 0)
+            {
+                _eventHandlerMapping.Remove(eventName);
+
+                // No more handlers for this event registered
+                // -> We can safely remove the listener from js
+                return true;
+            }
+
+            return false;
         }
 
         [JSInvokable]
-        public void HandleEventCallback(Guid sid, string args)
+        public void HandleEventCallback(string eventName, string argsAsJson)
         {
-            if (sid == Guid.Empty)
+            if (eventName == null)
             {
-                // If this message gets logged, probably something with jsinterop went wrong
-                Console.WriteLine($"[WARN] Invalid subscription-id '{sid}' wered passed from javascript.");
+                Console.WriteLine($"[WARN] Invalid event-name was passed from javascript.");
                 return;
             }
 
-            if (_subscriptionIdHandlerMapping.TryGetValue(sid, out var eventInfo))
+            if (!_eventHandlerMapping.TryGetValue(eventName, out var eventArgsCallbackMapping))
+            {
+                Console.WriteLine($"[WARN] Invalid event-name \"{eventName}\" was passed from javascript. No event-handlers registered.");
+                return;
+            }
+
+            foreach (var curItem in eventArgsCallbackMapping)
             {
                 EventArgs? parsedArgs = null;
-                try
-                {
-                    parsedArgs = args == null
-                        ? null
-                        : JsonSerializer.Deserialize(args, eventInfo.ArgumentType) as EventArgs;
-                }
-                catch (JsonException)
-                {
-                    Console.WriteLine($"[WARN] Arguments for subscription-id '{sid}' couldn't be parsed to .NET-type '{eventInfo.ArgumentType.FullName}'.");
-                }
 
-                eventInfo.Handler(parsedArgs);
-                return;
+                if (curItem.Key == typeof(EventArgs))
+                {
+                    // Ignore deserializing if user specified type "EventArgs"
+                    // -> User doesn't care for any arguments
+                    parsedArgs = EventArgs.Empty;
+                }
+                else if (string.IsNullOrEmpty(argsAsJson))
+                {
+                    Console.WriteLine($"[WARN] Passed argument-string from javascript cannot be deserialized. Skipping {curItem.Value.Count} event-handlers ...");
+                    continue;
+                }
+                else
+                {
+                    try
+                    {
+                        parsedArgs = JsonSerializer.Deserialize(argsAsJson, curItem.Key) as EventArgs;
+                    }
+                    catch (JsonException)
+                    {
+                        Console.WriteLine($"[WARN] Arguments for event \"{eventName}\" couldn't be deserialized to .NET type \"{curItem.Key.FullName}\". Skipping {curItem.Value.Count} event-handlers ...");
+                        continue;
+                    }
+                }
+                
+                // Invoke all callbacks/event-handler
+                foreach (var curHandler in curItem.Value)
+                {
+                    try
+                    {
+                        curHandler.Invoke(parsedArgs);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine($"[WARN] An exception occured during executing an event-handler for event \"{eventName}\".");
+                    }
+                }
             }
-
-            // If this message gets logged, we probably have a problem with unsubscribing from an eventhandler
-            Console.WriteLine($"[WARN] Unkown subscription-id '{sid}' were passed from javascript.");
         }
     }
 }
