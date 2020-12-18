@@ -26,11 +26,11 @@ namespace Leeax.Web.Builders
             return builder.AddAttribute("class", x => (x == null ? null : x + " ") + classBuilder.ToString());
         }
 
-        public static AttributeSetBuilder AddStyleAttribute(this AttributeSetBuilder builder, Action<ICSSBuilder> builderFactory)
+        public static AttributeSetBuilder AddStyleAttribute(this AttributeSetBuilder builder, Action<ICssBuilder> builderFactory)
         {
             builderFactory.ThrowIfNull();
 
-            var cssBuilder = CSSBuilder.Create();
+            var cssBuilder = CssBuilder.Create();
 
             builderFactory.Invoke(cssBuilder);
 
