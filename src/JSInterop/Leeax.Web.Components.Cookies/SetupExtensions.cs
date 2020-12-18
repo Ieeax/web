@@ -8,6 +8,9 @@ namespace Leeax.Web.Components.Cookies
 {
     public static class SetupExtensions
     {
+        /// <summary>
+        /// Adds all services required for using <see cref="ICookieManager"/>.
+        /// </summary>
         public static void AddCookies(this IServiceCollection services)
         {
             // Determine whether we running on WebAssembly or Server-Side
