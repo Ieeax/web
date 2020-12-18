@@ -1,4 +1,4 @@
-const _windowEvents = {};
+const _listeners = {};
 export function scrollTo(top, left, smooth) {
     if (top === null && left === null) {
         return;
@@ -10,7 +10,7 @@ export function scrollTo(top, left, smooth) {
     else {
         options.top = top;
     }
-    if (smooth) {
+    if (smooth === true) {
         options.behavior = "smooth";
     }
     window.scrollTo(options);
@@ -18,24 +18,20 @@ export function scrollTo(top, left, smooth) {
 export function getProperty(propertyName) {
     return window[propertyName];
 }
-export function addEventHandler(event, sid, dotNetMethod, instance) {
-    const that = this;
-    _windowEvents[sid] = {
-        event: event,
-        callback: function callback(e) {
-            instance.invokeMethod(dotNetMethod, sid, that.parseEventArgs(event, e));
-        }
-    };
-    window.addEventListener(event, _windowEvents[sid].callback);
+export function addEventHandler(event, dotNetMethodName, dotNetInstance) {
+    if (event in _listeners) {
+        window.removeEventListener(event, _listeners[event]);
+    }
+    _listeners[event] = (e) => dotNetInstance.invokeMethod(dotNetMethodName, event, stringifyEventArgsAsJson(event, e));
+    window.addEventListener(event, _listeners[event]);
 }
-export function removeEventHandler(sid) {
-    if (sid in _windowEvents) {
-        const eventData = _windowEvents[sid];
-        window.removeEventListener(eventData.event, eventData.callback);
-        delete _windowEvents[sid];
+export function removeEventHandler(event) {
+    if (event in _listeners) {
+        window.removeEventListener(event, _listeners[event]);
+        delete _listeners[event];
     }
 }
-export function parseEventArgs(event, e) {
+export function stringifyEventArgsAsJson(event, e) {
     switch (event) {
         case "click":
         case "mouseup":
@@ -60,9 +56,9 @@ export function parseEventArgs(event, e) {
         case "touchmove":
             return JSON.stringify({
                 Detail: 0,
-                Touches: parseTouchPoints(e.touches),
-                TargetTouches: parseTouchPoints(e.targetTouches),
-                ChangedTouches: parseTouchPoints(e.changedTouches),
+                Touches: getTouchPointCollection(e.touches),
+                TargetTouches: getTouchPointCollection(e.targetTouches),
+                ChangedTouches: getTouchPointCollection(e.changedTouches),
                 CtrlKey: e.ctrlKey,
                 ShiftKey: e.shiftKey,
                 AltKey: e.altKey,
@@ -71,15 +67,15 @@ export function parseEventArgs(event, e) {
         case "resize":
             return "{}";
     }
-    throw new Error("Event arguments for '" + event + "' cannot be parsed. Event not implemented yet.");
+    throw new Error("Unknown event '" + event + "'. Event arguments couldn't be parsed.");
 }
-function parseTouchPoints(list) {
+function getTouchPointCollection(collection) {
     const result = [];
-    if (!list) {
-        return [];
+    if (!collection) {
+        return result;
     }
-    for (var i = 0; i < list.length; i++) {
-        const current = list[i];
+    for (var i = 0; i < collection.length; i++) {
+        const current = collection[i];
         result.push({
             Identifier: 0,
             ScreenX: current.screenX,
