@@ -1,7 +1,13 @@
-﻿import { EventCallbackData } from "./EventCallbackData";
+﻿const _listeners: { [eventName: string]: (e: any) => void } = {};
 
-const _windowEvents: { [sid: string]: EventCallbackData } = {};
-
+/**
+ * Scrolls to the given position in the document.
+ *
+ * @param top The distance to the top in pixel.
+ * @param left The distance to the left in pixel.
+ * @param smooth Determines whether the scrolling should be smooth
+ *
+ */
 export function scrollTo(top: number, left: number, smooth: boolean): void {
 
     if (top === null && left === null) {
@@ -17,42 +23,72 @@ export function scrollTo(top: number, left: number, smooth: boolean): void {
         options.top = top;
     }
 
-    if (smooth) {
+    if (smooth === true) {
         options.behavior = "smooth";
     }
 
     window.scrollTo(options);
 }
 
+/**
+ * Gets the value of the given property name.
+ *
+ * @param propertyName The property name for which the value should be returned.
+ *
+ */
 export function getProperty(propertyName: string): any {
     return window[propertyName];
 }
 
-export function addEventHandler(event: string, sid: string, dotNetMethod: string, instance: any): void {
+/**
+ * Adds the event handler/listener for the given event name.
+ *
+ * @param event The event name for which the event handler/listener should be removed.
+ * @param dotNetMethodName The name of the .NET method to call when the event is raised.
+ * @param dotNetInstance The .NET instance on which the callback should be invoked.
+ *
+ */
+export function addEventHandler(event: string, dotNetMethodName: string, dotNetInstance: any): void {
 
-    const that = this;
-    _windowEvents[sid] = {
-        event: event,
-        callback: function callback(e) {
-            instance.invokeMethod(dotNetMethod, sid, that.parseEventArgs(event, e));
-        }
-    };
+    // Check whether a listener for this event is already defined
+    // and remove it if that's the case
+    if (event in _listeners) {
+        window.removeEventListener(event, _listeners[event]);
+    }
 
-    window.addEventListener(event, _windowEvents[sid].callback);
+    // Define the new callback
+    _listeners[event] = (e) => dotNetInstance.invokeMethod(dotNetMethodName, event, stringifyEventArgsAsJson(event, e));
+
+    // Register the listener for the given event
+    window.addEventListener(event, _listeners[event]);
 }
 
-export function removeEventHandler(sid: string): void {
+/**
+ * Removes the event handler/listener for the given event name.
+ * 
+ * @param event The event name for which the event handler/listener should be removed.
+ * 
+ */
+export function removeEventHandler(event: string): void {
 
-    if (sid in _windowEvents) {
+    // Check whether a listener for this event is defined
+    // and remove it if that's the case
+    if (event in _listeners) {
+        window.removeEventListener(event, _listeners[event]);
 
-        const eventData = _windowEvents[sid];
-        window.removeEventListener(eventData.event, eventData.callback);
-
-        delete _windowEvents[sid];
+        // Remove callback from object
+        delete _listeners[event];
     }
 }
 
-export function parseEventArgs(event: string, e: any): string {
+/**
+ * Helper function which brings the passed arguments in the correct form and returns them as string.
+ * 
+ * @param event The event name.
+ * @param e The arguments to format.
+ * 
+ */
+export function stringifyEventArgsAsJson(event: string, e: any): string {
 
     switch (event) {
         case "click":
@@ -78,9 +114,9 @@ export function parseEventArgs(event: string, e: any): string {
         case "touchmove":
             return JSON.stringify({
                 Detail: 0,
-                Touches: parseTouchPoints(e.touches),
-                TargetTouches: parseTouchPoints(e.targetTouches),
-                ChangedTouches: parseTouchPoints(e.changedTouches),
+                Touches: getTouchPointCollection(e.touches),
+                TargetTouches: getTouchPointCollection(e.targetTouches),
+                ChangedTouches: getTouchPointCollection(e.changedTouches),
                 CtrlKey: e.ctrlKey,
                 ShiftKey: e.shiftKey,
                 AltKey: e.altKey,
@@ -90,19 +126,25 @@ export function parseEventArgs(event: string, e: any): string {
             return "{}";
     }
 
-    throw new Error("Event arguments for '" + event + "' cannot be parsed. Event not implemented yet.");
+    throw new Error("Unknown event '" + event + "'. Event arguments couldn't be parsed.");
 }
 
-function parseTouchPoints(list: any[]): any[] {
+/**
+ * Helper function which brings the passed touch points in the correct form.
+ *
+ * @param collection The collection of touch points. Can be null or undefined.
+ *
+ */
+function getTouchPointCollection(collection: any[]): any[] {
     const result = [];
 
-    if (!list) {
-        return [];
+    if (!collection) {
+        return result;
     }
 
-    for (var i = 0; i < list.length; i++) {
+    for (var i = 0; i < collection.length; i++) {
 
-        const current = list[i];
+        const current = collection[i];
 
         result.push({
             Identifier: 0,

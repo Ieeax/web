@@ -8,6 +8,9 @@ namespace Leeax.Web.Components.Window
 {
     public static class SetupExtensions
     {
+        /// <summary>
+        /// Adds all services required for using <see cref="IWindowService"/>.
+        /// </summary>
         public static void AddWindowApi(this IServiceCollection services)
         {
             // Determine whether we running on WebAssembly or Server-Side

@@ -14,17 +14,16 @@ namespace Leeax.Web.Components.Window
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
         private readonly IJSRuntime _jsRuntime;
         private readonly IJSObjectReferenceStore _jsRefStore;
-        private IEventManager? _eventManager;
+
+        private IEventManager _eventManager;
 
         public WindowService(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
             _jsRuntime = jsRuntime;
             _jsRefStore = jsRefStore;
+            _eventManager = new WindowEventManager(jsRuntime, jsRefStore);
 
-            if (jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef))
-            {
-                _eventManager = new EventManager(_jsInProcessObjectRef!);
-            }
+            jsRefStore.TryGet(ModuleKey, out _jsInProcessObjectRef);
         }
 
         public void Open(string? url, bool openInNewTab)
@@ -158,8 +157,8 @@ namespace Leeax.Web.Components.Window
         }
 
         public IEventManager EventManager
-        { 
-            get => _eventManager ?? throw new NotSupportedException();
+        {
+            get => _eventManager;
             private set => _eventManager = value;
         }
     }
