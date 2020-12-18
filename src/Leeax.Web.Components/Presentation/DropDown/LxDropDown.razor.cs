@@ -96,7 +96,7 @@ namespace Leeax.Web.Components.Presentation
             }
 
             var currentAlignment = _alignContentLeftToRight;
-            _alignContentLeftToRight = ((posParent.Right + posParent.Width) >= posContent.Width);
+            _alignContentLeftToRight = ((posParent.Right + posParent.Width - 30) >= posContent.Width);
 
             if (currentAlignment != _alignContentLeftToRight)
             {
