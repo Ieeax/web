@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Leeax.Web.Components.Abstractions;
 using Microsoft.JSInterop;
 
 namespace Leeax.Web.Components.Window
 {
-    public class EventManager : IEventManager
+    public class WindowEventManager : IEventManager
     {
         private readonly IJSInProcessObjectReference? _jsInProcessObjectRef;
-        private readonly IJSObjectReference _jsObjectRef;
+        private readonly IJSRuntime _jsRuntime;
+        private readonly IJSObjectReferenceStore _jsRefStore;
 
         private readonly Dictionary<string, Dictionary<Type, HashSet<EventHandler>>> _eventHandlerMapping;
 
-        public EventManager(IJSObjectReference jsObjectRef)
+        public WindowEventManager(IJSRuntime jsRuntime, IJSObjectReferenceStore jsRefStore)
         {
-            _jsObjectRef = jsObjectRef;
-            _jsInProcessObjectRef = jsObjectRef as IJSInProcessObjectReference;
+            _jsRuntime = jsRuntime;
+            _jsRefStore = jsRefStore;
             _eventHandlerMapping = new();
+
+            jsRefStore.TryGet(WindowService.ModuleKey, out _jsInProcessObjectRef);
         }
 
         public void AddEventHandler<TArgument>(string eventName, Action<TArgument?> handler) 
@@ -37,10 +41,13 @@ namespace Leeax.Web.Components.Window
         public async Task AddEventHandlerAsync<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(WindowService.ModulePath, WindowService.ModuleKey, _jsRefStore);
+
             if (AddEventHandlerInternal(eventName, handler))
             {
                 // Add inital event-handler for the given event
-                await _jsObjectRef.InvokeVoidAsync(
+                await module.InvokeVoidAsync(
                     "addEventHandler",
                     eventName,
                     nameof(HandleEventCallback),
@@ -98,10 +105,13 @@ namespace Leeax.Web.Components.Window
         public async Task RemoveEventHandlerAsync<TArgument>(string eventName, Action<TArgument?> handler)
             where TArgument : EventArgs
         {
+            var module = await _jsRuntime
+                .ImportOrGetModuleAsync(WindowService.ModulePath, WindowService.ModuleKey, _jsRefStore);
+
             if (RemoveEventHandlerInternal(eventName, handler))
             {
                 // Remove event-handler when the last event-handler was removed
-                await _jsObjectRef.InvokeVoidAsync("removeEventHandler");
+                await module.InvokeVoidAsync("removeEventHandler");
             }
         }
 
