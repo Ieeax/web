@@ -27,6 +27,14 @@ Add the following code to your application:
 
 <!-- It's best to load this after the javascript from blazor itself -->
 <script src="_content/Leeax.Web.Components/jsinterop.min.js"></script>
+
+<!-- If you want you can add the following html to display an initial loading animation -->
+<div id="app">
+    <div class="lx-app-center">
+        <div class="lx-app-animation mx-auto"></div> <!-- Animation which gets displayed while loading the resources (dlls) -->
+        <span class="d-block mx-auto mt-2">Loading application ...</span> <!-- Some text for the user -->
+    </div>
+</div>
 ```
 The stylesheet _"bootstrap.min.css"_ contains all required classes of bootstrap (around 5kb), if your using bootstrap already this file can be omitted.
 
