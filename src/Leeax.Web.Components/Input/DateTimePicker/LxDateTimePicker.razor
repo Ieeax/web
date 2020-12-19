@@ -27,7 +27,7 @@
                                       ValueChanged="ValueChanged" />
                     if (Type == DateTimePickerType.DateTime)
                     {
-                        <LxSeparator Orientation="Orientation.Vertical" />
+                        <LxSeparator Class="my-1 mx-2" />
                     }
                 }
                 @if (Type == DateTimePickerType.Date
@@ -39,7 +39,7 @@
                                       FormatProvider="FormatProvider" />
                     @if (ShowMonthPicker)
                     {
-                        <LxSeparator Orientation="Orientation.Vertical" />
+                        <LxSeparator Class="my-1 mx-2" />
                         <LxMonthPickerView Value="Value"
                                            ValueChanged="ValueChanged"
                                            @bind-ShownValue="ShownValue"
