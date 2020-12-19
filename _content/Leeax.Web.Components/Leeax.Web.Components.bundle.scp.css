@@ -843,16 +843,15 @@ input[type=number][b-r1f4krlj70] {
     }
 /* _content/Leeax.Web.Components/Presentation/Separator/LxSeparator.razor.rz.scp.css */
 .lx-separator[b-hy925qma7x] {
-    background-color: var(--lx-separator-color, var(--lx-color-neutral-quaternary));
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-width: 0;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--lx-separator-color, var(--lx-color-neutral-quaternary));
 }
-
-    .lx-separator.horizontal[b-hy925qma7x] {
-        height: 1px;
-    }
-
-    .lx-separator.vertical[b-hy925qma7x] {
-        width: 1px;
-    }
 /* _content/Leeax.Web.Components/Presentation/TableView/LxTableView.razor.rz.scp.css */
 .lx-tableview[b-bf9dsiljz5] {
     border: 1px solid var(--lx-tableview-border-color, var(--lx-color-neutral-quaternary));
