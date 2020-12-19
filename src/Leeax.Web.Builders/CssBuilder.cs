@@ -2,23 +2,23 @@
 
 namespace Leeax.Web.Builders
 {
-    public class CSSBuilder : ICSSBuilder
+    public class CssBuilder : ICssBuilder
     {
         private string? _str;
 
-        private CSSBuilder()
+        private CssBuilder()
         {
         }
 
         #region Factory methods to create builder
-        public static CSSBuilder Create()
+        public static CssBuilder Create()
         {
-            return new CSSBuilder();
+            return new CssBuilder();
         }
 
-        public static CSSBuilder Create(string? value)
+        public static CssBuilder Create(string? value)
         {
-            var builder = new CSSBuilder();
+            var builder = new CssBuilder();
 
             if (value != null)
             {
@@ -29,12 +29,12 @@ namespace Leeax.Web.Builders
         }
 
         /// <summary>
-        /// Merges the passed <see cref="CSSBuilder"/>'s and returns a new one.
+        /// Merges the passed <see cref="CssBuilder"/>'s and returns a new one.
         /// </summary>
         /// <param name="collection">The builders to merge.</param>
-        public static CSSBuilder Merge(params CSSBuilder[] collection)
+        public static CssBuilder Merge(params CssBuilder[] collection)
         {
-            var builder = new CSSBuilder();
+            var builder = new CssBuilder();
 
             if (collection != null)
             {
@@ -49,7 +49,7 @@ namespace Leeax.Web.Builders
         #endregion
 
         /// <inheritdoc/>
-        public ICSSBuilder AddProperty(string property, string? value, bool when = true)
+        public ICssBuilder AddProperty(string property, string? value, bool when = true)
         {
             if (value != null
                 && when)
@@ -61,7 +61,7 @@ namespace Leeax.Web.Builders
         }
 
         /// <inheritdoc/>
-        public ICSSBuilder AddProperty(string property, Func<string?>? valueFactory, bool when = true)
+        public ICssBuilder AddProperty(string property, Func<string?>? valueFactory, bool when = true)
         {
             if (valueFactory != null
                 && when)
@@ -88,7 +88,7 @@ namespace Leeax.Web.Builders
         }
 
         /// <inheritdoc/>
-        public ICSSBuilder Merge(ICSSBuilder? builder, bool when = true)
+        public ICssBuilder Merge(ICssBuilder? builder, bool when = true)
         {
             _str += when
                 ? builder?.Build()
@@ -98,7 +98,7 @@ namespace Leeax.Web.Builders
         }
 
         /// <inheritdoc/>
-        public ICSSBuilder Merge(Func<ICSSBuilder?>? builderFactory, bool when = true)
+        public ICssBuilder Merge(Func<ICssBuilder?>? builderFactory, bool when = true)
         {
             _str += when
                 ? builderFactory?.Invoke()?.Build()
@@ -108,7 +108,7 @@ namespace Leeax.Web.Builders
         }
 
         /// <inheritdoc/>
-        public ICSSBuilder Clear()
+        public ICssBuilder Clear()
         {
             _str = null;
 

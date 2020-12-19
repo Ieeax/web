@@ -24,12 +24,12 @@ namespace Leeax.Web.Builders
         /// </summary>
         /// <param name="selector">The CSS selector for this definition. Use the keyword <c>this</c> (in selector) to scope to the current component.</param>
         /// <param name="builderFactory">The factory which is used to create the CSS.</param>
-        public static StylesheetBuilder AddDefinition(this StylesheetBuilder builder, string selector, Action<ICSSBuilder> builderFactory)
+        public static StylesheetBuilder AddDefinition(this StylesheetBuilder builder, string selector, Action<ICssBuilder> builderFactory)
         {
             selector.ThrowIfNull();
             builderFactory.ThrowIfNull();
 
-            var cssBuilder = CSSBuilder.Create();
+            var cssBuilder = CssBuilder.Create();
             builderFactory.Invoke(cssBuilder);
 
             builder.AddString(selector + "{" + cssBuilder.Build() + "}");
@@ -42,7 +42,7 @@ namespace Leeax.Web.Builders
         /// </summary>
         /// <param name="selectors">Array of CSS selectors for this definition. Use the keyword <c>this</c> (in selector) to scope to the current component.</param>
         /// <param name="builderFactory">The factory which is used to create the CSS.</param>
-        public static StylesheetBuilder AddDefinition(this StylesheetBuilder builder, string[] selectors, Action<ICSSBuilder> builderFactory)
+        public static StylesheetBuilder AddDefinition(this StylesheetBuilder builder, string[] selectors, Action<ICssBuilder> builderFactory)
         {
             selectors.ThrowIfNull();
             builderFactory.ThrowIfNull();

@@ -76,7 +76,7 @@ namespace Leeax.Web.Components.Theme
             value.ThrowIfNull();
 
             var styleBuilder = new StylesheetBuilder();
-            var variableBuilder = CSSBuilder.Create();
+            var variableBuilder = CssBuilder.Create();
 
             foreach (var curItem in value.ToDictionary())
             {

@@ -50,7 +50,7 @@ namespace Leeax.Web.Components.Presentation
         
         private string? GetSpinnerCircleStyle()
         {
-            return CSSBuilder.Create()
+            return CssBuilder.Create()
                 .AddProperty("stroke", _color.ToHexStr())
                 .Build();
         }

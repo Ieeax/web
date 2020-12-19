@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Leeax.Web.Builders
 {
-    public static class CSSHelper
+    public static class CssHelper
     {
         public static readonly IFormatProvider FormatProvider = CultureInfo.GetCultureInfo("en-US");
 

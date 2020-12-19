@@ -48,7 +48,7 @@ namespace Leeax.Web.Components.Input
 
         private string? GetItemWrapperStyle()
         {
-            return CSSBuilder.Create()
+            return CssBuilder.Create()
                 .AddProperty("transform", $"translateY({(-(Value * (ItemHeight + ItemMargin)) + ((ItemHeight + ItemMargin) * 4) / 2)}em)")
                 .Build();
         }
