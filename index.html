@@ -12,7 +12,12 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" />
     </head>
     <body>
-        <app>Loading...</app>
+        <div id="app">
+            <div class="lx-app-center">
+                <div class="lx-app-animation mx-auto"></div> <!-- Animation which gets displayed while loading the resources (dlls) -->
+                <span class="d-block mx-auto mt-2">Loading demo ...</span> <!-- Some text for the user -->
+            </div>
+        </div>
         <script src="_framework/blazor.webassembly.js"></script>
         <script src="_content/Leeax.Web.Components/jsinterop.min.js"></script>
         <script>
