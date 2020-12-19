@@ -3,6 +3,7 @@
     --lx-color-active: rgba(0,0,0,.09);
     --lx-color-black: #000;
     --lx-color-white: #fff;
+    --lx-color-app-animation: #ddd;
     --lx-transition-duration-default: 250ms;
 }
 
@@ -273,5 +274,66 @@ h6 {
     100% {
         stroke-dasharray: 90, 150;
         stroke-dashoffset: -124;
+    }
+}
+
+/* Classes for easy centering of startup animation */
+.lx-app-hcenter {
+    display: inline-block;
+    margin-left: 50vw;
+    transform: translateX(-50%);
+}
+
+.lx-app-vcenter {
+    display: inline-block;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+.lx-app-hcenter.lx-app-vcenter,
+.lx-app-center {
+    display: inline-block;
+    margin-left: 50vw;
+    margin-top: 50vh;
+    transform: translate(-50%, -50%);
+}
+
+/* Default startup animation */
+.lx-app-animation {
+    display: block;
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    font-size: 1rem;
+}
+
+    .lx-app-animation::before,
+    .lx-app-animation::after {
+        content: "";
+        position: absolute;
+        border: .25em solid var(--lx-color-app-animation, #ddd);
+        border-radius: 50%;
+        opacity: 1;
+        animation: lx-app-animation-ripple 1.2s cubic-bezier(0, .2, .8, 1) infinite;
+    }
+
+    .lx-app-animation::after {
+        animation-delay: -.6s;
+    }
+
+@keyframes lx-app-animation-ripple {
+    0% {
+        top: 2.75em;
+        left: 2.75em;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 5.5em;
+        height: 5.5em;
+        opacity: 0;
     }
 }
