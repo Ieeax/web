@@ -17,7 +17,7 @@ namespace Leeax.Web.Components.Scopes
         }
 
         [Inject]
-        public IServiceProvider ServiceProvider { get; set; }
+        private IServiceProvider ServiceProvider { get; set; }
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }

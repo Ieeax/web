@@ -39,7 +39,7 @@ namespace Leeax.Web.Components.Theme
         }
 
         [Inject]
-        public IStyleScopeHandler StyleHandler { get; set; }
+        private IStyleScopeHandler StyleHandler { get; set; }
 
         /// <summary>
         /// Gets or sets the style for this scope.
