@@ -22,7 +22,7 @@ namespace Leeax.Web.Components.Presentation
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
         {
             builder.AddClassAttribute(x => x
-                .AddMultiple(ClassName, ClassNames.Border, ClassNames.BorderRounded, ClassNames.OverflowHidden)
+                .AddMultiple(ClassName, ClassNames.Border, ClassNames.BorderRounded)
                 .AddElevation(Elevation));
 
             builder.Merge(AdditionalAttributes);
