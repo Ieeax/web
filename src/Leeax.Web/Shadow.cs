@@ -4,8 +4,12 @@ namespace Leeax.Web
 {
     public readonly struct Shadow
     {
+        private readonly bool _initialized;
+
         public Shadow(Length offsetX, Length offsetY, Length blurRadius, Length spreadRadius, Color color)
         {
+            _initialized = true;
+
             OffsetX = offsetX;
             OffsetY = offsetY;
             BlurRadius = blurRadius;
@@ -33,13 +37,11 @@ namespace Leeax.Web
         {
         }
 
-        public static bool IsSet(Shadow value)
-        {
-            return !(value.OffsetX == 0
-                && value.OffsetY == 0
-                && value.BlurRadius == 0
-                && value.SpreadRadius == 0);
-        }
+        public override bool Equals(object? obj)
+            => obj is Shadow shadow ? this == shadow : false;
+
+        public override int GetHashCode()
+            => OffsetX.GetHashCode() ^ OffsetY.GetHashCode() ^ BlurRadius.GetHashCode() ^ SpreadRadius.GetHashCode() ^ Color.GetHashCode();
 
         public Length OffsetX { get; }
 
@@ -50,5 +52,19 @@ namespace Leeax.Web
         public Length SpreadRadius { get; }
 
         public Color Color { get; }
+
+        public bool IsEmpty => !_initialized;
+
+        public static Shadow Empty { get; } = new Shadow();
+
+        public static bool operator ==(Shadow first, Shadow second)
+            => first.OffsetX == second.OffsetX && first.OffsetY == second.OffsetY
+            && first.BlurRadius == second.BlurRadius && first.SpreadRadius == second.SpreadRadius
+            && first.Color == second.Color;
+
+        public static bool operator !=(Shadow first, Shadow second)
+            => first.OffsetX != second.OffsetX || first.OffsetY != second.OffsetY
+            || first.BlurRadius != second.BlurRadius || first.SpreadRadius != second.SpreadRadius
+            || first.Color != second.Color;
     }
 }

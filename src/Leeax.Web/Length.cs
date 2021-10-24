@@ -2,6 +2,8 @@
 {
     public readonly struct Length
     {
+        private readonly bool _initialized;
+
         public Length(double value)
             : this(value, Unit.Pixel)
         {
@@ -9,26 +11,28 @@
 
         public Length(double value, Unit unit)
         {
+            _initialized = true;
+
             Value = value;
             Unit = unit;
         }
-
-        public static bool IsSet(Length value)
-            => value.Value != 0;
 
         public override string ToString()
             => Value.ToString(System.Globalization.CultureInfo.InvariantCulture) + UnitHelper.ToString(Unit);
 
         public override bool Equals(object? obj)
-        {
-            return obj is Length length 
-                ? this == length 
-                : object.Equals(Value, obj);
-        }
+            => obj is Length length ? this == length : object.Equals(Value, obj);
+
+        public override int GetHashCode()
+            => Value.GetHashCode() ^ Unit.GetHashCode();
 
         public double Value { get; }
 
         public Unit Unit { get; }
+
+        public bool IsEmpty => !_initialized;
+
+        public static Length Empty { get; } = new Length();
 
         public static bool operator <(Length first, Length second)
             => first.Value < second.Value;

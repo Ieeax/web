@@ -2,6 +2,8 @@
 {
     public readonly struct Thickness
     {
+        private readonly bool _initialized;
+
         public Thickness(Length all)
             : this(all, all, all, all)
         {
@@ -14,21 +16,19 @@
 
         public Thickness(Length top, Length right, Length bottom, Length left)
         {
+            _initialized = true;
+
             Top = top;
             Right = right;
             Bottom = bottom;
             Left = left;
         }
 
-        public static bool IsSet(Thickness value)
-        {
-            return value.Left != 0
-                || value.Top != 0
-                || value.Right != 0
-                || value.Bottom != 0;
-        }
+        public override bool Equals(object? obj)
+            => obj is Thickness thickness ? this == thickness : false;
 
-        public bool IsEmpty => !IsSet(this);
+        public override int GetHashCode()
+            => Top.GetHashCode() ^ Right.GetHashCode() ^ Bottom.GetHashCode() ^ Left.GetHashCode();
 
         public Length Top { get; }
 
@@ -37,6 +37,18 @@
         public Length Bottom { get; }
 
         public Length Left { get; }
+
+        public bool IsEmpty => !_initialized;
+
+        public static Thickness Empty { get; } = new Thickness();
+
+        public static bool operator ==(Thickness first, Thickness second)
+            => first.Top == second.Top && first.Bottom == second.Bottom
+            && first.Left == second.Left && first.Right == second.Right;
+
+        public static bool operator !=(Thickness first, Thickness second)
+            => first.Top != second.Top || first.Bottom != second.Bottom
+            || first.Left != second.Left || first.Right != second.Right;
 
         public static implicit operator Thickness(int t) => new Thickness(t);
         public static implicit operator Thickness((int, int) t) => new Thickness(t.Item1, t.Item2);
