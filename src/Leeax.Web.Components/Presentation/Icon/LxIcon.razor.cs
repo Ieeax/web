@@ -1,7 +1,9 @@
 ﻿using Leeax.Web.Builders;
 using Leeax.Web.Components.Theme;
 using Microsoft.AspNetCore.Components;
+using System;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Leeax.Web.Components.Presentation
 {
@@ -11,28 +13,50 @@ namespace Leeax.Web.Components.Presentation
         public const string VariableColor = ClassName + "-color";
         private const string AltDefaultValue = "icon";
 
-        private string? _source;
-        private string? _staticSource;
+        private bool _isSourceResource;
+        private Uri? _sourceUri;
+        private string? _sourceMarkup;
         private Color _fillColor;
 
         protected override void OnParametersSet()
         {
-            _fillColor = StyleContext.GetColorOrDefault(VariableColor, VariableNames.NeutralBlack);
+            _fillColor = StyleContext.GetColorOrDefault(VariableColor, VariableNames.NeutralPrimary);
+        }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            if (Source == null
+                || !Uri.TryCreate(Source, UriKind.RelativeOrAbsolute, out _sourceUri))
+            {
+                _sourceUri = null;
+                _sourceMarkup = null;
+                _isSourceResource = false;
+                return;
+            }
+
+            // Check whether the source points to a resource
+            _isSourceResource = _sourceUri.Scheme == "rsrc";
+            _sourceMarkup = _isSourceResource ? await IconManager.GetMarkupAsync(_sourceUri) : null;
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
         {
+            builder.AddAttribute("role", "img");
+            builder.AddAriaAttribute("hidden", "true");
             builder.AddClassAttribute(ClassName);
 
             builder.AddStyleAttribute(x => x
                 .AddProperty("height", Size.ToString())
                 .AddProperty("min-height", Size.ToString())
                 .AddProperty("width", Size.ToString())
-                .AddProperty("min-width", Size.ToString()));
+                .AddProperty("min-width", Size.ToString())
+                .AddProperty("fill", Fill.IsEmpty
+                    ? _fillColor.ToRgbStr()
+                    : Fill.ToRgbaStr(), _isSourceResource));
         }
 
         [Inject]
-        private IIconProvider IconProvider { get; set; }
+        private IIconManager IconManager { get; set; }
 
         #region Parameters
 
@@ -44,33 +68,15 @@ namespace Leeax.Web.Components.Presentation
 
         /// <summary>
         /// Gets or sets the source (-url) from which the icon is loaded.
-        /// To use icons from the current <see cref="IIconProvider"/>, add <c>static://</c> before the icon name.
+        /// Supports the <c>rsrc</c> uri scheme to load icons from a defined icon source.
         /// </summary>
+        /// <remarks>
+        /// Icon from default source: <c>rsrc:icon_name</c>
+        /// <br/>
+        /// Icon from source "my.icon.source": <c>rsrc://my.icon.source/icon_name</c>
+        /// </remarks>
         [Parameter]
-        public string? Source
-        {
-            get => _source;
-            set
-            {
-                if (_source == value)
-                {
-                    return;
-                }
-
-                _source = value;                    
-                _staticSource = null;
-                
-                // Check whether the string starts with "static://"
-                // -> If so, we need to load the icon from the IconResolver
-                if (_source != null
-                    && _source.StartsWith("static://"))
-                {
-                    _staticSource = _source.Length == 9
-                        ? string.Empty 
-                        : _source[9..];
-                }
-            }
-        }
+        public string? Source { get; set; }
 
         /// <summary>
         /// Gets or sets the color of static icons.

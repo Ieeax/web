@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using Leeax.Web.Components.DOM;
 using Leeax.Web.Components.Modals;
 using Leeax.Web.Components.Window;
@@ -20,6 +21,23 @@ namespace Leeax.Web.Components.Configuration
 
             // Add default "IIconProvider" service to prevent exceptions if the user doesn't manually call "AddIconProvider"
             services.TryAddSingleton<IIconProvider>(new IconProvider(iconOptions));
+
+            return services;
+        }
+
+        public static IServiceCollection AddIcons(this IServiceCollection services, Action<IconOptions> configure)
+        {
+            var options = new IconOptions();
+
+            // Invoke configuration action
+            configure?.Invoke(options);
+
+            services.AddScoped<IIconCache>(provider => new SimpleIconCache());
+            services.AddScoped<IIconManager>(
+                provider => new IconManager(
+                    provider.GetRequiredService<HttpClient>(), 
+                    provider.GetRequiredService<IIconCache>(), 
+                    options));
 
             return services;
         }

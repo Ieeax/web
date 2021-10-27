@@ -52,8 +52,8 @@ namespace Leeax.Web.Components.Input
         {
             get => Direction switch
             {
-                SortDirection.Ascending => "static://arrow_upward",
-                SortDirection.Descending => "static://arrow_downward",
+                SortDirection.Ascending => "rsrc://leeax.web.components/arrow_upward",
+                SortDirection.Descending => "rsrc://leeax.web.components/arrow_downward",
                 _ => null
             };
             set => throw new ApplicationException($"Parameter \"{nameof(Icon)}\" will be determined automatically and so on cannot be set manually.");
