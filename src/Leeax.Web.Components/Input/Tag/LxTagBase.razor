@@ -12,9 +12,9 @@
     <span class="d-block my-auto">@Label</span>
     @if (IsRemovable)
     {
-        <div class="right-icon my-auto" @onclick="OnRemove" @onclick:stopPropagation="true">
+        <div class="right-icon flex-row my-auto" @onclick="OnRemove" @onclick:stopPropagation="true">
             <LxIcon Fill="GetIconColor()"
-                    Source="static://close"
+                    Source="rsrc://leeax.web.components/close"
                     Size="(1.2, Unit.EM)" />
         </div>
     }
