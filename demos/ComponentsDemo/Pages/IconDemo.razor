@@ -1,47 +1,66 @@
 ﻿@using System.Drawing
 @page "/demo/icon"
-@inject IIconProvider IconProvider
-@inject IToastService ToastService
 
 <div class="px-3">
     <ComponentInfo Type="typeof(LxIcon)" />
     <Demo>
         <Content>
-            <div class="flex-col mb-3">
-                <LxIcon Source="static://close" 
-                        Size="new Length(Size, SizeUnit)" 
-                        Fill="Color" />
+            <div class="flex-col">
+                <div class="flex-row mb-3">
+                    <LxIcon Source="rsrc://google.materialdesign/close" Size="(Size, SizeUnit)" Fill="Color" />
+                </div>
                 <div class="flex-row">
-                    <LxIcon Source="static://arrow_upward" />
-                    <LxIcon Source="static://arrow_downward" 
-                            Fill="Color.Gray" />
-                    <LxIcon Source="static://arrow_back" 
-                            Fill="Color.DarkGray" />
-                    <LxIcon Source="static://arrow_forward" 
-                            Fill="Color.LightGray" />
+                    <LxIcon Source="rsrc://google.materialdesign/arrow_upward" />
+                    <LxIcon Source="rsrc://google.materialdesign/arrow_downward" Fill="Color.Gray" />
+                    <LxIcon Source="rsrc://google.materialdesign/arrow_back" Fill="Color.DarkGray" />
+                    <LxIcon Source="rsrc://google.materialdesign/arrow_forward" Fill="Color.LightGray" />
+                </div>
+                <p class="mb-1">
+                    You can define multiple <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a> icon sources during startup, to then easily access and render icons with the <code>@("<LxIcon />")</code> component.<br/>
+                    In the following are some examples, showing how to specify a icon and its source:
+                </p>
+                <pre class="mb-4">
+                    <code>@@* Syntax for default icon source *@@
+@("<LxIcon Source=\"rsrc:arrow_upward\" />")
+@("<LxIcon Source=\"rsrc:///arrow_upward\" />")
+@("<LxIcon Source=\"rsrc://app/arrow_upward\" />")
+
+@@* Syntax for icon source "my.icon.source" *@@
+@("<LxIcon Source=\"rsrc://my.icon.source/arrow_upward\" />")</code>
+                </pre>
+                <div class="mb-4">
+                    <h6>heroicons</h6>
+                    <pre>
+                        <code>@("<LxIcon Source=\"rsrc://tailwind.hero/fire\" />") @@* Note that the icon source "tailwind.hero" is not included *@@</code>
+                    </pre>
+                    <div class="flex-row my-2">
+                        <LxIcon Source="rsrc://tailwind.hero/fire" />
+                        <LxIcon Source="rsrc://tailwind.hero/academic-cap" />
+                        <LxIcon Source="rsrc://tailwind.hero/archive" />
+                        <LxIcon Source="rsrc://tailwind.hero/cloud" />
+                    </div>
+                    <span>
+                        Copyright (c) 2020 Refactoring UI Inc. 
+                        (<a href="https://github.com/tailwindlabs/heroicons">GitHub</a>, <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE">License</a>)
+                    </span>
+                </div>
+                <div>
+                    <h6>Material Design Icons</h6>
+                    <pre>
+                        <code>@("<LxIcon Source=\"rsrc://google.materialdesign/refresh\" />") @@* Note that the icon source "google.materialdesign" is not included *@@</code>
+                    </pre>
+                    <div class="flex-row my-2">
+                        <LxIcon Source="rsrc://google.materialdesign/refresh" />
+                        <LxIcon Source="rsrc://google.materialdesign/schedule" />
+                        <LxIcon Source="rsrc://google.materialdesign/today" />
+                        <LxIcon Source="rsrc://google.materialdesign/edit" />
+                    </div>
+                    <span>
+                        Copyright (c) 2021 Google 
+                        (<a href="https://github.com/google/material-design-icons">GitHub</a>, <a href="https://github.com/google/material-design-icons/blob/master/LICENSE">License</a>)
+                    </span>
                 </div>
             </div>
-            <div class="flex-row flex-vcenter mb-3">
-                <LxToggle Class="ml-2"
-                          @bind-Value="ShowAllIcons" />
-                <b class="d-block ml-2">Show all icons (@IconProvider.IconCollection.Count())</b>
-            </div>
-            @if (ShowAllIcons)
-            {
-                <div class="flex-row flex-wrap mb-3">
-                    @foreach (var curItem in IconProvider.IconCollection)
-                    {
-                        <div @onclick="@(() => ToastService.ShowToast(curItem, 8000))">
-                            <LxIcon Source="@("static://" + curItem)" />
-                        </div>
-                    }
-                </div>
-            }
-            <p>
-                You can define icons during startup with the built in "@(nameof(IIconProvider))".
-                To use these, simply add <b>static://</b> before the icon key.
-            </p>
-            <pre>example: <b>static://arrow_upward</b></pre>
         </Content>
         <Customization>
             <Entry Text="Color">
@@ -66,11 +85,9 @@
 
     private ColorStringConverter _colorConverter = new ColorStringConverter();
 
-    public bool ShowAllIcons { get; set; }
-
     private Color Color { get; set; } = Color.Black;
 
-    private double Size { get; set; } = 1.5;
+    private double Size { get; set; } = 2;
 
     private Unit SizeUnit { get; set; } = Unit.REM;
 

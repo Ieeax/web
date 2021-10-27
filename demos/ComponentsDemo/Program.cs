@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Leeax.Icons.MaterialDesign;
 using Leeax.Web.Components.Modals;
 using Leeax.Web.Components.Configuration;
 using Leeax.Web.Components.Cookies;
@@ -24,9 +23,22 @@ namespace ComponentsDemo
             // Add all basic services of the library
             builder.Services.AddComponents();
 
-            // Add the "Material Design" icon-pack
-            // -> Is optional, but when not registered icons won't be displayed
-            builder.Services.AddIconProvider(opt => opt.AddMaterialDesignIcons());
+            // Add icons from different sources
+            // -> Optional, when not registered icons won't be displayed
+            builder.Services.AddIcons(opt =>
+            {
+                // Add icons used in components of the library
+                opt.AddSymbolFile("leeax.web.components", "./_content/Leeax.Web.Components/icons/symbols.svg");
+
+                // Add the "heroicons" icons
+                opt.AddDirectory("tailwind.hero", "https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/solid/");
+
+                // Add the "Material Design" icons
+                opt.AddSymbolFile("google.materialdesign", "https://raw.githubusercontent.com/ieeax/web/main/assets/icons/materialdesign-symbols.min.svg");
+
+                // Add the "Material Design" icons as default icon source
+                //opt.AddSymbolFile("https://raw.githubusercontent.com/ieeax/web/main/assets/icons/materialdesign-symbols.min.svg");
+            });
 
             // Configure the different modals
             builder.Services.AddModals(opt =>
