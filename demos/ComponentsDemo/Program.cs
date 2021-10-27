@@ -34,10 +34,10 @@ namespace ComponentsDemo
                 opt.AddDirectory("tailwind.hero", "https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/solid/");
 
                 // Add the "Material Design" icons
-                opt.AddSymbolFile("google.materialdesign", "https://raw.githubusercontent.com/ieeax/web/main/assets/icons/materialdesign-symbols.min.svg");
+                opt.AddSymbolFile("google.materialdesign", "./materialdesign-symbols.min.svg");
 
                 // Add the "Material Design" icons as default icon source
-                //opt.AddSymbolFile("https://raw.githubusercontent.com/ieeax/web/main/assets/icons/materialdesign-symbols.min.svg");
+                //opt.AddSymbolFile("./materialdesign-symbols.min.svg");
             });
 
             // Configure the different modals
