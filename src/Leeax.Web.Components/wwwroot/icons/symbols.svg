@@ -1,0 +1,29 @@
+<!-- Copyright (c) 2021 Google Material Design Icons, see https://github.com/google/material-design-icons/blob/master/LICENSE -->
+<svg xmlns="http://www.w3.org/2000/svg" display="none">
+	<defs>
+		<symbol id="close" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0z"/><path xmlns="http://www.w3.org/2000/svg" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+		</symbol>
+		<symbol id="expand_more" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0z"/><path xmlns="http://www.w3.org/2000/svg" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+		</symbol>
+		<symbol id="keyboard_arrow_right" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0V0z"/><path xmlns="http://www.w3.org/2000/svg" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+		</symbol>
+		<symbol id="arrow_downward" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0V0z"/><path xmlns="http://www.w3.org/2000/svg" d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>
+		</symbol>
+		<symbol id="arrow_upward" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0V0z"/><path xmlns="http://www.w3.org/2000/svg" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+		</symbol>
+		<symbol id="today" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0z"/><path xmlns="http://www.w3.org/2000/svg" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+		</symbol>
+		<symbol id="schedule" viewBox="0 0 24 24">
+			<path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0z"/><path xmlns="http://www.w3.org/2000/svg" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+		</symbol>
+		<symbol id="refresh" viewBox="0 0 24 24">
+			<path fill="none" d="M0 0h24v24H0z"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+		</symbol>
+	</defs>
+</svg>
