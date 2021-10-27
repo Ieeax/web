@@ -798,16 +798,13 @@ input[type=number][b-r1f4krlj70] {
 .lx-icon[b-ocbn5uqmar] {
     position: relative;
     box-sizing: content-box;
+    display: inline-block;
 }
 
     /* Style default image */
     .lx-icon img[b-ocbn5uqmar] {
         height: inherit;
         width: inherit;
-    }
-
-    .lx-icon[b-ocbn5uqmar]  svg {
-        position: absolute;
     }
 /* _content/Leeax.Web.Components/Presentation/ListView/ListView.razor.rz.scp.css */
 .lx-listview li[b-0bawb6sc14] {
