@@ -1,4 +1,5 @@
 ﻿using Leeax.Web.Components.Configuration;
+using System;
 
 namespace Leeax.Icons.MaterialDesign
 {
@@ -8,6 +9,7 @@ namespace Leeax.Icons.MaterialDesign
         private static readonly string s_svgStart = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\">";
         private static readonly string s_svgEnd = "</svg>";
 
+        [Obsolete]
         public static void AddMaterialDesignIcons(this IconProviderOptions options)
         {
             options.AddMaterialDesignActionIcons();
@@ -28,6 +30,7 @@ namespace Leeax.Icons.MaterialDesign
             options.AddMaterialDesignToggleIcons();
         }
 
+        [Obsolete]
         public static void AddMaterialDesignActionIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\action\svg\production
@@ -238,6 +241,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("youtube_searched_for", color => s_svgStart + $"<path fill=\"{color}\" d=\"M34.02 28h-1.59l-.55-.55c1.96-2.27 3.14-5.22 3.14-8.45 0-7.18-5.82-12.99-13-12.99S9.03 12 9.02 19H4l7.68 8L20 19h-6.98c.01-5 4.03-8.99 9-8.99s9 4.03 9 9-4.03 9-9 9c-1.29 0-2.52-.28-3.63-.77l-2.96 2.96c1.93 1.14 4.18 1.81 6.59 1.81 3.23 0 6.17-1.18 8.44-3.13l.54.54V31l10.01 9.98L43.99 38l-9.97-10z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignAlertIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\alert\svg\production
@@ -247,6 +251,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("warning", color => s_svgStart + $"<path fill=\"{color}\" d=\"M2 42h44L24 4 2 42zm24-6h-4v-4h4v4zm0-8h-4v-8h4v8z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignAVIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\av\svg\production
@@ -331,6 +336,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("web_asset", color => s_svgStart + $"<path fill=\"{color}\" d=\"M38 8H10c-2.22 0-4 1.8-4 4v24c0 2.2 1.78 4 4 4h28c2.2 0 4-1.8 4-4V12c0-2.2-1.78-4-4-4zm0 28H10V16h28v20z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignCommunicationIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\communication\svg\production
@@ -382,6 +388,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("vpn_key", color => s_svgStart + $"<path fill=\"{color}\" d=\"M25.3 20c-1.65-4.66-6.08-8-11.3-8-6.63 0-12 5.37-12 12s5.37 12 12 12c5.22 0 9.65-3.34 11.3-8H34v8h8v-8h4v-8H25.3zM14 28c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignContentIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\content\svg\production
@@ -427,6 +434,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("weekend", color => s_svgStart + $"<path fill=\"{color}\" d=\"M42 20c-2.21 0-4 1.79-4 4v6H10v-6c0-2.21-1.79-4-4-4s-4 1.79-4 4v10c0 2.2 1.8 4 4 4h36c2.2 0 4-1.8 4-4V24c0-2.21-1.79-4-4-4zm-6-10H12c-2.2 0-4 1.8-4 4v4.31c2.32.83 4 3.03 4 5.63V28h24v-4.06c0-2.6 1.68-4.8 4-5.63V14c0-2.2-1.8-4-4-4z\" fill=\"{color}\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignDeviceIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\device\svg\production
@@ -510,6 +518,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("wifi_tethering", color => s_svgStart + $"<path fill=\"{color}\" d=\"M24 22c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm12 4c0-6.63-5.37-12-12-12s-12 5.37-12 12c0 4.44 2.41 8.3 5.99 10.38l2.02-3.48C17.62 31.51 16 28.96 16 26c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.62 5.51-4.01 6.89l2.02 3.48C33.59 34.3 36 30.44 36 26zM24 6C12.95 6 4 14.95 4 26c0 7.39 4.02 13.83 9.99 17.29l2-3.46C11.22 37.07 8 31.91 8 26c0-8.84 7.16-16 16-16s16 7.16 16 16c0 5.91-3.22 11.07-7.99 13.84l2 3.46C39.98 39.83 44 33.39 44 26c0-11.05-8.96-20-20-20z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignEditorIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\editor\svg\production
@@ -579,6 +588,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("wrap_text", color => s_svgStart + $"<path fill=\"{color}\" d=\"M8 38h12v-4H8v4zm32-28H8v4h32v-4zm-6 12H8v4h26.5c2.21 0 4 1.79 4 4s-1.79 4-4 4H30v-4l-6 6 6 6v-4h4c4.41 0 8-3.59 8-8s-3.59-8-8-8z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignFileIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\file\svg\production
@@ -598,6 +608,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("folder_shared", color => s_svgStart + $"<path fill=\"{color}\" d=\"M40 12H24l-4-4H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V16c0-2.21-1.79-4-4-4zm-10 6c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm8 16H22v-2c0-2.67 5.33-4 8-4s8 1.33 8 4v2z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignHardwareIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\hardware\svg\production
@@ -650,6 +661,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("watch", color => s_svgStart + $"<path fill=\"{color}\" d=\"M40 24c0-5.09-2.38-9.62-6.09-12.55L32 0H16l-1.91 11.45C10.38 14.38 8 18.91 8 24s2.38 9.62 6.09 12.55L16 48h16l1.91-11.45C37.62 33.62 40 29.09 40 24zm-28 0c0-6.63 5.37-12 12-12s12 5.37 12 12-5.37 12-12 12-12-5.37-12-12z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignImageIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\image\svg\production
@@ -804,6 +816,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("wb_sunny", color => s_svgStart + $"<path fill=\"{color}\" d=\"M13.51 9.69L9.93 6.1 7.1 8.93l3.59 3.59 2.82-2.83zM8 21H2v4h6v-4zM26 1.1h-4V7h4V1.1zm14.9 7.83L38.07 6.1l-3.59 3.59 2.83 2.83 3.59-3.59zm-6.41 27.38l3.59 3.59 2.83-2.83-3.59-3.59-2.83 2.83zM40 21v4h6v-4h-6zM24 11c-6.63 0-12 5.37-12 12s5.37 12 12 12 12-5.37 12-12-5.37-12-12-12zm-2 33.9h4V39h-4v5.9zM7.1 37.07l2.83 2.83 3.59-3.59-2.83-2.83-3.59 3.59z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignMapsIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\maps\svg\production
@@ -876,6 +889,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("zoom_out_map", color => s_svgStart + $"<path fill=\"{color}\" d=\"M30 6l4.59 4.59-5.76 5.75 2.83 2.83 5.75-5.76L42 18V6zM6 18l4.59-4.59 5.75 5.76 2.83-2.83-5.76-5.75L18 6H6zm12 24l-4.59-4.59 5.76-5.75-2.83-2.83-5.75 5.76L6 30v12zm24-12l-4.59 4.59-5.75-5.76-2.83 2.83 5.76 5.75L30 42h12z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignNavigationIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\navigation\svg\production
@@ -908,6 +922,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("unfold_more", color => s_svgStart + $"<path fill=\"{color}\" d=\"M24 11.66L30.34 18l2.83-2.83L24 6l-9.17 9.17L17.66 18 24 11.66zm0 24.68L17.66 30l-2.83 2.83L24 42l9.17-9.17L30.34 30 24 36.34z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignNotificationIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\notification\svg\production
@@ -967,6 +982,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("wifi", color => s_svgStart + $"<path fill=\"{color}\" d=\"M2 18l4 4c9.94-9.94 26.06-9.94 36 0l4-4C33.85 5.85 14.15 5.85 2 18zm16 16l6 6 6-6c-3.31-3.31-8.69-3.31-12 0zm-8-8l4 4c5.52-5.52 14.48-5.52 20 0l4-4c-7.73-7.73-20.27-7.73-28 0z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignPlacesIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\places\svg\production
@@ -991,6 +1007,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("spa", color => s_svgStart + $"<path fill=\"{color}\" d=\"M17.09 24c-2.14-1.43-4.5-2.55-7.05-3.22 2.55.67 4.91 1.79 7.05 3.22zm20.87-3.22c-2.58.68-4.97 1.82-7.14 3.27 2.16-1.45 4.55-2.59 7.14-3.27z\"/><path fill=\"{color}\" d=\"M30.99 19.27C30.62 13.69 28.36 8.24 24.12 4c-4.28 4.28-6.64 9.72-7.1 15.27 2.56 1.37 4.93 3.12 6.98 5.25 2.05-2.13 4.42-3.89 6.99-5.25zm-13 5.3c-.28-.21-.6-.38-.89-.57.29.19.6.36.89.57zm12.83-.52c-.26.18-.55.33-.8.51.25-.18.53-.33.8-.51zM24 30.91C19.7 24.34 12.35 20 4 20c0 10.63 6.72 19.65 16.07 22.97 1.27.45 2.58.79 3.93 1.03 1.35-.23 2.66-.57 3.93-1.03C37.28 39.65 44 30.63 44 20c-8.35 0-15.7 4.34-20 10.91z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignSocialIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\social\svg\production
@@ -1026,6 +1043,7 @@ namespace Leeax.Icons.MaterialDesign
             options.Add("whatshot", color => s_svgStart + $"<path fill=\"{color}\" d=\"M27 1.34s1.48 5.3 1.48 9.6c0 4.12-2.7 7.47-6.83 7.47s-7.25-3.34-7.25-7.47l.05-.72C10.43 15.03 8 21.23 8 28c0 8.84 7.16 16 16 16s16-7.16 16-16c0-10.79-5.19-20.41-13-26.66zM23.42 38c-3.56 0-6.45-2.81-6.45-6.28 0-3.25 2.09-5.53 5.63-6.24s7.2-2.41 9.23-5.15c.78 2.58 1.19 5.3 1.19 8.07 0 5.29-4.3 9.6-9.6 9.6z\"/>" + s_svgEnd);
         }
 
+        [Obsolete]
         public static void AddMaterialDesignToggleIcons(this IconProviderOptions options)
         {
             // ..\material-design-icons-master\toggle\svg\production
