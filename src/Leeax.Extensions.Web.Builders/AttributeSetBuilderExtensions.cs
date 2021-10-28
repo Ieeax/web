@@ -7,7 +7,7 @@ namespace Leeax.Web.Builders
     {
         public static AttributeSetBuilder AddClassAttribute(this AttributeSetBuilder builder, params string[] classList)
         {
-            if (classList == null)
+            if (classList.Length == 0)
             {
                 return builder;
             } 
@@ -49,7 +49,7 @@ namespace Leeax.Web.Builders
             return builder.AddAttribute("data-" + name, value?.ToString());
         }
 
-        public static AttributeSetBuilder AddAriaAttribute(this AttributeSetBuilder builder, string name, string? value)
+        public static AttributeSetBuilder AddAriaAttribute(this AttributeSetBuilder builder, string name, object? value)
         {
             name.ThrowIfNull();
 
@@ -58,7 +58,7 @@ namespace Leeax.Web.Builders
                 throw new ArgumentException("Name cannot be empty. \"aria\"-attributes require a name.", nameof(name));
             }
 
-            return builder.AddAttribute("aria-" + name, value);
+            return builder.AddAttribute("aria-" + name, value?.ToString());
         }
     }
 }

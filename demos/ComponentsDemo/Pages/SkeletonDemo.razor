@@ -1,0 +1,36 @@
+﻿@page "/demo/skeleton"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxSkeleton)" />
+    <Demo>
+        <Content>
+            <div class="flex-col">
+                <span class="mb-3">A rough preview (skeleton) where elements will appear when content loads, shows users (without being too annoying) that something is actually going on.</span>
+                <div class="mb-3">
+                    <div class="flex-row">
+                        <LxSkeleton Shape="SkeletonShape.Text" Width="200"/>
+                        <LxSkeleton Shape="SkeletonShape.Text" Width="400"/>
+                    </div>
+                    <LxSkeleton Shape="SkeletonShape.Text" Width="500"/>
+                </div>
+                <div class="mb-3">
+                    <LxSkeleton Shape="SkeletonShape.Rectangle" Width="280" Height="120"/>
+                    <LxSkeleton Shape="SkeletonShape.Text" Width="250" Class="mt-2"/>
+                    <LxSkeleton Shape="SkeletonShape.Text" Width="160"/>
+                </div>
+                <div class="flex-row mb-3">
+                    <LxSkeleton Shape="SkeletonShape.Ellipsis" Width="40" Height="40"/>
+                    <div class="ml-2 my-auto">
+                        <LxSkeleton Shape="SkeletonShape.Text" Width="200"/>
+                        <LxSkeleton Shape="SkeletonShape.Text" Width="180"/>
+                    </div>
+                </div>
+                <div class="flex-row mb-3">
+                    <LxSkeleton Shape="SkeletonShape.Pill" Width="60" Class="mr-2"/>
+                    <LxSkeleton Shape="SkeletonShape.Pill" Width="80" Class="mr-2"/>
+                    <LxSkeleton Shape="SkeletonShape.Pill"/>
+                </div>
+            </div>
+        </Content>
+    </Demo>
+</div>
