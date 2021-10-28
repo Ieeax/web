@@ -50,9 +50,8 @@ namespace Leeax.Web.Components.Presentation
                 .AddProperty("min-height", Size.ToString())
                 .AddProperty("width", Size.ToString())
                 .AddProperty("min-width", Size.ToString())
-                .AddProperty("fill", Fill.IsEmpty
-                    ? _fillColor.ToRgbStr()
-                    : Fill.ToRgbaStr(), _isSourceResource));
+                .AddProperty("fill", Fill.IsEmpty ? _fillColor.ToRgbStr() : Fill.ToRgbaStr(), _isSourceResource)
+                .AddProperty("color", Fill.IsEmpty ? _fillColor.ToRgbStr() : Fill.ToRgbaStr(), _isSourceResource));
         }
 
         [Inject]
