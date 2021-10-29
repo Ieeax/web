@@ -38,6 +38,6 @@ namespace Leeax.Web.Components.Presentation
         public RenderFragment? ChildContent { get; set; }
 
         [Parameter(CaptureUnmatchedValues = true)]
-        public IDictionary<string, object?>? AdditionalAttributes { get; set; }
+        public IDictionary<string, object>? AdditionalAttributes { get; set; }
     }
 }
