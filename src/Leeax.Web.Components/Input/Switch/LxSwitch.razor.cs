@@ -132,7 +132,7 @@ namespace Leeax.Web.Components.Input
         }
 
         [Inject]
-        private IJSRuntime JSRuntime { get; set; }
+        private IJSRuntime JSRuntime { get; set; } = null!;
 
         #region Parameters
 

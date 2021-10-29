@@ -111,10 +111,10 @@ namespace Leeax.Web.Components.Presentation
         }
 
         [Inject]
-        private IWindowService WindowService { get; set; }
+        private IWindowService WindowService { get; set; } = null!;
 
         [Inject]
-        private IElementService ElementService { get; set; }
+        private IElementService ElementService { get; set; } = null!;
 
         #region Parameters
 

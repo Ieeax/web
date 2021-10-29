@@ -58,7 +58,7 @@ namespace Leeax.Web.Components
         public string? StyleScope { get; set; }
 
         [CascadingParameter]
-        public StyleContext StyleContext { get; set; }
+        public StyleContext StyleContext { get; set; } = null!;
 
         /// <summary>
         /// Set of attributes which can be configured trough overriding <see cref="BuildAttributeSet"/>.

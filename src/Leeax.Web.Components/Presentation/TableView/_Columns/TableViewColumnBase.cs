@@ -66,7 +66,7 @@ namespace Leeax.Web.Components.Presentation
         /// Gets the context of the parent component.
         /// </summary>
         [CascadingParameter]
-        public TableViewContext Context { get; set; }
+        public TableViewContext? Context { get; set; }
 
         /// <summary>
         /// Gets or sets the header text.

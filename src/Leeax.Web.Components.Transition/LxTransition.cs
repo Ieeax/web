@@ -172,7 +172,7 @@ namespace Leeax.Web.Components.Presentation
         }
 
         [Inject]
-        private IJSRuntime JSRuntime { get; set; }
+        private IJSRuntime JSRuntime { get; set; } = null!;
 
         #region Parameters
         /// <summary>

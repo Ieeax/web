@@ -55,7 +55,7 @@ namespace Leeax.Web.Components.Presentation
         }
 
         [Inject]
-        private IIconManager IconManager { get; set; }
+        private IIconManager IconManager { get; set; } = null!;
 
         #region Parameters
 
