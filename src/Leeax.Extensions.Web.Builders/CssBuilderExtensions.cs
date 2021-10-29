@@ -36,22 +36,22 @@ namespace Leeax.Web.Builders
             return AddThickness(builder, "padding", thickness, when);
         }
 
-        public static ICssBuilder AddPaddingLeft(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddPaddingLeft(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "padding-left", value, when);
         }
 
-        public static ICssBuilder AddPaddingRight(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddPaddingRight(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "padding-right", value, when);
         }
 
-        public static ICssBuilder AddPaddingTop(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddPaddingTop(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "padding-top", value, when);
         }
 
-        public static ICssBuilder AddPaddingBottom(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddPaddingBottom(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "padding-bottom", value, when);
         }
@@ -61,22 +61,22 @@ namespace Leeax.Web.Builders
             return AddThickness(builder, "margin", thickness, when);
         }
 
-        public static ICssBuilder AddMarginLeft(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddMarginLeft(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "margin-left", value, when);
         }
 
-        public static ICssBuilder AddMarginRight(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddMarginRight(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "margin-right", value, when);
         }
 
-        public static ICssBuilder AddMarginTop(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddMarginTop(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "margin-top", value, when);
         }
 
-        public static ICssBuilder AddMarginBottom(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddMarginBottom(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "margin-bottom", value, when);
         }
@@ -91,7 +91,7 @@ namespace Leeax.Web.Builders
             return AddThickness(builder, "border-width", thickness, when);
         }
 
-        public static ICssBuilder AddBorder(this ICssBuilder builder, Length thickness, Color color, bool when = true)
+        public static ICssBuilder AddBorder(this ICssBuilder builder, Dimension thickness, Color color, bool when = true)
         {
             return when
                 ? builder.AddProperty("border", CssHelper.CreateBorderValue(thickness, color))
@@ -108,21 +108,7 @@ namespace Leeax.Web.Builders
             return builder.AddProperty("border-style", style, when);
         }
 
-        public static ICssBuilder AddShadow(this ICssBuilder builder, Shadow shadow, bool when = true)
-        {
-            return when
-                ? builder.AddProperty("box-shadow", CssHelper.CreateBoxShadowValue(shadow))
-                : builder;
-        }
-
-        public static ICssBuilder AddShadow(this ICssBuilder builder, Shadow[] shadow, bool when = true)
-        {
-            return when
-                ? builder.AddProperty("box-shadow", CssHelper.CreateBoxShadow(shadow))
-                : builder;
-        }
-
-        public static ICssBuilder AddFlexBasis(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddFlexBasis(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return builder.AddProperty("flex-basis", value.ToString(), when);
         }
@@ -141,7 +127,7 @@ namespace Leeax.Web.Builders
                 : builder;
         }
 
-        public static ICssBuilder AddFlex(this ICssBuilder builder, Length basis, int grow, int shrink, bool when = true)
+        public static ICssBuilder AddFlex(this ICssBuilder builder, Dimension basis, int grow, int shrink, bool when = true)
         {
             if (!when)
             {
@@ -154,19 +140,19 @@ namespace Leeax.Web.Builders
                 .AddProperty("flex-shrink", shrink.ToString(), shrink >= 0);
         }
 
-        public static ICssBuilder AddDimension(this ICssBuilder builder, string property, Length value, bool when = true)
+        public static ICssBuilder AddDimension(this ICssBuilder builder, string property, Dimension value, bool when = true)
         {
             return value.IsEmpty
                 ? builder
                 : builder.AddProperty(property, value.ToString(), when);
         }
 
-        public static ICssBuilder AddHeight(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddHeight(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "height", value, when);
         }
 
-        public static ICssBuilder AddWidth(this ICssBuilder builder, Length value, bool when = true)
+        public static ICssBuilder AddWidth(this ICssBuilder builder, Dimension value, bool when = true)
         {
             return AddDimension(builder, "width", value, when);
         }

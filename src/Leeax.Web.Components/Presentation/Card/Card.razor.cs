@@ -19,13 +19,13 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the width of the card. The default value is 10em.
         /// </summary>
         [Parameter]
-        public Length Width { get; set; } = new Length(10, Unit.EM);
+        public Dimension Width { get; set; } = new Dimension(10, Unit.EM);
 
         /// <summary>
         /// Gets or sets the height of the image. The default value is 10em.
         /// </summary>
         [Parameter]
-        public Length Height { get; set; } = new Length(10, Unit.EM);
+        public Dimension Height { get; set; } = new Dimension(10, Unit.EM);
 
         /// <summary>
         /// Gets or sets the image source.

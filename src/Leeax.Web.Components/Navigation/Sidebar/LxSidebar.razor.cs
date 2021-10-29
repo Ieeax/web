@@ -68,7 +68,7 @@ namespace Leeax.Web.Components.Navigation
         /// Gets or sets the width of the sidebar.
         /// </summary>
         [Parameter]
-        public Length Width { get; set; }
+        public Dimension Width { get; set; }
 
         [Parameter]
         public RenderFragment? Header { get; set; }

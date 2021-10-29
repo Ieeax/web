@@ -1,13 +1,12 @@
-﻿using Leeax.Web.Internal;
-using System;
+﻿using System;
 
 namespace Leeax.Web
 {
     public static class UnitHelper
     {
-        public static string ToString(Unit unit)
+        public static string Format(Unit value)
         {
-            return unit switch
+            return value switch
             {
                 Unit.Pixel => "px",
                 Unit.Percent => "%",
@@ -15,15 +14,13 @@ namespace Leeax.Web
                 Unit.REM => "rem",
                 Unit.ViewportWidth => "vw",
                 Unit.ViewportHeight => "vh",
-                _ => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(nameof(value)),
             };
         }
 
-        public static Unit ToUnit(string unitStr)
+        public static bool TryParse(string? value, out Unit result)
         {
-            unitStr.ThrowIfNull();
-
-            return unitStr switch
+            result = value switch
             {
                 "px" => Unit.Pixel,
                 "%" => Unit.Percent,
@@ -31,8 +28,10 @@ namespace Leeax.Web
                 "rem" => Unit.REM,
                 "vw" => Unit.ViewportWidth,
                 "vh" => Unit.ViewportHeight,
-                _ => Unit.Pixel,
+                _ => Unit.Pixel
             };
+            
+            return result != Unit.Pixel || value == "px";
         }
     }
 }

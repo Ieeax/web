@@ -122,13 +122,13 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the min-width of the dropdown.
         /// </summary>
         [Parameter]
-        public Length MinWidth { get; set; }
+        public Dimension MinWidth { get; set; }
 
         /// <summary>
         /// Gets or sets the max-width of the dropdown.
         /// </summary>
         [Parameter]
-        public Length MaxWidth { get; set; }
+        public Dimension MaxWidth { get; set; }
 
         /// <summary>
         /// Gets or sets whether the dropdown is active/expanded.

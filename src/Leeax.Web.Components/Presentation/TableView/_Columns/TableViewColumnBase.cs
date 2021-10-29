@@ -10,7 +10,7 @@ namespace Leeax.Web.Components.Presentation
     public abstract class TableViewColumnBase : ComponentBase, INotifyPropertyChanged, IDisposable
     {
         private string? _header;
-        private Length _maxWidth;
+        private Dimension _maxWidth;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -82,7 +82,7 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the max-width.
         /// </summary>
         [Parameter]
-        public Length MaxWidth
+        public Dimension MaxWidth
         {
             get => _maxWidth;
             set => RaisePropertyChanged(ref _maxWidth, value);
