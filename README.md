@@ -1,11 +1,11 @@
 # Introduction 
-This repository consists of several libraries - written mostly in C# and TypeScript/JavaScript - which are targeting the web. The main focus is currently on Blazor (Microsofts new SPA-Framework), which enables the execution of C#-Code in the browser (e.g. trough WebAssembly).
+This repository consists of several libraries - written mostly in C# and TypeScript/JavaScript - which are targeting the web. The main focus is currently on Blazor (Microsofts new SPA-Framework), which enables the execution of C#-Code in the browser (e.g. through WebAssembly).
 
 # Demo
 A demo for most components and features can be found <ins>[here](https://Ieeax.github.io/web/)</ins>. 
 
 # Getting Started
-To use one or more of these libraries in your application, simply add a reference to the respective NuGet-package(-s) and you're ready to go. For more information to a specific project, click on of the links further down.
+To use one or more of these libraries in your application, simply add a reference to the respective [NuGet-package(-s)](https://www.nuget.org/packages?q=Leeax.Web) and you're ready to go. For more information to a specific project, click on of the links further down.
 
 > **Note**: The projects are currently in active development and may see breaking changes in the future. The current state could be considered as a beta version and is not suitable for production.
 
