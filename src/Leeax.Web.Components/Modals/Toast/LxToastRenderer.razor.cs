@@ -37,9 +37,9 @@ namespace Leeax.Web.Components.Modals
         public void Dispose() => RenderService.StateChanged -= StateHasChanged;
 
         [Inject]
-        private IToastService ToastService { get; set; }
+        private IToastService ToastService { get; set; } = null!;
 
         [Inject]
-        private IToastRenderService RenderService { get; set; }
+        private IToastRenderService RenderService { get; set; } = null!;
     }
 }

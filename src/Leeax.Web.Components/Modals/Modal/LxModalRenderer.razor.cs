@@ -27,6 +27,6 @@ namespace Leeax.Web.Components.Modals
         }
 
         [Inject]
-        private IModalRenderService RenderService { get; set; }
+        private IModalRenderService RenderService { get; set; } = null!;
     }
 }

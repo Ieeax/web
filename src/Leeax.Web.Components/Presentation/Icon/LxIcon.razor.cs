@@ -55,7 +55,7 @@ namespace Leeax.Web.Components.Presentation
         }
 
         [Inject]
-        private IIconManager IconManager { get; set; }
+        private IIconManager IconManager { get; set; } = null!;
 
         #region Parameters
 
@@ -63,7 +63,7 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the height and width of the icon. The default value is 1.5rem.
         /// </summary>
         [Parameter]
-        public Length Size { get; set; } = new Length(1.5, Unit.REM);
+        public Dimension Size { get; set; } = new Dimension(1.5, Unit.REM);
 
         /// <summary>
         /// Gets or sets the source (-url) from which the icon is loaded.

@@ -5,16 +5,16 @@ using Leeax.Web.Builders.Internal;
 
 namespace Leeax.Web.Builders
 {
-    public class AttributeSet : IEnumerable<KeyValuePair<string, object?>>
+    public class AttributeSet : IEnumerable<KeyValuePair<string, object>>
     {
-        private readonly IEnumerable<KeyValuePair<string, object?>> _enumerable;
+        private readonly IEnumerable<KeyValuePair<string, object>> _enumerable;
 
-        private AttributeSet(IEnumerable<KeyValuePair<string, object?>> collection)
+        private AttributeSet(IEnumerable<KeyValuePair<string, object>> collection)
         {
             _enumerable = collection;
         }
 
-        public static AttributeSet Create(IEnumerable<KeyValuePair<string, object?>> collection)
+        public static AttributeSet Create(IEnumerable<KeyValuePair<string, object>> collection)
         {
             collection.ThrowIfNull();
 
@@ -55,7 +55,7 @@ namespace Leeax.Web.Builders
             return AttributeSetBuilder.Create();
         }
 
-        public IEnumerator<KeyValuePair<string, object?>> GetEnumerator() => _enumerable.GetEnumerator();
+        public IEnumerator<KeyValuePair<string, object>> GetEnumerator() => _enumerable.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

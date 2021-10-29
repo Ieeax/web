@@ -28,7 +28,7 @@ namespace Leeax.Web.Components.Theme
         }
 
         [Inject]
-        private IThemeHandler ThemeHandler { get; set; }
+        private IThemeHandler ThemeHandler { get; set; } = null!;
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }

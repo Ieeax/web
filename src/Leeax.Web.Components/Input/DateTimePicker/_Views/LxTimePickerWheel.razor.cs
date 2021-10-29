@@ -100,7 +100,7 @@ namespace Leeax.Web.Components.Input
         }
 
         [Inject]
-        private IJSRuntime JSRuntime { get; set; }
+        private IJSRuntime JSRuntime { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the minimal value.

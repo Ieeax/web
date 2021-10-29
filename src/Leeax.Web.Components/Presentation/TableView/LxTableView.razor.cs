@@ -146,7 +146,7 @@ namespace Leeax.Web.Components.Presentation
             builder.CloseElement();
         }
 
-        private RenderFragment BuildRenderTreeForRow(object item)
+        private RenderFragment BuildRenderTreeForRow(object? item)
         {
             return (builder) =>
             {

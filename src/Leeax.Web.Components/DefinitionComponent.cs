@@ -7,15 +7,15 @@ namespace Leeax.Web.Components
     {
         protected override void OnInitialized()
         {
-            Parent.AddChild(this);
+            Parent?.AddChild(this);
         }
 
         public virtual void Dispose()
         {
-            Parent.RemoveChild(this);
+            Parent?.RemoveChild(this);
         }
 
         [CascadingParameter(Name = nameof(Parent))]
-        public IContext Parent { get; set; }
+        public IContext? Parent { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
+using System.Text;
 
 namespace Leeax.Web.Builders
 {
@@ -24,40 +25,36 @@ namespace Leeax.Web.Builders
             return $"{value.Top} {value.Right} {value.Bottom} {value.Left}";
         }
 
-        public static string CreateBoxShadow(params Shadow[]? shadow)
+        public static string CreateBoxShadowValue(Dimension offsetX, Dimension offsetY, Dimension blurRadius, Dimension spreadRadius, Color color)
         {
-            string? str = null;
+            var builder = new StringBuilder();
+            
+            builder.Append(offsetX);
+            builder.Append(' ');
+            builder.Append(offsetX);
+            builder.Append(' ');
 
-            if (shadow != null)
+            if (!blurRadius.IsEmpty)
             {
-                foreach (var curShadow in shadow)
-                {
-                    str += CreateBoxShadowValue(curShadow) + ",";
-                }
+                builder.Append(blurRadius);
+                builder.Append(' ');
+            }
+            
+            if (!spreadRadius.IsEmpty)
+            {
+                builder.Append(spreadRadius);
+                builder.Append(' ');
             }
 
-            return str == null
-                ? "none"
-                : str.TrimEnd(',');
-        }
-
-        public static string CreateBoxShadowValue(Shadow shadow)
-        {
-            if (shadow.OffsetX == 0
-                && shadow.OffsetY == 0
-                && shadow.BlurRadius == 0
-                && shadow.SpreadRadius == 0)
-            {
-                return "none";
-            }
-
+            builder.Append(color.ToRgbaStr());
+            
             /* offset-x | offset-y | color */
             /* offset-x | offset-y | blur-radius | color */
             /* offset-x | offset-y | blur-radius | spread-radius | color */
-            return $"{shadow.OffsetX} {shadow.OffsetY} {shadow.BlurRadius} {shadow.SpreadRadius} {shadow.Color.ToRgbaStr()}";
+            return builder.ToString();
         }
 
-        public static string CreateBorderValue(Length thickness, Color color)
+        public static string CreateBorderValue(Dimension thickness, Color color)
         {
             if (thickness.Value != 0)
             {

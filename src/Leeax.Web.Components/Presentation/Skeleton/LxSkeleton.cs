@@ -34,10 +34,10 @@ namespace Leeax.Web.Components.Presentation
         }
 
         [Parameter]
-        public Length Height { get; set; }
+        public Dimension Height { get; set; }
 
         [Parameter]
-        public Length Width { get; set; }
+        public Dimension Width { get; set; }
 
         [Parameter]
         public SkeletonShape Shape { get; set; }

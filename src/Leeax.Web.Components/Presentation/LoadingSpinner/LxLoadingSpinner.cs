@@ -65,6 +65,6 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the size of the spinner.
         /// </summary>
         [Parameter]
-        public Length Size { get; set; } = new Length(2, Unit.EM);
+        public Dimension Size { get; set; } = new Dimension(2, Unit.EM);
     }
 }

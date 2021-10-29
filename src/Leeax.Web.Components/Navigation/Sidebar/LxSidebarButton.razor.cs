@@ -165,7 +165,7 @@ namespace Leeax.Web.Components.Navigation
         public bool IsActive => Parent?.ActiveKey != null && Parent.ActiveKey == GetKey();
 
         [Inject]
-        private NavigationManager NavManager { get; set; }
+        private NavigationManager NavManager { get; set; } = null!;
 
         #region Parameters
 

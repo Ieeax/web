@@ -6,7 +6,7 @@ namespace Leeax.Web.Builders
 {
     public class AttributeSetBuilder
     {
-        private Dictionary<string, object?>? _attributes;
+        private Dictionary<string, object>? _attributes;
 
         private AttributeSetBuilder()
         {
@@ -62,10 +62,7 @@ namespace Leeax.Web.Builders
             object? existingValue = null;
 
             // Try to get existing value with given key
-            if (_attributes != null)
-            {
-                _attributes.TryGetValue(key, out existingValue);
-            }
+            _attributes?.TryGetValue(key, out existingValue);
 
             return AddAttribute(
                 key,
@@ -94,11 +91,7 @@ namespace Leeax.Web.Builders
                 value = key;
             }
 
-            if (_attributes == null)
-            {
-                _attributes = new Dictionary<string, object?>();
-            }
-
+            _attributes ??= new Dictionary<string, object>();
             _attributes[key] = value;
 
             return this;
@@ -108,11 +101,7 @@ namespace Leeax.Web.Builders
         {
             key.ThrowIfNull();
 
-            if (_attributes != null)
-            {
-                _attributes.Remove(key);
-            }
-
+            _attributes?.Remove(key);
             return this;
         }
 
@@ -127,10 +116,7 @@ namespace Leeax.Web.Builders
             // Merge all attributes
             if (builder._attributes != null)
             {
-                if (_attributes == null)
-                {
-                    _attributes = new Dictionary<string, object?>();
-                }
+                _attributes ??= new Dictionary<string, object>();
 
                 foreach (var curAttribute in builder._attributes)
                 {
@@ -141,7 +127,7 @@ namespace Leeax.Web.Builders
             return this;
         }
 
-        public AttributeSetBuilder Merge(IEnumerable<KeyValuePair<string, object?>>? attributes, bool when = true, bool keyAsValueWhenNull = true)
+        public AttributeSetBuilder Merge(IEnumerable<KeyValuePair<string, object>>? attributes, bool when = true, bool keyAsValueWhenNull = true)
         {
             if (!when
                 || attributes == null)

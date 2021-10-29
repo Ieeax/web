@@ -9,7 +9,7 @@ namespace Leeax.Web.Components.Presentation
         private Binding _sourceBinding;
         private string? _source;
         private IConverter? _sourceConverter;
-        private Length _size = new Length(1.4, Unit.EM);
+        private Dimension _size = new Dimension(1.4, Unit.EM);
 
         public LxTableViewIconColumn()
         {
@@ -66,7 +66,7 @@ namespace Leeax.Web.Components.Presentation
         /// Gets or sets the icon size.
         /// </summary>
         [Parameter]
-        public Length Size
+        public Dimension Size
         {
             get => _size;
             set => RaisePropertyChanged(ref _size, value);

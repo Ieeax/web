@@ -111,7 +111,7 @@ namespace Leeax.Web.Components.Input
         protected bool HasIcon => _icon != null;
 
         [Inject]
-        private NavigationManager NavManager { get; set; }
+        private NavigationManager NavManager { get; set; } = null!;
 
         #region Parameters
 
