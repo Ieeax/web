@@ -1,0 +1,32 @@
+﻿.lx-textarea {
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    background: transparent;
+    padding: .5em .7em;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+    /* Background */
+    .lx-textarea.lx-normal,
+    .lx-textarea.lx-raised {
+        background-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-textarea.lx-outlined {
+        border-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+    
+    .lx-textarea:not(.lx-border) {
+        border: none;
+    }
+
+    /* Invalid style */
+    .lx-textarea.invalid {
+        border-width: 1px;
+        border-style: solid;
+        border-color: red !important;
+    }

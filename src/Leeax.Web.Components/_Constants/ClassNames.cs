@@ -58,9 +58,14 @@
         public const string ElevationLevel5 = "lx-elevation-l5";
         public const string ElevationLevel6 = "lx-elevation-l6";
 
+        public const string ScrollbarThin = "lx-scrollbar";
+
         // Formatting
         public const string Uppercase = "text-uppercase";
         public const string Lowercase = "text-lowercase";
+        public const string TextNoWrap = "lx-text-nowrap";
+        public const string TextWrapAnywhere = "lx-text-wrap-anywhere";
+        public const string TextWrapWord = "lx-text-wrap-word";
         public const string FontWeightBold = "lx-font-weight-bold";
         public const string FontWeightSemibold = "lx-font-weight-semibold";
         public const string FontWeightRegular = "lx-font-weight-regular";
