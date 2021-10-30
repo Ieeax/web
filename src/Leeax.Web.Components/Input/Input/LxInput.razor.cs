@@ -64,6 +64,12 @@ namespace Leeax.Web.Components.Input
             builder.AddAttribute("role", "textbox");
         }
 
+        protected AttributeSet? GetInputAttributes()
+        {
+            return AttributeSet.Create(builder => builder
+                .AddAttribute("readonly", string.Empty, IsReadOnly));
+        }
+
         protected void OnFocusReceived()
         {
             _hasFocus = true;
@@ -126,6 +132,12 @@ namespace Leeax.Web.Components.Input
         /// </summary>
         [Parameter]
         public string? Placeholder { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the text is read-only.
+        /// </summary>
+        [Parameter]
+        public bool IsReadOnly { get; set; }
 
         /// <summary>
         /// Gets or sets the action for the input event.

@@ -18,7 +18,8 @@
            @onfocusin="@OnFocusReceived"
            @onfocusout="@OnFocusLost"
            @oninput="@OnInputValueAsync"
-           @onchange="@OnChangeValueAsync" />
+           @onchange="@OnChangeValueAsync"
+           @attributes="@GetInputAttributes()" />
     @if (_button != null)
     {
         <LxButton Text="@_button.Text"
