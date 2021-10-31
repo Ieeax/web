@@ -398,6 +398,39 @@ input[type=number][b-r1f4krlj70] {
         .lx-tagcollection[b-hsvmne6lxr]  .lx-tagbase:not(:last-child) {
             margin-right: 0.25rem;
         }
+/* _content/Leeax.Web.Components/Input/TextArea/LxTextArea.razor.rz.scp.css */
+.lx-textarea[b-06n4genxeh] {
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    background: transparent;
+    padding: .5em .7em;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+    /* Background */
+    .lx-textarea.lx-normal[b-06n4genxeh],
+    .lx-textarea.lx-raised[b-06n4genxeh] {
+        background-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+
+    /* Outlined style */
+    .lx-textarea.lx-outlined[b-06n4genxeh] {
+        border-color: var(--lx-input-background, var(--lx-color-neutral-quaternary));
+    }
+    
+    .lx-textarea:not(.lx-border)[b-06n4genxeh] {
+        border: none;
+    }
+
+    /* Invalid style */
+    .lx-textarea.invalid[b-06n4genxeh] {
+        border-width: 1px;
+        border-style: solid;
+        border-color: red !important;
+    }
 /* _content/Leeax.Web.Components/Input/Toggle/LxToggle.razor.rz.scp.css */
 /* Basic styling */
 .lx-toggle[b-fqvddyvar0] {
