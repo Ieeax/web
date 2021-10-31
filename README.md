@@ -28,6 +28,7 @@ Wrappers for native JavaScript functionality, easily useable trough services.
 - Leeax.Web.Components.Cookies
 - Leeax.Web.Components.DOM
 - Leeax.Web.Components.History
+- Leeax.Web.Components.Clipboard
 - Leeax.Web.Components.Window
 
 # Documentation
