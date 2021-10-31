@@ -1,0 +1,59 @@
+﻿@page "/demo/jsinterop/clipboard"
+@using Leeax.Web.Components.Clipboard
+@inject IToastService ToastService
+@inject IClipboard Clipboard
+
+<div class="px-3 mt-4">
+    <h1 class="mx-1">Clipboard</h1>
+    <p>
+        The <code>@(nameof(IClipboard))</code> service allows writing and reading (only webkit browsers) to or from the users clipboard.
+    </p>
+    <div>
+        <LxInputText Value="@TextValue"
+                     ValueInput="@(value => TextValue = value)">
+            <LxInputButton IconSource="rsrc://google.materialdesign/close" 
+                           Clicked="@(() => TextValue = null)" />
+        </LxInputText>
+        <div class="flex-row mt-2">
+            <LxButton Text="Copy" IsEnabled="@(!string.IsNullOrEmpty(TextValue))" Clicked="CopyTextAsync" Class="mr-2">
+                <LxButtonIcon Source="rsrc://google.materialdesign/content_copy" />
+            </LxButton>
+            <LxButton Text="Paste" Clicked="PasteTextAsync" Class="mr-2">
+                <LxButtonIcon Source="rsrc://google.materialdesign/content_paste" />
+            </LxButton>
+        </div>
+    </div>
+</div>
+
+@code{
+
+    private async Task CopyTextAsync()
+    {
+        var result = await Clipboard.WriteAsync(TextValue);
+        if (result)
+        {
+            ToastService.ShowToast("Text copied", ToastIcon.Success);
+        }
+        else
+        {
+            ToastService.ShowToast("Couldn't copy text. This may be due to missing permissions.", ToastIcon.Error);
+        }
+    }
+    
+    private async Task PasteTextAsync()
+    {
+        var text = await Clipboard.ReadAsync();
+        if (text != null)
+        {
+            TextValue = text;
+            ToastService.ShowToast("Text pasted", ToastIcon.Success);
+        }
+        else
+        {
+            ToastService.ShowToast("Couldn't paste text. This may be due to missing permissions.", ToastIcon.Error);
+        }
+    }
+
+    private string TextValue { get; set; }
+
+}
