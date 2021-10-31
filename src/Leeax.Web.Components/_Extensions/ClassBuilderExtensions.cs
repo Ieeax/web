@@ -64,7 +64,7 @@ namespace Leeax.Web.Components
                     ComponentSize.Big => ClassNames.SizeBig,
                     ComponentSize.Huge => ClassNames.SizeHuge,
                     ComponentSize.Massive => ClassNames.SizeMassive,
-                    _ => throw new NotImplementedException()
+                    _ => throw new ArgumentOutOfRangeException(nameof(size))
                 });
         }
 
@@ -83,7 +83,7 @@ namespace Leeax.Web.Components
                     Appearance.Inline => ClassNames.AppearanceInline,
                     Appearance.Outlined => ClassNames.AppearanceOutlined,
                     Appearance.Raised => ClassNames.AppearanceRaised,
-                    _ => throw new NotImplementedException()
+                    _ => throw new ArgumentOutOfRangeException(nameof(appearance))
                 });
         }
 
@@ -100,7 +100,24 @@ namespace Leeax.Web.Components
                 {
                     TextTransform.Uppercase => ClassNames.Uppercase,
                     TextTransform.Lowercase => ClassNames.Lowercase,
-                    _ => throw new NotImplementedException()
+                    _ => throw new ArgumentOutOfRangeException(nameof(textTransform))
+                });
+        }
+
+        public static IClassBuilder AddTextWrap(this IClassBuilder builder, TextWrap textWrap, bool when = true)
+        {
+            if (!when)
+            {
+                return builder;
+            }
+
+            return builder
+                .Add(textWrap switch
+                {
+                    TextWrap.NoWrap => ClassNames.TextNoWrap,
+                    TextWrap.Anywhere => ClassNames.TextWrapAnywhere,
+                    TextWrap.Word => ClassNames.TextWrapWord,
+                    _ => throw new ArgumentOutOfRangeException(nameof(textWrap))
                 });
         }
     }

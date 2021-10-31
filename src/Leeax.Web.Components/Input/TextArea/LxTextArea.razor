@@ -1,0 +1,10 @@
+﻿@namespace Leeax.Web.Components.Input
+@inherits ValueComponentBase<string>
+
+<textarea lang="@GetLanguageCode()"
+          placeholder="@Placeholder"
+          @onfocusin="@OnFocusReceived"
+          @onfocusout="@OnFocusLost"
+          @oninput="@OnInputValueAsync"
+          @onchange="@OnChangeValueAsync"
+          @attributes="AttributeSet">@Value</textarea>

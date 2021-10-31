@@ -1,0 +1,67 @@
+﻿@page "/demo/textarea"
+
+<div class="px-3">
+    <ComponentInfo Type="typeof(LxTextArea)" />
+    <Demo>
+        <Content>
+            <div class="flex-row flex-wrap mb-3">
+                <LxTextArea Appearance="Appearance"
+                            Placeholder="@Placeholder"
+                            IsEnabled="IsEnabled"
+                            IsReadOnly="IsReadOnly"
+                            ResizeAxis="ResizeAxis"
+                            TextWrap="TextWrap"
+                            @bind-Value="TextValue"
+                            Style="height:250px;width:400px;" />
+            </div>
+        </Content>
+        <Customization>
+            <Entry Text="Placeholder">
+                <LxInput Placeholder="Enter a placeholder ..."
+                         @bind-Value="Placeholder" />
+            </Entry>
+            <Entry Text="ResizeAxis">
+                <LxSelect Items="Enum.GetValues(typeof(ResizeAxis)).Cast<ResizeAxis>()"
+                          Converter="DefaultOptionConverter<ResizeAxis>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="ResizeAxis" />
+            </Entry>
+            <Entry Text="TextWrap">
+                <LxSelect Items="Enum.GetValues(typeof(TextWrap)).Cast<TextWrap>()"
+                          Converter="DefaultOptionConverter<TextWrap>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="TextWrap" />
+            </Entry>
+            <Entry Text="Appearance">
+                <LxSelect Items="Enum.GetValues(typeof(Appearance)).Cast<Appearance>()"
+                          Converter="DefaultOptionConverter<Appearance>.Instance"
+                          Placeholder="Nothing selected"
+                          @bind-Value="Appearance" />
+            </Entry>
+            <Entry Text="Enabled">
+                <LxToggle @bind-Value="IsEnabled" />
+            </Entry>
+            <Entry Text="ReadOnly">
+                <LxToggle @bind-Value="IsReadOnly" />
+            </Entry>
+        </Customization>
+    </Demo>
+</div>
+
+@code{
+
+    private string Placeholder { get; set; } = "Type something ...";
+
+    private Appearance Appearance { get; set; } = Appearance.Normal;
+
+    private TextWrap TextWrap { get; set; } = TextWrap.Anywhere;
+
+    private ResizeAxis ResizeAxis { get; set; } = ResizeAxis.Both;
+
+    private bool IsEnabled { get; set; } = true;
+
+    private bool IsReadOnly { get; set; } = false;
+
+    private string TextValue { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nNam vitae urna ipsum.";
+
+}
