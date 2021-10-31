@@ -1,0 +1,13 @@
+[
+  {
+    "outputFileName": "wwwroot/Clipboard.min.js",
+    "inputFiles": [
+      "wwwroot/Clipboard.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

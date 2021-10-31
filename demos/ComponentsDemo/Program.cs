@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Leeax.Web.Components.Modals;
 using Leeax.Web.Components.Configuration;
+using Leeax.Web.Components.Clipboard;
 using Leeax.Web.Components.Cookies;
 using Leeax.Web.Components.Theme;
 using Leeax.Web.Components;
@@ -55,6 +56,7 @@ namespace ComponentsDemo
             });
 
             // Add additional js-interop libraries
+            builder.Services.AddClipboard();
             builder.Services.AddCookies();
 
             // Run bootstrappers and then the app

@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Builders.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leeax.Web.Tests", "tests\Leeax.Web.Tests\Leeax.Web.Tests.csproj", "{71E5C2E1-2CD1-429E-B87B-63C1E136F281}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leeax.Web.Components.Clipboard", "src\JSInterop\Leeax.Web.Components.Clipboard\Leeax.Web.Components.Clipboard.csproj", "{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,10 @@ Global
 		{71E5C2E1-2CD1-429E-B87B-63C1E136F281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E5C2E1-2CD1-429E-B87B-63C1E136F281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71E5C2E1-2CD1-429E-B87B-63C1E136F281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +139,7 @@ Global
 		{502147C5-1D6C-42B7-8655-7FDCCE3A756A} = {5BC9C9EB-FED8-4D72-8B39-FBEA3637EAAF}
 		{A735FFDC-A3E2-4A34-B31B-CA0703E0CDD8} = {4E7E37B5-C586-4609-9165-69B8B152F504}
 		{71E5C2E1-2CD1-429E-B87B-63C1E136F281} = {4E7E37B5-C586-4609-9165-69B8B152F504}
+		{3F0562FA-68B7-4EC3-B38C-23FBB5699BBC} = {5BC9C9EB-FED8-4D72-8B39-FBEA3637EAAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3790ED78-6F51-42AF-BFB8-B90220285F8F}
