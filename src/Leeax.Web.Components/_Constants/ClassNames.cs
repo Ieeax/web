@@ -58,6 +58,20 @@
         public const string ElevationLevel5 = "lx-elevation-l5";
         public const string ElevationLevel6 = "lx-elevation-l6";
 
+        public const string VerticalAlignmentTop = "lx-valignment-top";
+        public const string VerticalAlignmentCenter = "lx-valignment-center";
+        public const string VerticalAlignmentBottom = "lx-valignment-bottom";
+        
+        public const string HorizontalAlignmentLeft = "lx-halignment-left";
+        public const string HorizontalAlignmentCenter = "lx-halignment-center";
+        public const string HorizontalAlignmentRight = "lx-halignment-right";
+        
+        public const string AlignmentLeft = "lx-alignment-left";
+        public const string AlignmentTop = "lx-alignment-top";
+        public const string AlignmentRight = "lx-alignment-right";
+        public const string AlignmentBottom = "lx-alignment-bottom";
+        public const string AlignmentCenter = "lx-alignment-center";
+
         public const string ScrollbarThin = "lx-scrollbar";
 
         // Formatting

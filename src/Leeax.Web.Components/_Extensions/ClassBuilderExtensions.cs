@@ -120,5 +120,58 @@ namespace Leeax.Web.Components
                     _ => throw new ArgumentOutOfRangeException(nameof(textWrap))
                 });
         }
+
+        public static IClassBuilder AddAlignment(this IClassBuilder builder, VerticalAlignment alignment, bool when = true)
+        {
+            if (!when)
+            {
+                return builder;
+            }
+
+            return builder
+                .Add(alignment switch
+                {
+                    VerticalAlignment.Top => ClassNames.VerticalAlignmentTop,
+                    VerticalAlignment.Center => ClassNames.VerticalAlignmentCenter,
+                    VerticalAlignment.Bottom => ClassNames.VerticalAlignmentBottom,
+                    _ => throw new ArgumentOutOfRangeException(nameof(alignment))
+                });
+        }
+
+        public static IClassBuilder AddAlignment(this IClassBuilder builder, HorizontalAlignment alignment, bool when = true)
+        {
+            if (!when)
+            {
+                return builder;
+            }
+
+            return builder
+                .Add(alignment switch
+                {
+                    HorizontalAlignment.Left => ClassNames.HorizontalAlignmentLeft,
+                    HorizontalAlignment.Center => ClassNames.HorizontalAlignmentCenter,
+                    HorizontalAlignment.Right => ClassNames.HorizontalAlignmentRight,
+                    _ => throw new ArgumentOutOfRangeException(nameof(alignment))
+                });
+        }
+
+        public static IClassBuilder AddAlignment(this IClassBuilder builder, Alignment alignment, bool when = true)
+        {
+            if (!when)
+            {
+                return builder;
+            }
+
+            return builder
+                .Add(alignment switch
+                {
+                    Alignment.Left => ClassNames.AlignmentLeft,
+                    Alignment.Top => ClassNames.AlignmentTop,
+                    Alignment.Right => ClassNames.AlignmentRight,
+                    Alignment.Bottom => ClassNames.AlignmentBottom,
+                    Alignment.Center => ClassNames.AlignmentCenter,
+                    _ => throw new ArgumentOutOfRangeException(nameof(alignment))
+                });
+        }
     }
 }
