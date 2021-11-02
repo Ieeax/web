@@ -5,9 +5,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: rgba(0,0,0,0.25);
 }
 
@@ -22,27 +19,91 @@
     }
 
     /* lx-modal */
-    ::deep .lx-modal-background .lx-modal {
+    ::deep .lx-modal {
+        position: absolute;
         min-height: 100px;
         min-width: 300px;
+        width: fit-content;
         border-radius: .5rem;
         background-color: var(--lx-modal-background, var(--lx-color-neutral-white));
     }
 
-    ::deep .lx-modal-background.t-enter .lx-modal {
-        transform: scale(1.25);
-        opacity: 0;
+    /* alignment & transition */
+    ::deep .lx-modal.lx-alignment-top {
+        top: 0;
+        margin-top: 20px;
+    }
+    
+    ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-top,
+    ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-top {
+        transform: translate(-50%, -100%);
     }
 
+    ::deep .lx-modal.lx-alignment-bottom {
+        bottom: 0;
+        margin-bottom: 20px;
+    }
+    
+    ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-bottom,
+    ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-bottom {
+        transform: translate(-50%, 100%);
+    }
+
+    ::deep .lx-modal.lx-alignment-top,
+    ::deep .lx-modal.lx-alignment-bottom {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    ::deep .lx-modal.lx-alignment-left {
+        left: 0;
+        margin-left: 20px;
+    }
+
+    ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-left,
+    ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-left {
+        transform: translate(-100%, -50%);
+    }
+    
+    ::deep .lx-modal.lx-alignment-right {
+        right: 0;
+        margin-right: 20px;
+    }
+    
+    ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-right,
+    ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-right {
+        transform: translate(100%, -50%);
+    }
+    
+    ::deep .lx-modal.lx-alignment-left,
+    ::deep .lx-modal.lx-alignment-right {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    ::deep .lx-modal.lx-alignment-center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-center {
+        transform: translate(-50%, -50%) scale(1.25);
+    }
+    
+    ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-center {
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+
+    ::deep .lx-modal-background.t-enter .lx-modal,
     ::deep .lx-modal-background.t-leave-to .lx-modal {
-        transform: scale(0.75);
         opacity: 0;
     }
-
+    
     ::deep .lx-modal-background.t-enter-to .lx-modal {
         transition: opacity 150ms ease-out, transform 150ms ease-out;
     }
-
+    
     ::deep .lx-modal-background.t-leave-active .lx-modal {
         transition: opacity 150ms ease-in, transform 150ms ease-in;
     }

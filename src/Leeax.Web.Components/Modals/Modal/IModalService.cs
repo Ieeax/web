@@ -8,17 +8,17 @@ namespace Leeax.Web.Components.Modals
         /// <summary>
         /// Shows the modal which is associated with the given model.
         /// </summary>
-        Task ShowAsync<TModel>(TModel model) where TModel : INotifyClosed;
+        Task ShowAsync<TModel>(TModel model);
 
         /// <summary>
         /// Shows the modal which is associated with the given model.
         /// </summary>
-        Task ShowAsync<TModel>() where TModel : INotifyClosed;
+        Task ShowAsync<TModel>();
 
         /// <summary>
         /// Shows the modal which is associated with the given model.
-        /// The model itself will be created trough dependency-injection.
+        /// The model itself will be created through dependency-injection.
         /// </summary>
-        Task ShowAsync<TModel>(Action<TModel>? configure) where TModel : INotifyClosed;
+        Task ShowAsync<TModel>(Action<TModel>? configure);
     }
 }

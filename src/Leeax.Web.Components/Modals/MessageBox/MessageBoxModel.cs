@@ -2,16 +2,9 @@
 
 namespace Leeax.Web.Components.Modals
 {
-    public class MessageBoxModel : INotifyClosed
+    public class MessageBoxModel
     {
         private DialogResult _dialogResult;
-
-        public void RaiseClosedEvent()
-        {
-            Closed?.Invoke();
-        }
-
-        public event Action? Closed;
 
         public string? Icon { get; set; }
 

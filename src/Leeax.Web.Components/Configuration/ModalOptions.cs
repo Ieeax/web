@@ -14,8 +14,6 @@ namespace Leeax.Web.Components.Configuration
         }
 
         public void AddComponent<TModel, TComponent>()
-            where TModel : INotifyClosed
-            where TComponent : IModelComponent<TModel>
         {
             var modelType = typeof(TModel);
 

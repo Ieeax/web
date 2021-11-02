@@ -1,21 +1,16 @@
 ﻿@namespace Leeax.Web.Components.Modals
 @inherits LxComponentBase
 
-<div @attributes="AttributeSet">
-    @if (Model != null)
-    {
-        <LxModalHeader Icon="@Model.Icon"
-                       Title="@Model.Title"
-                       Closed="Model.RaiseClosedEvent" />
-        <div class="flex1 py-3">@Model.Text</div>
-        <div class="flex-row flex-right">
-            @foreach (var curResult in GetResults())
-            {
-                <LxButton Text="@curResult.ToString()"
-                          Size="ComponentSize.Small"
-                          Class="ml-2"
-                          Clicked="@(() => OnButtonClicked(curResult))" />
-            }
-        </div>
-    }
-</div>
+<LxModal>
+    <LxModalHeader Icon="@Model.Icon" Title="@Model.Title" />
+    <LxModalContent>@Model.Text</LxModalContent>
+    <LxModalFooter Class="flex-row flex-right">
+        @foreach (var curResult in GetResults())
+        {
+            <LxButton Text="@curResult.ToString()"
+                      Size="ComponentSize.Small"
+                      Class="ml-2"
+                      Clicked="@(() => OnButtonClicked(curResult))" />
+        }
+    </LxModalFooter>
+</LxModal>

@@ -1,19 +1,16 @@
-﻿using System;
-using Leeax.Web.Builders;
+﻿using Leeax.Web.Builders;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Leeax.Web.Components.Modals
 {
-    public class LxModal : LxComponentBase
+    public class LxModalContent : LxComponentBase
     {
-        public const string ClassName = "lx-modal";
-        
+        public const string ClassName = "lx-modal-content";
+
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
         {
-            builder.AddClassAttribute(x => x
-                .AddMultiple(ClassName, "overflow-hidden", "flex-col", "lx-elevation-l5")
-                .AddAlignment(Alignment));
+            builder.AddClassAttribute(ClassName, ClassNames.ScrollbarThin, "flex1", "px-3");
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -25,13 +22,6 @@ namespace Leeax.Web.Components.Modals
             builder.AddContent(2, ChildContent);
             builder.CloseElement();
         }
-
-        /// <summary>
-        /// Gets or sets the alignment of the modal.
-        /// The default value is <see cref="Alignment.Center"/>.
-        /// </summary>
-        [Parameter]
-        public Alignment Alignment { get; set; } = Alignment.Center;
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }

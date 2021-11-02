@@ -8,6 +8,6 @@ namespace Leeax.Web.Components.Modals
         /// Gets or sets the model.
         /// </summary>
         [Parameter]
-        public TModel? Model { get; set; }
+        public TModel Model { get; set; }
     }
 }

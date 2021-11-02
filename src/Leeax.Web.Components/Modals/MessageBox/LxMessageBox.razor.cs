@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Leeax.Web.Components.Modals
 {
-    public partial class LxMessageBox : IModelComponent<MessageBoxModel>
+    public partial class LxMessageBox
     {
         public const string ClassName = "lx-messagebox";
 
@@ -16,13 +16,13 @@ namespace Leeax.Web.Components.Modals
 
         private void OnButtonClicked(DialogResult result)
         {
-            Model!.DialogResult = result;
-            Model.RaiseClosedEvent();
+            Model.DialogResult = result;
+            Context.Close();
         }
 
         private IEnumerable<DialogResult> GetResults()
         {
-            return Model!.Buttons switch
+            return Model.Buttons switch
             {
                 MessageBoxButtons.OK => new[] { DialogResult.OK },
                 MessageBoxButtons.OKCancel => new[] { DialogResult.OK, DialogResult.Cancel },
@@ -30,11 +30,14 @@ namespace Leeax.Web.Components.Modals
                 MessageBoxButtons.YesNoCancel => new[] { DialogResult.Yes, DialogResult.No, DialogResult.Cancel },
                 MessageBoxButtons.YesNo => new[] { DialogResult.Yes, DialogResult.No },
                 MessageBoxButtons.RetryCancel => new[] { DialogResult.Retry, DialogResult.Cancel },
-                _ => throw new NotImplementedException()
+                _ => throw new ArgumentOutOfRangeException()
             };
         }
 
-        [Parameter]
-        public MessageBoxModel? Model { get; set; }
+        [CascadingParameter]
+        public MessageBoxModel Model { get; set; } = null!;
+        
+        [CascadingParameter]
+        public ModalState Context { get; set; } = null!;
     }
 }
