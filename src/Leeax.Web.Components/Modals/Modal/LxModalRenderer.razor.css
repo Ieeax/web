@@ -1,6 +1,6 @@
 ﻿::deep .lx-modal-background {
     position: fixed;
-    z-index: 10;
+    z-index: var(--lx-zindex-modal, 1000);
     top: 0;
     left: 0;
     right: 0;

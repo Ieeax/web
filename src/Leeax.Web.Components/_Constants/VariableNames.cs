@@ -2,6 +2,7 @@
 {
     public static class VariableNames
     {
+        // Theming
         public const string ThemeDarker = "lx-color-theme-darker";
         public const string ThemeDark = "lx-color-theme-dark";
         public const string ThemePrimary = "lx-color-theme-primary";
@@ -19,5 +20,10 @@
         public const string NeutralQuaternary = "lx-color-neutral-quaternary";
         public const string NeutralLight = "lx-color-neutral-light";
         public const string NeutralLighter = "lx-color-neutral-lighter";
+        
+        // Z-Index
+        public const string ZIndexDropDown = "lx-zindex-dropdown";
+        public const string ZIndexModal = "lx-zindex-modal";
+        public const string ZIndexToast = "lx-zindex-toast";
     }
 }

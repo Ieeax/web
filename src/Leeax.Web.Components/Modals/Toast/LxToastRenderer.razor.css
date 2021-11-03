@@ -1,13 +1,10 @@
 ﻿.lx-toastrenderer {
     position: fixed;
-    z-index: 10;
+    z-index: var(--lx-zindex-toast, 1000);
 }
 
     .lx-toastrenderer.lx-valignment-top {
         top: 10px;
-    }
-
-    .lx-toastrenderer.lx-valignment-bottom {
         bottom: 10px;
     }
 
