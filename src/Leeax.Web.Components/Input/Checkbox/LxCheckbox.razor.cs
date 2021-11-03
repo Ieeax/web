@@ -8,16 +8,14 @@ namespace Leeax.Web.Components.Input
     public partial class LxCheckbox : IEnableable
     {
         public const string ClassName = "lx-checkbox";
-        public const string VariableBackgroundColor = ClassName + "-background";
-        public const string VariableActiveBackgroundColor = ClassName + "-active-background";
 
         private Color _backgroundColor;
         private Color _activeBackgroundColor;
 
         protected override void OnParametersSet()
         {
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
-            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableActiveBackgroundColor, VariableNames.ThemePrimary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.CheckboxBackground, VariableNames.NeutralQuaternary);
+            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableNames.CheckboxActiveBackground, VariableNames.ThemePrimary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)

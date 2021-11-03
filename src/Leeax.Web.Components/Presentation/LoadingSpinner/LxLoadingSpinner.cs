@@ -9,7 +9,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxLoadingSpinner : LxComponentBase
     {
         public const string ClassName = "lx-loadingspinner";
-        public const string VariableColor = ClassName + "-color";
 
         private Color _color;
 
@@ -34,7 +33,7 @@ namespace Leeax.Web.Components.Presentation
 
         protected override void OnParametersSet()
         {
-            _color = StyleContext.GetColorOrDefault(VariableColor, VariableNames.ThemePrimary);
+            _color = StyleContext.GetColorOrDefault(VariableNames.LoadingSpinnerColor, VariableNames.ThemePrimary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)

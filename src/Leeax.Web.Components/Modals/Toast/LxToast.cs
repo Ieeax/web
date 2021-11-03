@@ -9,7 +9,6 @@ namespace Leeax.Web.Components.Modals
     public class LxToast : ComponentBase, IDisposable
     {
         public const string ClassName = "lx-toast";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private readonly BackwardElementReference _toastReference = new BackwardElementReference();
         private ToastState? _state;

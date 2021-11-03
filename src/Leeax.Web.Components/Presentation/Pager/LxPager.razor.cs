@@ -8,7 +8,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxPager
     {
         public const string ClassName = "lx-pager";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private readonly ZeroToOneBasedConverter _converter = new ZeroToOneBasedConverter();
         private int _total;

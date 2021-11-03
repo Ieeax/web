@@ -6,7 +6,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxCard
     {
         public const string ClassName = "lx-card";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
         {

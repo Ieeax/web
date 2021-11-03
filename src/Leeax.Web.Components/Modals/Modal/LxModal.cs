@@ -10,7 +10,6 @@ namespace Leeax.Web.Components.Modals
     {
         public const string ClassName = "lx-modal";
         public const string ClassNameBackground = "lx-modal-background";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private readonly BackwardElementReference _modalReference = new BackwardElementReference();
         private ModalState? _state;

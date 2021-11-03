@@ -11,7 +11,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxTextArea : IEnableable
     {
         public const string ClassName = "lx-textarea";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private bool _hasFocus;
         private Color _neutralPrimary;
@@ -20,7 +19,7 @@ namespace Leeax.Web.Components.Input
         protected override void OnParametersSet()
         {
             _neutralPrimary = StyleContext.GetColorOrDefault(VariableNames.NeutralPrimary, default);
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.TextAreaBackground, VariableNames.NeutralQuaternary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
