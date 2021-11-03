@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Leeax.Web.Components.Presentation
 {
-    public partial class Card
+    public partial class LxCard
     {
         public const string ClassName = "lx-card";
         public const string VariableBackgroundColor = ClassName + "-background";

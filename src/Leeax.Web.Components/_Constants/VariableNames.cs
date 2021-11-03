@@ -50,7 +50,7 @@ namespace Leeax.Web.Components
         public const string TabBarColor = LxTabBar<object>.ClassName + "-color";
         public const string TabBarActiveColor = LxTabBar<object>.ClassName + "-active-color";
         
-        public const string CardBackground = Card.ClassName + "-background";
+        public const string CardBackground = LxCard.ClassName + "-background";
         public const string DropDownBackground = LxDropDown.ClassName + "-background";
         public const string IconColor = LxIcon.ClassName + "-color";
         public const string LoadingSpinnerColor = LxLoadingSpinner.ClassName + "-color";
