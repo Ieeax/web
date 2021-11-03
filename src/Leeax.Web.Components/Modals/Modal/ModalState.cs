@@ -49,8 +49,14 @@ namespace Leeax.Web.Components.Modals
         // Required for transition
         public bool IsActive { get; private set; }
 
+        /// <summary>
+        /// Gets the associated model.
+        /// </summary>
         public object Model { get; }
 
+        /// <summary>
+        /// Gets the type of the associated component.
+        /// </summary>
         public Type ComponentType { get; }
     }
 }
