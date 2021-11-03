@@ -3,27 +3,27 @@
     z-index: 10;
 }
 
-    .lx-toastrenderer.pos-upper {
+    .lx-toastrenderer.lx-valignment-top {
         top: 10px;
     }
 
-    .lx-toastrenderer.pos-lower {
+    .lx-toastrenderer.lx-valignment-bottom {
         bottom: 10px;
     }
 
-    .lx-toastrenderer.pos-left {
+    .lx-toastrenderer.lx-halignment-left {
         left: 10px;
     }
 
-    .lx-toastrenderer.pos-right {
+    .lx-toastrenderer.lx-halignment-right {
         right: 10px;
     }
 
-    .lx-toastrenderer.pos-center {
+    .lx-toastrenderer.lx-halignment-center {
         left: 50%;
     }
 
-        .lx-toastrenderer.pos-center ::deep .lx-toast {
+        .lx-toastrenderer.lx-halignment-center ::deep .lx-toast {
             position: relative;
             margin-left: -50%;
             margin-right: 50%;

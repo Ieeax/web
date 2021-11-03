@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Leeax.Web.Components.Modals
 {
-    public partial class LxDefaultToast : IModelComponent<DefaultToastModel>
+    public partial class LxDefaultToast
     {
         public const string ClassName = "lx-toast-default";
 
@@ -49,10 +49,13 @@ namespace Leeax.Web.Components.Modals
                 return;
             }
 
-            button.Command(Model.GetToastContext());
+            button.Command(new ToastContext(() => Context?.Close()));
         }
 
-        [Parameter]
+        [CascadingParameter]
         public DefaultToastModel? Model { get; set; }
+
+        [CascadingParameter]
+        public ToastState? Context { get; set; }
     }
 }

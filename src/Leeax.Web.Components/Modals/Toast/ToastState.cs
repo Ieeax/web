@@ -13,16 +13,20 @@ namespace Leeax.Web.Components.Modals
         public event Action<ToastState>? Closed;
         public event Action? StateChanged;
 
-        public ToastState(Type componentType, IToastModel model)
+        public ToastState(Type componentType, object model, int displayTime = Timeout.Infinite)
         {
             componentType.ThrowIfNull();
             model.ThrowIfNull();
 
             IsActive = true;
-            ComponentKey = Guid.NewGuid().ToString("N");
             ComponentType = componentType;
             Model = model;
-            Model.Closed += Close;
+            DisplayTime = displayTime < 0 ? Timeout.Infinite : displayTime;
+
+            if (Model is INotifyClosed notifyClosed)
+            {
+                notifyClosed.Closed += Close;
+            }
         }
 
         public void Close()
@@ -38,12 +42,12 @@ namespace Leeax.Web.Components.Modals
             if (!_timerStarted)
             {
                 // Start timer except the timeout equals "-1" (infinite, user have to close it manually)
-                if (Model.DisplayTime != Timeout.Infinite)
+                if (DisplayTime != Timeout.Infinite)
                 {
                     _timer = new Timer(
-                        x => Close(),
+                        _ => Close(),
                         null,
-                        Model.DisplayTime,
+                        DisplayTime,
                         Timeout.Infinite);
                 }
 
@@ -59,17 +63,29 @@ namespace Leeax.Web.Components.Modals
         public void Dispose()
         {
             _timer?.Dispose();
-            Model.Closed -= Close;
+            
+            if (Model is INotifyClosed notifyClosed)
+            {
+                notifyClosed.Closed -= Close;
+            }
         }
 
         // Required for transition
         public bool IsActive { get; private set; }
 
-        public IToastModel Model { get; }
+        /// <summary>
+        /// Gets the associated model.
+        /// </summary>
+        public object Model { get; }
 
+        /// <summary>
+        /// Gets the type of the associated component.
+        /// </summary>
         public Type ComponentType { get; }
-
-        // Unique id to preserve state of component
-        public string ComponentKey { get; }
+        
+        /// <summary>
+        /// Gets the display time in milliseconds.
+        /// </summary>
+        public int DisplayTime { get; }
     }
 }
