@@ -24,8 +24,8 @@ namespace Leeax.Web.Components
             builder.Add(VariableNames.NeutralQuaternary, ColorHelper.FromHexStr("d0d0d0"));
             builder.Add(VariableNames.NeutralLight, ColorHelper.FromHexStr("edebe9"));
             builder.Add(VariableNames.NeutralLighter, ColorHelper.FromHexStr("f3f2f1"));
-            builder.Add("lx-color-elevation", "100, 106, 119");
-            builder.Add("lx-modal-background", Color.White);
+            builder.Add(VariableNames.ElevationColor, "100, 106, 119");
+            builder.Add(VariableNames.ModalBackground, Color.White);
         }
     }
 }
