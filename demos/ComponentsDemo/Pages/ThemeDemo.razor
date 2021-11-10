@@ -1,11 +1,28 @@
 ﻿@page "/demo/theme"
+@using System.Drawing
 @inject IThemeHandler ThemeHandler
 
 <div class="px-3">
     <h1 class="mt-4 mx-1 d-inline-block">Theme and Coloring</h1>
     <Demo>
         <Content>
-            <span>No demo available.</span>
+            <div class="flex-row">
+                <LxTableView Items="Variables">
+                    <ColumnDefinitions>
+                        <LxTableViewColumn Header="Variable" Text="{VariableName}"/>
+                        <LxTableViewColumn Header="Value">
+                            <Template>
+                                @if (((StyleVariable)context).Value is Color color)
+                                {
+                                    <div class="rounded-circle mr-2" style="height:20px;width:20px;background:@color.ToRgbaStr()"></div>
+                                }
+                                <span>@(((StyleVariable)context).ValueString)</span>
+                            </Template>
+                        </LxTableViewColumn>
+                        <LxTableViewColumn Header="Type" Text="{ValueTypeName}"/>
+                    </ColumnDefinitions>
+                </LxTableView>
+            </div>
         </Content>
         <Customization>
             <Entry Text="Theme">
@@ -16,3 +33,67 @@
         </Customization>
     </Demo>
 </div>
+
+@code{
+
+    protected override void OnParametersSet()
+    {
+        Variables.Clear();
+
+        if (StyleContext?.Style != null)
+        {
+            Variables.AddRange(
+                StyleContext.Style
+                    .ToDictionary()
+                    .Select(v => new StyleVariable(v.Key, v.Value)));
+        }
+    }
+
+    private List<StyleVariable> Variables { get; } = new();
+
+    [CascadingParameter]
+    public StyleContext StyleContext { get; set; }
+
+    private class StyleVariable
+    {
+        public StyleVariable(string variableName, object value)
+        {
+            VariableName = variableName;
+            Value = value;
+            ValueString = GetValueString(value);
+            ValueTypeName = value?.GetType().FullName ?? "null";
+        }
+
+        private static string GetValueString(object value)
+        {
+            if (value == null) return null;
+            
+            var type = value.GetType();
+            if (type.IsPrimitive 
+                || type == typeof(decimal) 
+                || type == typeof(string) 
+                || type == typeof(DateTime) 
+                || type == typeof(TimeSpan) 
+                || type == typeof(Guid))
+            {
+                return value.ToString();
+            }
+
+            if (value is Color color)
+            {
+                return color.A < 255 ? color.ToRgbaStr() : color.ToHexStr();
+            }
+            
+            return null;
+        }
+        
+        public string VariableName { get; }
+
+        public object Value { get; }
+
+        public string ValueString { get; }
+
+        public string ValueTypeName { get; }
+    }
+    
+}
