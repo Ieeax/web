@@ -2,7 +2,9 @@
 @inherits LxComponentBase
 
 <LxModal>
-    <LxModalHeader Icon="@Model.Icon" Title="@Model.Title" />
+    <LxModalHeader Icon="@Model.Icon"
+                   Title="@Model.Title"
+                   AllowClose="false" />
     <LxModalContent>@Model.Text</LxModalContent>
     <LxModalFooter Class="flex-row flex-right">
         @foreach (var curResult in GetResults())
