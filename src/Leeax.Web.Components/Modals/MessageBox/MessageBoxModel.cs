@@ -12,6 +12,8 @@ namespace Leeax.Web.Components.Modals
 
         public string? Text { get; set; }
 
+        public bool RequireInteraction { get; set; } = true;
+        
         public MessageBoxButtons Buttons { get; set; }
 
         public DialogResult DialogResult

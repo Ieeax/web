@@ -12,17 +12,20 @@
             <span class="mt-3">Returned result: @LastResult</span>
         </Content>
         <Customization>
-            <Entry Text="Buttons">
-                <LxSelect Placeholder="Nothing selected"
-                          Items="Enum.GetValues(typeof(MessageBoxButtons)).Cast<MessageBoxButtons>()"
-                          Converter="DefaultOptionConverter<MessageBoxButtons>.Instance"
-                          @bind-Value="Buttons" />
-            </Entry>
             <Entry Text="Title">
                 <LxInputText @bind-Value="Title" Placeholder="Enter title ..." />
             </Entry>
             <Entry Text="Text">
                 <LxInputText @bind-Value="Text" Placeholder="Enter text ..." />
+            </Entry>
+            <Entry Text="Require Interaction">
+                <LxToggle @bind-Value="RequireInteraction" />
+            </Entry>
+            <Entry Text="Buttons">
+                <LxSelect Placeholder="Nothing selected"
+                          Items="Enum.GetValues(typeof(MessageBoxButtons)).Cast<MessageBoxButtons>()"
+                          Converter="DefaultOptionConverter<MessageBoxButtons>.Instance"
+                          @bind-Value="Buttons" />
             </Entry>
         </Customization>
     </Demo>
@@ -32,8 +35,10 @@
 
     private async Task ShowModal()
     {
-        LastResult = await ModalService.ShowMessageAsync(Title, Text, Buttons);
+        LastResult = await ModalService.ShowMessageAsync(Title, Text, Buttons, RequireInteraction);
     }
+
+    public bool RequireInteraction { get; set; } = true;
 
     public MessageBoxButtons Buttons { get; set; }
 
