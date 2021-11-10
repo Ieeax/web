@@ -1,74 +1,86 @@
-﻿using Leeax.Web.Components.Abstractions;
-using Leeax.Web.Components.Presentation;
+﻿using System;
+using System.Threading.Tasks;
+using Leeax.Web.Builders;
+using Leeax.Web.Components.Abstractions;
+using Leeax.Web.Components.DOM;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using System;
 
 namespace Leeax.Web.Components.Modals
 {
-    public class LxModal : ComponentBase, IDisposable
+    public class LxModal : LxComponentBase
     {
         public const string ClassName = "lx-modal";
-        public const string ClassNameBackground = "lx-modal-background";
-
-        private readonly BackwardElementReference _modalReference = new BackwardElementReference();
-        private ModalState? _state;
+        
+        private ElementReference _modalReference;
+        private long _callbackId = -1;
+        
+        protected override void BuildAttributeSet(AttributeSetBuilder builder)
+        {
+            builder.AddClassAttribute(x => x
+                .AddMultiple(ClassName, "overflow-hidden", "flex-col", "lx-elevation-l5")
+                .AddAlignment(Alignment));
+        }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             base.BuildRenderTree(builder);
-
-            if (State != null)
-            {
-                builder.OpenComponent<LxTransition>(0);
-                builder.AddAttribute(1, nameof(LxTransition.IsActive), State.IsActive);
-                builder.AddAttribute(2, nameof(LxTransition.Target), _modalReference);
-                builder.AddAttribute(3, nameof(LxTransition.StateChanged), EventCallback.Factory.Create<TransitionState>(this, State.TransitionStateChanged));
-                builder.AddAttribute(4, nameof(LxTransition.ChildContent), (RenderFragment)(builder2 =>
-                {
-                    builder2.OpenElement(5, "div");
-                    builder2.AddAttribute(6, "class", ClassNameBackground);
-                    builder2.AddElementReferenceCapture(7, @ref => _modalReference.Current = @ref);
-                    builder2.OpenElement(8, "div");
-                    builder2.AddAttribute(9, "class", ClassName + " lx-elevation-l5 p-3 m-5");
-                    builder2.OpenComponent(10, State.ComponentType);
-                    builder2.AddAttribute(11, "Model", State.Model);
-                    builder2.CloseComponent();
-                    builder2.CloseElement();
-                    builder2.CloseElement();
-                }));
-                builder.CloseComponent();
-            }
+            
+            builder.OpenElement(0, "div");
+            builder.AddMultipleAttributes(1, AttributeSet);
+            builder.AddElementReferenceCapture(2, element => _modalReference = element);
+            builder.AddContent(3, ChildContent);
+            builder.CloseElement();
         }
 
-        public void Dispose()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (_state != null)
+            if (_callbackId > -1)
             {
-                _state.StateChanged -= StateHasChanged;
+                // Ensure that callback is cleaned up
+                await ElementService.RemoveClickOutsideOfElementHandlerAsync(_callbackId);
+                _callbackId = -1;
+            }
+
+            if (EnableClickOutside
+                && Context != null
+                && Context.IsActive)
+            {
+                // Register callback if user clicks outside of dropdown
+                _callbackId = await ElementService.AddClickOutsideOfElementHandlerAsync(
+                    new[] { _modalReference }, 
+                    () =>
+                    {
+                        _callbackId = -1;
+                        Context.Close();
+                    });
             }
         }
+        
+        [Inject]
+        private IElementService ElementService { get; set; } = null!;
 
+        #region Parameters
+        
+        /// <summary>
+        /// Gets or sets the alignment of the modal.
+        /// The default value is <see cref="Alignment.Center"/>.
+        /// </summary>
         [Parameter]
-        public ModalState? State
-        {
-            get => _state; 
-            set
-            {
-                if (_state != null)
-                {
-                    // Unregister event
-                    _state.StateChanged -= StateHasChanged;
-                }
+        public Alignment Alignment { get; set; } = Alignment.Center;
 
-                _state = value;
-
-                if (_state != null)
-                {
-                    // Register new event
-                    _state.StateChanged += StateHasChanged;
-                }
-            }
-        }
+        /// <summary>
+        /// Gets or sets whether the modal should closed when the user clicks outside of it.
+        /// The default value is <see langword="true"/>.
+        /// </summary>
+        [Parameter]
+        public bool EnableClickOutside { get; set; } = true;
+        
+        [Parameter]
+        public RenderFragment? ChildContent { get; set; }
+        
+        [CascadingParameter]
+        public ModalState? Context { get; set; }
+        #endregion
     }
 }

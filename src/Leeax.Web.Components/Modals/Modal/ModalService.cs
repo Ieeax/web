@@ -23,7 +23,6 @@ namespace Leeax.Web.Components.Modals
         }
 
         public Task ShowAsync<TModel>()
-            where TModel : INotifyClosed
         {
             var instance = (TModel)ActivatorUtilities.CreateInstance(_serviceProvider, typeof(TModel));
 
@@ -31,7 +30,6 @@ namespace Leeax.Web.Components.Modals
         }
 
         public Task ShowAsync<TModel>(Action<TModel>? configure)
-            where TModel : INotifyClosed
         {
             var instance = (TModel)ActivatorUtilities.CreateInstance(_serviceProvider, typeof(TModel));
 
@@ -41,20 +39,23 @@ namespace Leeax.Web.Components.Modals
         }
 
         public Task ShowAsync<TModel>(TModel model)
-            where TModel : INotifyClosed
         {
             model.ThrowIfNull();
 
+            if (ActiveModal != null)
+            {
+                throw new ApplicationException("Another modal is already active.");
+            }
+            
             var completionSource = new TaskCompletionSource<object?>();
             var modelType = typeof(TModel);
 
-            if (_modelComponentMapping == null
-                || !_modelComponentMapping.TryGetValue(modelType, out var componentType))
+            if (!_modelComponentMapping.TryGetValue(modelType, out var componentType))
             {
                 throw new ApplicationException($"No component for model '{modelType.Name}' found.");
             }
 
-            ActiveModal = new ModalState(componentType, model);
+            ActiveModal = new ModalState(componentType, model!);
             ActiveModal.Closed += OnClosed;
 
             StateChanged?.Invoke();

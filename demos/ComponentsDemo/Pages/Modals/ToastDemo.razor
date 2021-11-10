@@ -49,21 +49,21 @@
         {
             ToastService.ShowToast(
                 Text,
-                (int)DisplayTime,
                 Icon,
                 new ToastButton[]
                 {
                     new ToastButton("Decline", x => x.Close()),
                     new ToastButton("Accept", x => x.Close())
                 },
-                Stacked);
+                Stacked,
+                (int)DisplayTime);
         }
         else
         {
             ToastService.ShowToast(
                 Text,
-                (int)DisplayTime,
-                Icon);
+                Icon,
+                (int)DisplayTime);
         }
     }
 

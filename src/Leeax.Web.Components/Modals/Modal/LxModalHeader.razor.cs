@@ -11,7 +11,7 @@ namespace Leeax.Web.Components.Modals
         {
             base.BuildAttributeSet(builder);
 
-            builder.AddClassAttribute(ClassName, ClassNames.FlexRow, ClassNames.FlexVerticalCenter);
+            builder.AddClassAttribute(ClassName, ClassNames.FlexRow, ClassNames.FlexVerticalCenter, "p-3");
         }
 
         /// <summary>
@@ -27,9 +27,13 @@ namespace Leeax.Web.Components.Modals
         public string? Title { get; set; }
 
         /// <summary>
-        /// Gets or sets the callback to execute whenever the "close"-button was clicked.
+        /// Gets or sets whether a "close" button is rendered.
+        /// The default value is <see langword="true"/>.
         /// </summary>
         [Parameter]
-        public EventCallback Closed { get; set; }
+        public bool AllowClose { get; set; } = true;
+        
+        [CascadingParameter]
+        public ModalState? Context { get; set; }
     }
 }

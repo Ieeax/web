@@ -9,16 +9,19 @@ namespace Leeax.Web.Components.Modals
         public event Action<ModalState>? Closed;
         public event Action? StateChanged;
 
-        public ModalState(Type componentType, INotifyClosed model)
+        public ModalState(Type componentType, object model)
         {
             componentType.ThrowIfNull();
             model.ThrowIfNull();
 
             IsActive = true;
-            ComponentKey = Guid.NewGuid().ToString("N");
             ComponentType = componentType;
             Model = model;
-            Model.Closed += Close;
+
+            if (Model is INotifyClosed notifyClosed)
+            {
+                notifyClosed.Closed += Close;
+            }
         }
 
         internal void TransitionStateChanged(TransitionState state)
@@ -37,17 +40,23 @@ namespace Leeax.Web.Components.Modals
 
         public void Dispose()
         {
-            Model.Closed -= Close;
+            if (Model is INotifyClosed notifyClosed)
+            {
+                notifyClosed.Closed -= Close;
+            }
         }
 
         // Required for transition
         public bool IsActive { get; private set; }
 
-        public INotifyClosed Model { get; }
+        /// <summary>
+        /// Gets the associated model.
+        /// </summary>
+        public object Model { get; }
 
+        /// <summary>
+        /// Gets the type of the associated component.
+        /// </summary>
         public Type ComponentType { get; }
-
-        // Unique id to preserve state of component
-        public string ComponentKey { get; }
     }
 }

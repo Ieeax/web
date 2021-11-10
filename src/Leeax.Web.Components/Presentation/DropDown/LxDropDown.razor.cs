@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Leeax.Web.Builders;
 using Leeax.Web.Components.Abstractions;
 using Leeax.Web.Components.DOM;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Leeax.Web.Components.Presentation
 {
-    public partial class LxDropDown : IDisposable
+    public partial class LxDropDown : IAsyncDisposable
     {
         public const string ClassName = "lx-dropdown";
 
@@ -22,13 +23,13 @@ namespace Leeax.Web.Components.Presentation
             builder.AddClassAttribute(ClassName);
         }
 
-        protected override void OnAfterRender(bool firstRender)
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 // Register resize-handler to window
-                WindowService.EventManager
-                    .AddResizeHandler(WindowResizeHandler);
+                await WindowService.EventManager
+                    .AddResizeHandlerAsync(WindowResizeHandler);
             }
 
             // Ensure that the dropdown isn't cut off
@@ -37,14 +38,14 @@ namespace Leeax.Web.Components.Presentation
             if (_callbackId > -1)
             {
                 // Ensure that callback is cleaned up
-                ElementService.RemoveClickOutsideOfElementHandler(_callbackId);
+                await ElementService.RemoveClickOutsideOfElementHandlerAsync(_callbackId);
                 _callbackId = -1;
             }
 
             if (IsActive)
             {
                 // Register callback if user clicks outside of dropdown
-                _callbackId = ElementService.AddClickOutsideOfElementHandler(
+                _callbackId = await ElementService.AddClickOutsideOfElementHandlerAsync(
                     new[]
                     { 
                         _targetReference.Current,
@@ -103,10 +104,10 @@ namespace Leeax.Web.Components.Presentation
             }
         }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
-            WindowService.EventManager
-                .RemoveResizeHandler(WindowResizeHandler);
+            await WindowService.EventManager
+                .RemoveResizeHandlerAsync(WindowResizeHandler);
         }
 
         [Inject]

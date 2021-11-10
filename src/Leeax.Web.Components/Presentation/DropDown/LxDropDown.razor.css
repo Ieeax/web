@@ -7,7 +7,7 @@
 	position: absolute;
 	padding: 0.5em 0;
 	border-radius: 5px;
-	z-index: 2;
+	z-index: var(--lx-zindex-dropdown, 100);
 	left: 0;
 	transition: left 150ms ease-out, transform 150ms ease-out, opacity 150ms ease-in-out;
 	background-color: var(--lx-dropdown-background, var(--lx-color-neutral-white));

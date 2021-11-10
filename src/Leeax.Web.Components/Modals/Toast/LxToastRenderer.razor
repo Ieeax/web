@@ -4,6 +4,6 @@
 <div @attributes="AttributeSet">
     @foreach (var curState in RenderService.ActiveToasts)
     {
-        <LxToast State="curState" @key="curState.ComponentKey" />
+        <LxToastHost State="curState" @key="curState" />
     }
 </div>

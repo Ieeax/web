@@ -3,6 +3,7 @@ using Leeax.Web.Components.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Leeax.Web.Components.Modals
 {
@@ -11,6 +12,8 @@ namespace Leeax.Web.Components.Modals
         private readonly IReadOnlyDictionary<Type, Type> _modelComponentMapping;
         private readonly IList<ToastState> _activeToasts;
         private readonly IServiceProvider _serviceProvider;
+        
+        private ToastPosition _toastPosition;
 
         public event Action? StateChanged;
 
@@ -25,16 +28,14 @@ namespace Leeax.Web.Components.Modals
             ToastPosition = options.Position;
         }
 
-        public void Show<TModel>()
-            where TModel : IToastModel
+        public void Show<TModel>(int displayTime = 5000)
         {
             var instance = (TModel)ActivatorUtilities.CreateInstance(_serviceProvider, typeof(TModel));
 
             Show(instance);
         }
 
-        public void Show<TModel>(Action<TModel>? configure)
-            where TModel : IToastModel
+        public void Show<TModel>(Action<TModel>? configure, int displayTime = 5000)
         {
             var instance = (TModel)ActivatorUtilities.CreateInstance(_serviceProvider, typeof(TModel));
 
@@ -43,20 +44,18 @@ namespace Leeax.Web.Components.Modals
             Show(instance);
         }
 
-        public void Show<TModel>(TModel model)
-            where TModel : IToastModel
+        public void Show<TModel>(TModel model, int displayTime = 5000)
         {
             model.ThrowIfNull();
 
             var modelType = typeof(TModel);
 
-            if (_modelComponentMapping == null
-                || !_modelComponentMapping.TryGetValue(modelType, out var componentType))
+            if (!_modelComponentMapping.TryGetValue(modelType, out var componentType))
             {
                 throw new ApplicationException($"No component for model '{modelType.Name}' found.");
             }
 
-            var state = new ToastState(componentType, model);
+            var state = new ToastState(componentType, model!, displayTime);
             state.Closed += OnClosed;
 
             _activeToasts.Add(state);
@@ -87,7 +86,15 @@ namespace Leeax.Web.Components.Modals
             }
         }
 
-        public ToastPosition ToastPosition { get; set; }
+        public ToastPosition ToastPosition
+        {
+            get => _toastPosition;
+            set
+            {
+                _toastPosition = value;
+                StateChanged?.Invoke();
+            }
+        }
 
         public IEnumerable<ToastState> ActiveToasts => _activeToasts;
     }

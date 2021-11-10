@@ -6,52 +6,52 @@ namespace Leeax.Web.Components.Modals
     {
         public static void ShowToast(this IToastService service, string? text)
         {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, ToastIcon.None, null, false));
-        }
-
-        public static void ShowToast(this IToastService service, string? text, ToastIcon icon)
-        {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, icon, null, false));
+            service.Show(new DefaultToastModel(text, ToastIcon.None, null, false));
         }
 
         public static void ShowToast(this IToastService service, string? text, int displayTime)
         {
-            service.Show(new DefaultToastModel(text, displayTime, ToastIcon.None, null, false));
+            service.Show(new DefaultToastModel(text, ToastIcon.None, null, false), displayTime);
         }
 
-        public static void ShowToast(this IToastService service, string? text, int displayTime, ToastIcon icon)
+        public static void ShowToast(this IToastService service, string? text, ToastIcon icon)
         {
-            service.Show(new DefaultToastModel(text, displayTime, icon, null, false));
+            service.Show(new DefaultToastModel(text, icon, null, false));
+        }
+
+        public static void ShowToast(this IToastService service, string? text, ToastIcon icon, int displayTime)
+        {
+            service.Show(new DefaultToastModel(text, icon, null, false), displayTime);
         }
 
         public static void ShowToast(this IToastService service, string? text, IEnumerable<ToastButton>? buttons)
         {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, ToastIcon.None, buttons, false));
+            service.Show(new DefaultToastModel(text, ToastIcon.None, buttons, false));
         }
 
         public static void ShowToast(this IToastService service, string? text, IEnumerable<ToastButton>? buttons, bool stacked)
         {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, ToastIcon.None, buttons, stacked));
+            service.Show(new DefaultToastModel(text, ToastIcon.None, buttons, stacked));
         }
 
         public static void ShowToast(this IToastService service, string? text, ToastIcon icon, IEnumerable<ToastButton>? buttons)
         {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, icon, buttons, false));
+            service.Show(new DefaultToastModel(text, icon, buttons, false));
         }
 
         public static void ShowToast(this IToastService service, string? text, ToastIcon icon, IEnumerable<ToastButton>? buttons, bool stacked)
         {
-            service.Show(new DefaultToastModel(text, DefaultToastModel.DefaultDisplayTime, icon, buttons, stacked));
+            service.Show(new DefaultToastModel(text, icon, buttons, stacked));
         }
 
-        public static void ShowToast(this IToastService service, string? text, int displayTime, ToastIcon icon, IEnumerable<ToastButton>? buttons)
+        public static void ShowToast(this IToastService service, string? text, ToastIcon icon, IEnumerable<ToastButton>? buttons, int displayTime)
         {
-            service.Show(new DefaultToastModel(text, displayTime, icon, buttons, false));
+            service.Show(new DefaultToastModel(text, icon, buttons, false), displayTime);
         }
 
-        public static void ShowToast(this IToastService service, string? text, int displayTime, ToastIcon icon, IEnumerable<ToastButton>? buttons, bool stacked)
+        public static void ShowToast(this IToastService service, string? text, ToastIcon icon, IEnumerable<ToastButton>? buttons, bool stacked, int displayTime)
         {
-            service.Show(new DefaultToastModel(text, displayTime, icon, buttons, stacked));
+            service.Show(new DefaultToastModel(text, icon, buttons, stacked), displayTime);
         }
     }
 }

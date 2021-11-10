@@ -7,6 +7,7 @@ namespace Leeax.Web.Components
 {
     public static class VariableNames
     {
+        // Theming
         public const string ThemeDarker = "lx-color-theme-darker";
         public const string ThemeDark = "lx-color-theme-dark";
         public const string ThemePrimary = "lx-color-theme-primary";
@@ -42,7 +43,7 @@ namespace Leeax.Web.Components
         public const string ToggleActiveBackground = LxToggle.ClassName + "-active-background";
         
         public const string ModalBackground = LxModal.ClassName + "-background";
-        public const string ToastBackground = LxToast.ClassName + "-background";
+        public const string ToastBackground = LxToastHost.ClassName + "-background";
         
         public const string SidebarBackground = LxSidebar.ClassName + "-background";
         public const string SidebarButtonActiveColor = LxSidebarButton.ClassName + "-active-color";
@@ -57,6 +58,11 @@ namespace Leeax.Web.Components
         public const string PagerBackground = LxPager.ClassName + "-background";
         public const string SeparatorColor = LxSeparator.ClassName + "-color";
         public const string TableViewAccentColor = LxTableView.ClassName + "-accent-color";
+        
+        // Z-Index
+        public const string ZIndexDropDown = "lx-zindex-dropdown";
+        public const string ZIndexModal = "lx-zindex-modal";
+        public const string ZIndexToast = "lx-zindex-toast";
         
         // Other
         public const string ElevationColor = "lx-color-elevation";
