@@ -11,7 +11,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxDropDown : IAsyncDisposable
     {
         public const string ClassName = "lx-dropdown";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private readonly BackwardElementReference _targetReference = new BackwardElementReference();
         private readonly BackwardElementReference _contentReference = new BackwardElementReference();

@@ -13,8 +13,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxSwitch<TItem> : IEnableable, IAsyncDisposable
     {
         public const string ClassName = "lx-switch";
-        public const string VariableBackgroundColor = ClassName + "-background";
-        public const string VariableSelectedBackgroundColor = ClassName + "-selected-background";
 
         private IJSInProcessRuntime? _jsInProcessRuntime;
         private IJSInProcessObjectReference? _jsReference;
@@ -28,7 +26,7 @@ namespace Leeax.Web.Components.Input
 
         protected override void OnParametersSet()
         {
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.SwitchBackground, VariableNames.NeutralQuaternary);
 
             // Select first item if no value is selected
             if (Value == null

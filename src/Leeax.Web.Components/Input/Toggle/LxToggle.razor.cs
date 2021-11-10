@@ -6,8 +6,6 @@ namespace Leeax.Web.Components.Input
 	public partial class LxToggle : IEnableable
 	{
 		public const string ClassName = "lx-toggle";
-		public const string VariableBackgroundColor = ClassName + "-background";
-		public const string VariableActiveBackgroundColor = ClassName + "-active-background";
 
 		protected override void BuildAttributeSet(AttributeSetBuilder builder)
 		{

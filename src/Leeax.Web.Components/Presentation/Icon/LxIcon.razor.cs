@@ -10,7 +10,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxIcon
     {
         public const string ClassName = "lx-icon";
-        public const string VariableColor = ClassName + "-color";
         private const string AltDefaultValue = "icon";
 
         private bool _isSourceResource;
@@ -20,7 +19,7 @@ namespace Leeax.Web.Components.Presentation
 
         protected override void OnParametersSet()
         {
-            _fillColor = StyleContext.GetColorOrDefault(VariableColor, VariableNames.NeutralPrimary);
+            _fillColor = StyleContext.GetColorOrDefault(VariableNames.IconColor, VariableNames.NeutralPrimary);
         }
 
         protected override async Task OnParametersSetAsync()

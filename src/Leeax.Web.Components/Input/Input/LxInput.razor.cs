@@ -13,7 +13,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxInput<TValue> : IContext, IEnableable
     {
         public const string ClassName = "lx-input";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private LxInputButton? _button;
         private LxInputIcon? _icon;
@@ -45,7 +44,7 @@ namespace Leeax.Web.Components.Input
         protected override void OnParametersSet()
         {
             _neutralPrimary = StyleContext.GetColorOrDefault(VariableNames.NeutralPrimary, default);
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.InputBackground, VariableNames.NeutralQuaternary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)

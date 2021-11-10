@@ -10,8 +10,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxSelect<TItem> : IEnableable
     {
         public const string ClassName = "lx-select";
-        public const string VariableBackgroundColor = ClassName + "-background";
-        public const string VariableSelectedBackgroundColor = ClassName + "-selected-background";
 
         private SelectIterator<TItem, IIconOption>? _iterator;
         private bool _iteratorUpdateRequired;
@@ -24,7 +22,7 @@ namespace Leeax.Web.Components.Input
             base.OnParametersSet();
 
             _neutralPrimary = StyleContext.GetColorOrDefault(VariableNames.NeutralPrimary, default);
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.SelectBackground, VariableNames.NeutralQuaternary);
 
             // Ensure that a converter got supplied
             // -> Only required when the value is not of type "IIconOption"

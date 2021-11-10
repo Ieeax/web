@@ -11,8 +11,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxButton : IContext, IEnableable
     {
         public const string ClassName = "lx-button";
-        public const string VariableBackgroundColor = ClassName + "-background";
-        public const string VariableIconColor = ClassName + "-icon";
 
         private LxButtonIcon? _icon;
 
@@ -24,9 +22,9 @@ namespace Leeax.Web.Components.Input
         protected override void OnParametersSet()
         {
             _neutralPrimary = StyleContext.GetColorOrDefault(VariableNames.NeutralPrimary, default);
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.ButtonBackground, VariableNames.NeutralQuaternary);
             
-            _iconColor = StyleContext.TryGetColor(VariableIconColor, out var iconColor) 
+            _iconColor = StyleContext.TryGetColor(VariableNames.ButtonIcon, out var iconColor) 
                 ? iconColor 
                 : ComponentHelper.GetForegroundColor(Appearance, _backgroundColor, _neutralPrimary);
         }

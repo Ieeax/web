@@ -9,8 +9,6 @@ namespace Leeax.Web.Components.Input
     public partial class LxTagBase : IEnableable
     {
         public const string ClassName = "lx-tagbase";
-        public const string VariableBackgroundColor = ClassName + "-background";
-        public const string VariableActiveBackgroundColor = ClassName + "-active-background";
 
         private readonly string _className;
         private readonly bool _rounded;
@@ -30,8 +28,8 @@ namespace Leeax.Web.Components.Input
         protected override void OnParametersSet()
         {
             _neutralPrimary = StyleContext.GetColorOrDefault(VariableNames.NeutralPrimary, default);
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralQuaternary);
-            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableActiveBackgroundColor, VariableNames.ThemePrimary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.TagBackground, VariableNames.NeutralQuaternary);
+            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableNames.TagActiveBackground, VariableNames.ThemePrimary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)

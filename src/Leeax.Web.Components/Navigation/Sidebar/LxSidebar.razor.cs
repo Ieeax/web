@@ -7,7 +7,6 @@ namespace Leeax.Web.Components.Navigation
     public partial class LxSidebar
     {
         public const string ClassName = "lx-sidebar";
-        public const string VariableBackgroundColor = ClassName + "-background";
 
         private readonly List<ComponentBase> _items = new List<ComponentBase>();
 

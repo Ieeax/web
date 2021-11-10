@@ -10,8 +10,6 @@ namespace Leeax.Web.Components.Navigation
     public partial class LxTabBar<TItem>
     {
         public const string ClassName = "lx-tabbar";
-        public const string VariableBackgroundColor = ClassName + "-color";
-        public const string VariableActiveBackgroundColor = ClassName + "-active-color";
 
         private SelectIterator<TItem, IIconOption>? _iterator;
         private bool _iteratorUpdateRequired;
@@ -21,8 +19,8 @@ namespace Leeax.Web.Components.Navigation
 
         protected override void OnParametersSet()
         {
-            _backgroundColor = StyleContext.GetColorOrDefault(VariableBackgroundColor, VariableNames.NeutralSecondary);
-            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableActiveBackgroundColor, VariableNames.ThemePrimary);
+            _backgroundColor = StyleContext.GetColorOrDefault(VariableNames.TabBarColor, VariableNames.NeutralSecondary);
+            _activeBackgroundColor = StyleContext.GetColorOrDefault(VariableNames.TabBarActiveColor, VariableNames.ThemePrimary);
 
             // Ensure that a converter got supplied
             // -> Only required when the value is not of type "IIconOption"

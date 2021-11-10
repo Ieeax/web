@@ -11,8 +11,6 @@ namespace Leeax.Web.Components.Navigation
     public partial class LxSidebarButton : ISidebarItem, IEnableable, IDisposable
     {
         public const string ClassName = "lx-sidebarbutton";
-        public const string VariableActiveColor = ClassName + "-active-color";
-        public const string VariableActiveBackgroundColor = ClassName + "-active-background";
 
         private string? _linkAbsolute;
 

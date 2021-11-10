@@ -15,7 +15,6 @@ namespace Leeax.Web.Components.Presentation
     public partial class LxTableView : IDisposable
     {
         public const string ClassName = "lx-tableview";
-        public const string VariableAccentColor = ClassName + "-accent-color";
 
         private readonly TableViewContext _context = new TableViewContext();
         private IEnumerable<object?>? _items;
@@ -30,7 +29,7 @@ namespace Leeax.Web.Components.Presentation
 
         protected override void OnParametersSet()
         {
-            _directionIconColor = StyleContext.GetColorOrDefault(VariableAccentColor, VariableNames.ThemePrimary);
+            _directionIconColor = StyleContext.GetColorOrDefault(VariableNames.TableViewAccentColor, VariableNames.ThemePrimary);
         }
 
         protected override void BuildAttributeSet(AttributeSetBuilder builder)
