@@ -9,7 +9,6 @@ namespace Leeax.Web.Components.Modals
     public class LxModalHost : ComponentBase, IDisposable
     {
         public const string ClassNameBackground = "lx-modal-background";
-        public const string VariableBackgroundColor = "lx-modal-background";
 
         private readonly BackwardElementReference _modalReference = new BackwardElementReference();
         private ModalState? _state;
