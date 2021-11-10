@@ -46,6 +46,10 @@ namespace Leeax.Web.Components
             {
                 builder.AddAttribute("data-lx-scope", StyleScope);
             }
+            else if (StyleContext.Style != null)
+            {
+                builder.AddAttribute("data-lx-scope", StyleContext.Style.Identifier);
+            }
         }
         
         [Parameter]
