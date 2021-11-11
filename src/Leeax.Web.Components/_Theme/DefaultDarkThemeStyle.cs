@@ -13,18 +13,18 @@ namespace Leeax.Web.Components
             builder.Add(VariableNames.ThemeTertiary, ColorHelper.FromHexStr("71afe5"));
             builder.Add(VariableNames.ThemeLight, ColorHelper.FromHexStr("c7e0f4"));
             builder.Add(VariableNames.ThemeLighter, ColorHelper.FromHexStr("deecf9"));
-            builder.Add(VariableNames.NeutralBlack, ColorHelper.FromHexStr("f8f8f8"));
-            builder.Add(VariableNames.NeutralDark, ColorHelper.FromHexStr("f4f4f4"));
+            builder.Add(VariableNames.NeutralBlack, ColorHelper.FromHexStr("f0f1f7"));
+            builder.Add(VariableNames.NeutralDark, ColorHelper.FromHexStr("eaebef"));
             builder.Add(VariableNames.NeutralPrimary, ColorHelper.FromHexStr("fff"));
-            builder.Add(VariableNames.NeutralSecondary, ColorHelper.FromHexStr("d0d0d0"));
-            builder.Add(VariableNames.NeutralTertiary, ColorHelper.FromHexStr("c8c8c8"));
-            builder.Add(VariableNames.NeutralWhite, ColorHelper.FromHexStr("1f1f1f"));
-            builder.Add(VariableNames.NeutralQuaternaryAlt, ColorHelper.FromHexStr("484848"));
-            builder.Add(VariableNames.NeutralQuaternary, ColorHelper.FromHexStr("4f4f4f"));
-            builder.Add(VariableNames.NeutralLight, ColorHelper.FromHexStr("3f3f3f"));
-            builder.Add(VariableNames.NeutralLighter, ColorHelper.FromHexStr("313131"));
+            builder.Add(VariableNames.NeutralSecondary, ColorHelper.FromHexStr("d6d8df"));
+            builder.Add(VariableNames.NeutralTertiary, ColorHelper.FromHexStr("acafb9"));
+            builder.Add(VariableNames.NeutralWhite, ColorHelper.FromHexStr("1f2022"));
+            builder.Add(VariableNames.NeutralQuaternary, ColorHelper.FromHexStr("494b50"));            
+            builder.Add(VariableNames.NeutralQuaternaryAlt, ColorHelper.FromHexStr("404246"));
+            builder.Add(VariableNames.NeutralLight, ColorHelper.FromHexStr("36373a"));
+            builder.Add(VariableNames.NeutralLighter, ColorHelper.FromHexStr("2f3032"));
             builder.Add(VariableNames.ElevationColor, "0, 0, 0");
-            builder.Add(VariableNames.ModalBackground, ColorHelper.FromHexStr("313131"));
+            builder.Add(VariableNames.ModalBackground, ColorHelper.FromHexStr("333538"));
         }
     }
 }

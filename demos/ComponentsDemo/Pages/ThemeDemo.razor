@@ -12,9 +12,9 @@
                         <LxTableViewColumn Header="Variable" Text="{VariableName}"/>
                         <LxTableViewColumn Header="Value">
                             <Template>
-                                @if (((StyleVariable)context).Value is Color color)
+                                @if (((StyleVariable)context).Value is Color)
                                 {
-                                    <div class="rounded-circle mr-2" style="height:20px;width:20px;background:@color.ToRgbaStr()"></div>
+                                    <div class="rounded-circle mr-2" style="height:20px;width:20px;background:var(--@(((StyleVariable)context).VariableName))"></div>
                                 }
                                 <span>@(((StyleVariable)context).ValueString)</span>
                             </Template>

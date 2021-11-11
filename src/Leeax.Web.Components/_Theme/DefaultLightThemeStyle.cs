@@ -15,15 +15,15 @@ namespace Leeax.Web.Components
             builder.Add(VariableNames.ThemeLight, ColorHelper.FromHexStr("c7e0f4"));
             builder.Add(VariableNames.ThemeLighter, ColorHelper.FromHexStr("deecf9"));
             builder.Add(VariableNames.NeutralBlack, Color.Black);
-            builder.Add(VariableNames.NeutralDark, ColorHelper.FromHexStr("201f1e"));
-            builder.Add(VariableNames.NeutralPrimary, ColorHelper.FromHexStr("323130"));
-            builder.Add(VariableNames.NeutralSecondary, ColorHelper.FromHexStr("605e5c"));
-            builder.Add(VariableNames.NeutralTertiary, ColorHelper.FromHexStr("a19f9d"));
+            builder.Add(VariableNames.NeutralDark, ColorHelper.FromHexStr("1b1d20"));
+            builder.Add(VariableNames.NeutralPrimary, ColorHelper.FromHexStr("2f3136"));
+            builder.Add(VariableNames.NeutralSecondary, ColorHelper.FromHexStr("51555e"));
+            builder.Add(VariableNames.NeutralTertiary, ColorHelper.FromHexStr("82868f"));
             builder.Add(VariableNames.NeutralWhite, Color.White);
-            builder.Add(VariableNames.NeutralQuaternaryAlt, ColorHelper.FromHexStr("e1dfdd"));
-            builder.Add(VariableNames.NeutralQuaternary, ColorHelper.FromHexStr("d0d0d0"));
-            builder.Add(VariableNames.NeutralLight, ColorHelper.FromHexStr("edebe9"));
-            builder.Add(VariableNames.NeutralLighter, ColorHelper.FromHexStr("f3f2f1"));
+            builder.Add(VariableNames.NeutralQuaternary, ColorHelper.FromHexStr("c4c7cb"));
+            builder.Add(VariableNames.NeutralQuaternaryAlt, ColorHelper.FromHexStr("d6d9dd"));
+            builder.Add(VariableNames.NeutralLight, ColorHelper.FromHexStr("e9ebed"));
+            builder.Add(VariableNames.NeutralLighter, ColorHelper.FromHexStr("f6f6f7"));
             builder.Add(VariableNames.ElevationColor, "100, 106, 119");
             builder.Add(VariableNames.ModalBackground, Color.White);
         }
