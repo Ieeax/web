@@ -19,7 +19,7 @@ jobs:
       - name: Install .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.101
+          dotnet-version: 5.0.408
       - name: Publish
         run: dotnet publish $PROJECT_NAME -c Release -o release --nologo
       # Changes the base-tag in index.html from '/' to 'web' to match GitHub Pages repository subdirectory

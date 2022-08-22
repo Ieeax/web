@@ -28,7 +28,7 @@ jobs:
       - name: Install .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.101
+          dotnet-version: 5.0.408
       - name: Restore
         run: dotnet restore
       - name: Build
@@ -55,7 +55,7 @@ jobs:
       - name: Install .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.101
+          dotnet-version: 5.0.408
       - name: Create Release NuGet packages
         run: |
           arrTag=(${GITHUB_REF//\// })
