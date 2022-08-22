@@ -94,7 +94,7 @@ export function addOrUpdateScript(options) {
         }
         const onLoadCallback = () => {
             scriptTag.removeEventListener("load", onLoadCallback);
-            resolve();
+            resolve(null);
         };
         scriptTag.addEventListener("load", onLoadCallback);
         setTimeout(() => {
