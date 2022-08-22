@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
@@ -32,6 +36,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bundleconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
@@ -52,13 +62,6 @@
     <ProjectReference Include="..\Leeax.Web.Components.Theme\Leeax.Web.Components.Theme.csproj" />
     <ProjectReference Include="..\Leeax.Web.Components.Transition\Leeax.Web.Components.Transition.csproj" />
     <ProjectReference Include="..\Leeax.Web\Leeax.Web.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Content Update="bundleconfig.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 

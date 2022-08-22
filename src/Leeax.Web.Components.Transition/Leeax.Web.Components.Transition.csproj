@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -39,12 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="bundleconfig.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="TypeScript\Transition.ts">
       <SubType>Code</SubType>
     </None>
@@ -52,6 +50,12 @@
 
   <ItemGroup>
     <None Remove="TypeScript\TransitionHooks.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <!-- TypeScript configuration -->
