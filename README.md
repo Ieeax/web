@@ -9,7 +9,7 @@ To use one or more of these libraries in your application, simply add a referenc
 
 > **Note**: The projects are currently in active development and may see breaking changes in the future. The current state could be considered as a beta version and is not suitable for production.
 
-All projects are based on .NET 5.0 and can be splited in the following three categories:
+All projects are targeting .NET 6.0 and can be splited in the following three categories:
 
 #### Web
 Libraries which contains basic functionality and helpers for the web.
