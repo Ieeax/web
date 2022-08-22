@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.35);
 }
 
     ::deep .lx-modal-background.t-enter,
@@ -13,9 +13,12 @@
         background: none;
     }
 
-    ::deep .lx-modal-background.t-enter-to,
+    ::deep .lx-modal-background.t-enter-to {
+        transition: background 120ms;
+    }
+
     ::deep .lx-modal-background.t-leave-active {
-        transition: background 150ms ease-in-out;
+        transition: background 70ms;
     }
 
     /* lx-modal */
@@ -36,7 +39,7 @@
     
     ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-top,
     ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-top {
-        transform: translate(-50%, -100%);
+        transform: translate(-50%, -10%);
     }
 
     ::deep .lx-modal.lx-alignment-bottom {
@@ -46,7 +49,7 @@
     
     ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-bottom,
     ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-bottom {
-        transform: translate(-50%, 100%);
+        transform: translate(-50%, 10%);
     }
 
     ::deep .lx-modal.lx-alignment-top,
@@ -62,7 +65,7 @@
 
     ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-left,
     ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-left {
-        transform: translate(-100%, -50%);
+        transform: translate(-10%, -50%);
     }
     
     ::deep .lx-modal.lx-alignment-right {
@@ -72,7 +75,7 @@
     
     ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-right,
     ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-right {
-        transform: translate(100%, -50%);
+        transform: translate(10%, -50%);
     }
     
     ::deep .lx-modal.lx-alignment-left,
@@ -88,7 +91,7 @@
     }
     
     ::deep .lx-modal-background.t-enter .lx-modal.lx-alignment-center {
-        transform: translate(-50%, -50%) scale(1.25);
+        transform: translate(-50%, -30%) scale(0.75);
     }
     
     ::deep .lx-modal-background.t-leave-to .lx-modal.lx-alignment-center {
@@ -101,9 +104,9 @@
     }
     
     ::deep .lx-modal-background.t-enter-to .lx-modal {
-        transition: opacity 150ms ease-out, transform 150ms ease-out;
+        transition: opacity 70ms ease-out, transform 90ms ease-out;
     }
     
     ::deep .lx-modal-background.t-leave-active .lx-modal {
-        transition: opacity 150ms ease-in, transform 150ms ease-in;
+        transition: opacity 70ms ease-in, transform 70ms ease-in;
     }
