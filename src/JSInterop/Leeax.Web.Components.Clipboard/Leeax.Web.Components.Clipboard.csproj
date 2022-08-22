@@ -1,71 +1,71 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <SupportedPlatform Include="browser" />
-    </ItemGroup>
-
-    <!-- Nuget configuration -->
-    <PropertyGroup>
-        <PackageId>Leeax.Web.Components.Clipboard</PackageId>
-        <Authors>leeax</Authors>
-        <Description>Provides functionality to interact with the clipboard.</Description>
-        <PackageTags>blazor;clipboard;copy;paste;cut;jsinterop</PackageTags>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
-        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="wwwroot\" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Update="bundleconfig.json">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <TypeScriptCompile Include="TypeScript\Clipboard.ts" />
-    </ItemGroup>
-
-    <!-- TypeScript configuration -->
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-        <TypeScriptSourceMap>true</TypeScriptSourceMap>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-        <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
-        <TypeScriptSourceMap>false</TypeScriptSourceMap>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <TypeScriptTarget>ES6</TypeScriptTarget>
-        <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
-        <TypeScriptOutDir>wwwroot</TypeScriptOutDir>
-        <TypeScriptLib>dom,es2015</TypeScriptLib>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+  
+  <!-- Nuget configuration -->
+  <PropertyGroup>
+    <PackageId>Leeax.Web.Components.Clipboard</PackageId>
+    <Authors>leeax</Authors>
+    <Description>Provides functionality to interact with the clipboard.</Description>
+    <PackageTags>blazor;clipboard;copy;paste;cut;jsinterop</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Ieeax/web</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ieeax/web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Leeax.Web.Components.Abstractions\Leeax.Web.Components.Abstractions.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+  <Content Update="bundleconfig.json">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+  <TypeScriptCompile Include="TypeScript\Clipboard.ts" />
+  </ItemGroup>
+  
+  <!-- TypeScript configuration -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptOutDir>wwwroot</TypeScriptOutDir>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+  </PropertyGroup>
 
 </Project>

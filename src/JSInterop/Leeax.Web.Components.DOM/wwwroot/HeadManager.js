@@ -103,7 +103,7 @@ export function addOrUpdateScript(options) {
         }
         const onLoadCallback = () => {
             scriptTag.removeEventListener("load", onLoadCallback);
-            resolve();
+            resolve(null);
         };
         scriptTag.addEventListener("load", onLoadCallback);
         // Configure timeout if script cannot be loaded

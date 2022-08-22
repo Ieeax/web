@@ -135,7 +135,7 @@ export function addOrUpdateScript(options: ScriptTagOptions): Promise<unknown> {
 
         const onLoadCallback = () => {
             scriptTag.removeEventListener("load", onLoadCallback);
-            resolve();
+            resolve(null);
         }
 
         scriptTag.addEventListener("load", onLoadCallback);
