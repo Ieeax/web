@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "ComponentsDemo.dll": "sha256-SA6U\/w7vMfqXOKkHsRdvn\/2XkwxJWV\/G0yCDghRGn48=",
+      "ComponentsDemo.dll": "sha256-UhcaBRgmNDBU\/LxWgqA2m0yq8S5GyWbK3\/njgaAABvE=",
       "Leeax.Extensions.Web.Builders.dll": "sha256-SFamOzULdv72NSHRQMfTtI+8jT4Q5PcnKNxrHdpI+UQ=",
       "Leeax.Icons.MaterialDesign.dll": "sha256-kCLYpgx880IQBGEz3lTFnNheeh8vH1WarjIhgqpRVWw=",
       "Leeax.Web.Builders.dll": "sha256-rIJ6DbbH5AXtWc6YSMIZTBoMebz2ZzraKrwoYFlCstQ=",

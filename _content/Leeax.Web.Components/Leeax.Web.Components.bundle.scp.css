@@ -694,18 +694,18 @@ input[type=number][b-r1f4krlj70] {
 }
 
     [b-1tbers34aa] .lx-toast.t-enter {
-        transform: translateX(50%);
+        transform: translateX(25%);
         opacity: 0;
     }
 
     [b-1tbers34aa] .lx-toast.t-leave-to {
-        transform: translateY(-100%);
+        transform: translateY(-25%);
         opacity: 0;
     }
 
     [b-1tbers34aa] .lx-toast.t-enter-to,
     [b-1tbers34aa] .lx-toast.t-leave-active {
-        transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
 /* _content/Leeax.Web.Components/Navigation/Sidebar/LxSidebar.razor.rz.scp.css */
 .lx-sidebar[b-ngetzzvatn] {
