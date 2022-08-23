@@ -37,16 +37,16 @@
 }
 
     ::deep .lx-toast.t-enter {
-        transform: translateX(50%);
+        transform: translateX(25%);
         opacity: 0;
     }
 
     ::deep .lx-toast.t-leave-to {
-        transform: translateY(-100%);
+        transform: translateY(-25%);
         opacity: 0;
     }
 
     ::deep .lx-toast.t-enter-to,
     ::deep .lx-toast.t-leave-active {
-        transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
