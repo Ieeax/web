@@ -34,7 +34,7 @@ namespace ComponentsDemo
                 opt.AddSymbolFile("leeax.web.components", "./_content/Leeax.Web.Components/icons/symbols.svg");
 
                 // Add the "heroicons" icons
-                opt.AddDirectory("tailwind.hero", "https://raw.githubusercontent.com/tailwindlabs/heroicons/master/optimized/solid/");
+                opt.AddDirectory("tailwind.hero", "https://raw.githubusercontent.com/tailwindlabs/heroicons/master/optimized/24/solid/");
 
                 // Add the "Material Design" icons
                 opt.AddSymbolFile("google.materialdesign", "./materialdesign-symbols.min.svg");
